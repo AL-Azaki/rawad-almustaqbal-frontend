@@ -1,0 +1,55 @@
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import PublicLayout from './layouts/PublicLayout';
+import Home from './pages/Home';
+import Services from './pages/Services';
+import Portfolio from './pages/Portfolio';
+import Contact from './pages/Contact';
+
+// PWA
+import InstallPrompt from './components/pwa/InstallPrompt';
+
+// Admin Pages
+import AuthLayout from './layouts/AuthLayout';
+import AdminLogin from './pages/admin/Login';
+import AdminLayout from './layouts/AdminLayout';
+import AdminDashboard from './pages/admin/Dashboard';
+import AdminOrders from './pages/admin/Orders';
+import AdminProjects from './pages/admin/Projects';
+import AdminServices from './pages/admin/Services';
+import AdminSettings from './pages/admin/Settings';
+import AdminTestimonials from './pages/admin/Testimonials';
+
+function App() {
+  return (
+    <BrowserRouter>
+
+      <InstallPrompt />
+
+      <Routes>
+        <Route path="/" element={<PublicLayout />}>
+          <Route index element={<Home />} />
+          <Route path="services" element={<Services />} />
+          <Route path="portfolio" element={<Portfolio />} />
+          <Route path="contact" element={<Contact />} />
+        </Route>
+
+        {/* Auth Routes */}
+        <Route path="/admin/login" element={<AuthLayout />}>
+          <Route index element={<AdminLogin />} />
+        </Route>
+
+        {/* Admin Routes */}
+        <Route path="/admin" element={<AdminLayout />}>
+          <Route path="dashboard" element={<AdminDashboard />} />
+          <Route path="orders" element={<AdminOrders />} />
+          <Route path="projects" element={<AdminProjects />} />
+          <Route path="services" element={<AdminServices />} />
+          <Route path="testimonials" element={<AdminTestimonials />} />
+          <Route path="settings" element={<AdminSettings />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  );
+}
+
+export default App;
