@@ -12,6 +12,7 @@ import { TestimonialsSection, type TestimonialType } from '../components/section
 import { FeaturesSection } from '../components/sections/home/FeaturesSection';
 import { EmergencyCTA } from '../components/sections/home/EmergencyCTA';
 import { ReviewModal } from '../components/sections/home/ReviewModal';
+import { FAQSection } from '../components/sections/home/FAQSection';
 
 export default function Home() {
   const { t } = useTranslation();
@@ -64,10 +65,23 @@ export default function Home() {
   return (
     <div className="flex flex-col min-h-screen dark:bg-gray-900 transition-colors duration-300">
       <Helmet>
-        <title>{settings?.siteName || 'رواد المستقبل'} | {t('nav.home')} - أفضل خدمات التقنية والصيانة</title>
-        <meta name="description" content={settings?.siteDescription || "شركة تقنية رائدة في جدة"} />
-        <meta name="keywords" content={t('home.keywords', "الخدمات الكهربائية, كاميرات مراقبة, شبكات, ديكور")} />
-      </Helmet>
+        <title>
+          {settings?.siteName || 'رواد المستقبل'} | حلول تقنية وكهربائية وصيانة في جدة وأبحر
+        </title>
+        <meta
+          name="description"
+          content={
+            settings?.siteDescription ||
+            "شركة رواد المستقبل للحلول التقنية المتكاملة في جدة وأبحر، مع تغطية مباشرة لأبحر الشمالية وأبحر الجنوبية. متخصصون في تأسيس المنازل الذكية، وتركيب كاميرات المراقبة، وأنظمة السنترال، وتمديد الشبكات والألياف الضوئية، والصيانة الكهربائية والتقنية بأعلى معايير الجودة والضمان."
+          }
+        />
+        <meta
+          name="keywords"
+          content={t(
+            'home.keywords',
+            'رواد المستقبل, حلول تقنية جدة, حلول تقنية أبحر, أبحر, أبحر الشمالية, أبحر الجنوبية, سمارت هوم جدة, كاميرات مراقبة أبحر, شبكات أبحر, كهربائي جدة, شمال جدة'
+          )}
+        />      </Helmet>
       
       <HeroSection />
 
@@ -82,6 +96,8 @@ export default function Home() {
         loading={loadingTestimonials}
         onOpenModal={() => setIsModalOpen(true)}
       />
+
+      <FAQSection />
 
       <FeaturesSection />
 

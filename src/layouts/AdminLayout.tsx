@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Outlet, Link, useNavigate, useLocation } from 'react-router-dom';
 import { 
   LayoutDashboard, ShoppingCart, Briefcase, Wrench, LogOut, 
-  Menu, X, User, Moon, Sun, Rocket, Settings, MessageSquare, Loader2
+  Menu, X, User, Moon, Sun, Rocket, Settings, MessageSquare, Loader2, BookOpen
 } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { Toaster } from 'react-hot-toast';
@@ -39,6 +39,7 @@ export default function AdminLayout() {
     { name: t('admin.nav.projects'), path: '/admin/projects', icon: Briefcase },
     { name: t('admin.nav.services'), path: '/admin/services', icon: Wrench },
     { name: t('admin.nav.testimonials', 'آراء العملاء'), path: '/admin/testimonials', icon: MessageSquare },
+    { name: t('admin.nav.blog', 'المدونة'), path: '/admin/blog', icon: BookOpen },
     { name: t('admin.nav.settings'), path: '/admin/settings', icon: Settings },
   ];
 

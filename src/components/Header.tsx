@@ -37,8 +37,10 @@ export default function Header() {
         {/* Desktop Navigation */}
         <nav className="hidden md:flex gap-6 font-medium text-gray-600 dark:text-gray-300">
           <Link to="/" className="hover:text-amber-500 transition-colors">{t('nav.home')}</Link>
+          <Link to="/about" className="hover:text-amber-500 transition-colors">{t('nav.about')}</Link>
           <Link to="/services" className="hover:text-amber-500 transition-colors">{t('nav.services')}</Link>
           <Link to="/portfolio" className="hover:text-amber-500 transition-colors">{t('nav.portfolio')}</Link>
+          <Link to="/blog" className="hover:text-amber-500 transition-colors">{i18n.language === 'ar' ? 'المدونة' : 'Blog'}</Link>
           <Link to="/contact" className="hover:text-amber-500 transition-colors">{t('nav.contact')}</Link>
         </nav>
 
@@ -77,8 +79,10 @@ export default function Header() {
       <div className={`md:hidden absolute top-full left-0 w-full bg-white dark:bg-gray-900 shadow-xl transition-all duration-300 origin-top overflow-hidden ${isMenuOpen ? 'max-h-96 border-t dark:border-gray-800' : 'max-h-0'}`}>
         <nav className="flex flex-col p-4 gap-4 text-gray-600 dark:text-gray-300 font-medium">
           <Link to="/" onClick={() => setIsMenuOpen(false)} className="hover:text-amber-500 p-2 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">{t('nav.home')}</Link>
+          <Link to="/about" onClick={() => setIsMenuOpen(false)} className="hover:text-amber-500 p-2 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">{t('nav.about')}</Link>
           <Link to="/services" onClick={() => setIsMenuOpen(false)} className="hover:text-amber-500 p-2 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">{t('nav.services')}</Link>
           <Link to="/portfolio" onClick={() => setIsMenuOpen(false)} className="hover:text-amber-500 p-2 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">{t('nav.portfolio')}</Link>
+          <Link to="/blog" onClick={() => setIsMenuOpen(false)} className="hover:text-amber-500 p-2 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">{i18n.language === 'ar' ? 'المدونة' : 'Blog'}</Link>
           <Link to="/contact" onClick={() => setIsMenuOpen(false)} className="hover:text-amber-500 p-2 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">{t('nav.contact')}</Link>
           <div className="flex items-center justify-between mt-2 pt-2 border-t dark:border-gray-800">
             <button onClick={() => { toggleLanguage(); setIsMenuOpen(false); }} className="flex items-center gap-2 p-2 text-gray-600 dark:text-gray-300 hover:text-amber-500 transition-colors">

@@ -14,6 +14,14 @@ interface Settings {
   tiktok: string;
   theme: string;
   language: string;
+  googleBusinessName?: string;
+  googleMapsUrl?: string;
+  googleReviewUrl?: string;
+  googlePlaceId?: string;
+  googleLatitude?: string;
+  googleLongitude?: string;
+  googleEnableReviewButton?: string;
+  googleEnableUtmTracking?: string;
 }
 
 interface SettingsContextType {
@@ -38,7 +46,7 @@ export function SettingsProvider({ children }: { children: React.ReactNode }) {
       
       const defaultSettings = {
         siteName: 'رواد المستقبل',
-        siteDescription: 'نحن نوصل إلى كل شبر أو حي داخل جدة في أي مكان، فقط أرسل الموقع.',
+        siteDescription: 'شركة رواد المستقبل للحلول التقنية المتكاملة في جدة وأبحر الشمالية وأحياء شمال جدة. متخصصون في تأسيس المنازل الذكية، كاميرات المراقبة، الشبكات، والصيانة الكهربائية بأعلى جودة وضمان.',
         contactEmail: 'abdoalazaki190@gmail.com',
         contactPhone: '+966 50 639 6004',
         whatsappNumber: '966506396004',
@@ -48,7 +56,15 @@ export function SettingsProvider({ children }: { children: React.ReactNode }) {
         snapchat: 'https://www.snapchat.com/add/blzky2021',
         tiktok: '',
         theme: 'light',
-        language: 'ar'
+        language: 'ar',
+        googleBusinessName: 'رواد المستقبل للحلول التقنية',
+        googleMapsUrl: 'https://maps.google.com/?cid=1234567890',
+        googleReviewUrl: 'https://g.page/r/1234567890/review',
+        googlePlaceId: 'ChIJxxxxxxxxxxxx',
+        googleLatitude: '21.7583',
+        googleLongitude: '39.1417',
+        googleEnableReviewButton: '1',
+        googleEnableUtmTracking: '1'
       };
 
       const data = { ...defaultSettings, ...(res.data || {}) };
@@ -57,7 +73,7 @@ export function SettingsProvider({ children }: { children: React.ReactNode }) {
       console.error('Failed to fetch settings:', error);
       setSettings({
         siteName: 'رواد المستقبل',
-        siteDescription: 'نحن نوصل إلى كل شبر أو حي داخل جدة في أي مكان، فقط أرسل الموقع.',
+        siteDescription: 'شركة رواد المستقبل للحلول التقنية المتكاملة في جدة وأبحر الشمالية وأحياء شمال جدة. متخصصون في تأسيس المنازل الذكية، كاميرات المراقبة، الشبكات، والصيانة الكهربائية بأعلى جودة وضمان.',
         contactEmail: 'abdoalazaki190@gmail.com',
         contactPhone: '+966506396004',
         whatsappNumber: '966506396004',
@@ -67,7 +83,15 @@ export function SettingsProvider({ children }: { children: React.ReactNode }) {
         snapchat: 'https://www.snapchat.com/add/blzky2021',
         tiktok: '',
         theme: 'light',
-        language: 'ar'
+        language: 'ar',
+        googleBusinessName: 'رواد المستقبل للحلول التقنية',
+        googleMapsUrl: 'https://maps.google.com/?cid=1234567890',
+        googleReviewUrl: 'https://g.page/r/1234567890/review',
+        googlePlaceId: 'ChIJxxxxxxxxxxxx',
+        googleLatitude: '21.7583',
+        googleLongitude: '39.1417',
+        googleEnableReviewButton: '1',
+        googleEnableUtmTracking: '1'
       });
     } finally {
       setLoading(false);

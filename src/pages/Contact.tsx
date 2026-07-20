@@ -7,6 +7,8 @@ import { ApiClient } from '../lib/api';
 import { Button } from '../components/ui/Button';
 import { Input } from '../components/ui/Input';
 import { Textarea } from '../components/ui/Textarea';
+import LocationAutocompleteField from '../components/common/LocationAutocompleteField';
+import { trackOrderSubmit, trackWhatsAppClick, trackPhoneCallClick } from '../lib/analytics';
 
 interface ServiceType {
   id: number;
@@ -47,6 +49,14 @@ export default function Contact() {
       .then(res => {
         setServicesList(res.data);
         localStorage.setItem('contact_services_data', JSON.stringify(res.data));
+        if (serviceParam && isNaN(Number(serviceParam))) {
+          const matched = res.data.find(
+            s => s.title.toLowerCase() === serviceParam.toLowerCase() || (s as any).slug?.toLowerCase() === serviceParam.toLowerCase()
+          );
+          if (matched) {
+            setFormData(prev => ({ ...prev, service: String(matched.id) }));
+          }
+        }
       })
       .catch(console.error);
   }, []);
@@ -67,6 +77,9 @@ export default function Contact() {
     ApiClient.post('/orders', orderData)
       .then(() => {
         setSuccess(true);
+        const selectedService = servicesList.find(s => String(s.id) === formData.service);
+        const serviceName = selectedService ? selectedService.title : (isNaN(Number(formData.service)) ? formData.service : 'Unknown');
+        trackOrderSubmit(serviceName, formData.location);
         setFormData({ name: '', phone: '', location: '', service: '', description: '' });
       })
       .catch(err => {
@@ -122,7 +135,7 @@ export default function Contact() {
                   </div>
                   <div>
                     <h4 className="font-semibold text-gray-900 dark:text-white">{t('contact.phone')}</h4>
-                    <a href={`tel:${settings?.contactPhone || '+966506396004'}`} className="text-gray-600 dark:text-gray-400 mt-1 hover:text-amber-500 transition-colors block" dir="ltr">{settings?.contactPhone || '+966 50 639 6004'}</a>
+                    <a href={`tel:${settings?.contactPhone || '+966506396004'}`} onClick={() => trackPhoneCallClick('contact_page')} className="text-gray-600 dark:text-gray-400 mt-1 hover:text-amber-500 transition-colors block" dir="ltr">{settings?.contactPhone || '+966 50 639 6004'}</a>
                   </div>
                 </div>
 
@@ -132,7 +145,7 @@ export default function Contact() {
                   </div>
                   <div>
                     <h4 className="font-semibold text-gray-900 dark:text-white">{t('contact.whatsapp')}</h4>
-                    <a href={`https://wa.me/${(settings?.whatsappNumber || '966506396004').replace('+', '')}`} target="_blank" rel="noreferrer" className="text-green-600 dark:text-green-500 font-medium hover:underline mt-1 block">
+                    <a href={`https://wa.me/${(settings?.whatsappNumber || '966506396004').replace('+', '')}`} onClick={() => trackWhatsAppClick('contact_page')} target="_blank" rel="noreferrer" className="text-green-600 dark:text-green-500 font-medium hover:underline mt-1 block">
                       {t('contact.whatsappLink')}
                     </a>
                   </div>
@@ -283,28 +296,16 @@ export default function Contact() {
                           >
                             <option value="" disabled>{t('contact.formServiceSelect')}</option>
                             {servicesList.map((s, i) => <option key={i} value={s.id}>{s.title}</option>)}
+                            {formData.service && isNaN(Number(formData.service)) && (
+                              <option value={formData.service}>{formData.service}</option>
+                            )}
                           </select>
                         </div>
                       </div>
-                      <div>
-                        <label htmlFor="contact-location" className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">{t('contact.formLocation')} <span className="text-red-500">*</span></label>
-                        <div className="relative group">
-                          <div className="absolute inset-y-0 right-0 pr-4 flex items-center pointer-events-none text-gray-400 group-focus-within:text-amber-500 transition-colors">
-                            <MapPin className="h-5 w-5" aria-hidden="true" />
-                          </div>
-                          <Input 
-                            id="contact-location"
-                            type="text" 
-                            name="location"
-                            required
-                            minLength={4}
-                            value={formData.location}
-                            onChange={handleChange}
-                            className="!w-full !pr-12 !pl-4 !bg-gray-50 dark:!bg-gray-700"
-                            placeholder="حي الصفا، شارع الأربعين..."
-                          />
-                        </div>
-                      </div>
+                      <LocationAutocompleteField 
+                        value={formData.location} 
+                        onChange={(val) => setFormData(prev => ({ ...prev, location: val }))} 
+                      />
                     </div>
 
                     <div>
@@ -340,6 +341,11 @@ export default function Contact() {
                         </>
                       )}
                     </Button>
+                    <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-6 text-xs sm:text-sm font-medium text-gray-600 dark:text-gray-400">
+                      <span className="flex items-center gap-1">{t('trust.response')}</span>
+                      <span className="hidden sm:inline-block w-1 h-1 bg-gray-300 dark:bg-gray-600 rounded-full"></span>
+                      <span className="flex items-center gap-1">{t('trust.secure')}</span>
+                    </div>
                   </form>
                 </>
               )}

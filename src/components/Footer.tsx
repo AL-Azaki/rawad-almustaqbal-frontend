@@ -2,13 +2,15 @@ import { Phone, Mail, MapPin, Ghost, Clock } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { useSettings } from '../contexts/SettingsContext';
+import GeoServiceAreas from './common/GeoServiceAreas';
+import { googleBusinessService } from '../lib/googleBusiness';
 
 export default function Footer() {
   const { t, i18n } = useTranslation();
   const { settings } = useSettings();
 
   return (
-    <footer className="bg-gray-900 text-gray-300 py-12 md:py-16 transition-colors duration-300">
+    <footer className="bg-gray-900 text-gray-300 py-12 md:py-16 transition-colors duration-300 overflow-hidden max-w-full">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8">
           
@@ -27,8 +29,10 @@ export default function Footer() {
             <h4 className="text-lg font-bold text-white mb-4 border-b border-gray-700 pb-2 inline-block">{t('footer.quickLinks')}</h4>
             <ul className="space-y-3">
               <li><Link to="/" className="hover:text-amber-500 transition-colors">{t('nav.home')}</Link></li>
+              <li><Link to="/about" className="hover:text-amber-500 transition-colors">{t('nav.about')}</Link></li>
               <li><Link to="/services" className="hover:text-amber-500 transition-colors">{t('nav.services')}</Link></li>
               <li><Link to="/portfolio" className="hover:text-amber-500 transition-colors">{t('nav.portfolio')}</Link></li>
+              <li><Link to="/blog" className="hover:text-amber-500 transition-colors">{i18n.language === 'ar' ? 'المدونة' : 'Blog'}</Link></li>
               <li><Link to="/contact" className="hover:text-amber-500 transition-colors">{t('nav.contact')}</Link></li>
             </ul>
           </div>
@@ -39,7 +43,12 @@ export default function Footer() {
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 text-amber-500 shrink-0 mt-0.5" />
-                <span className="text-sm">{t('contact.locationValue')}</span>
+                <button 
+                  onClick={() => googleBusinessService.openGoogleMaps(settings || {})} 
+                  className="text-sm text-right hover:text-amber-500 transition-colors"
+                >
+                  {t('contact.locationValue')}
+                </button>
               </li>
               <li className="flex items-center gap-3">
                 <Phone className="w-5 h-5 text-amber-500 shrink-0" />
@@ -77,9 +86,24 @@ export default function Footer() {
               </a>
 
             </div>
+            
+            {settings?.googleEnableReviewButton === '1' && (
+              <div className="mt-6">
+                <button
+                  onClick={() => googleBusinessService.openGoogleReview(settings || {})}
+                  className="flex items-center justify-center w-full gap-2 bg-white text-gray-900 px-4 py-3 rounded-lg font-bold hover:bg-gray-100 transition-colors shadow-lg"
+                >
+                  <svg className="w-5 h-5 text-amber-500" fill="currentColor" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                  {i18n.language === 'ar' ? 'قيّمنا 5 نجوم على جوجل' : 'Rate us 5 stars on Google'}
+                </button>
+              </div>
+            )}
           </div>
 
         </div>
+
+        {/* Geographical Coverage & Service Areas */}
+        <GeoServiceAreas />
 
         <div className="border-t border-gray-800 mt-12 pt-8 text-center text-gray-500 text-sm flex flex-col md:flex-row justify-between items-center">
           <p>© {new Date().getFullYear()} {settings?.siteName || t('home.title')}. {t('footer.allRightsReserved', 'جميع الحقوق محفوظة.')}</p>

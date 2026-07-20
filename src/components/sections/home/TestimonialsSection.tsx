@@ -21,7 +21,7 @@ export function TestimonialsSection({ testimonials, loading, onOpenModal }: Test
   const { t } = useTranslation();
 
   return (
-    <section className="py-20 bg-gray-50 dark:bg-gray-800/80 transition-colors duration-300 border-t border-gray-200 dark:border-gray-800">
+    <section className="py-20 bg-gray-50 dark:bg-gray-800/80 transition-colors duration-300 border-t border-gray-200 dark:border-gray-800 overflow-hidden max-w-full">
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row justify-between items-center mb-12 gap-6">
           <div className="text-start">
@@ -43,7 +43,7 @@ export function TestimonialsSection({ testimonials, loading, onOpenModal }: Test
           <div className="absolute -top-10 -right-10 w-40 h-40 bg-amber-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20 dark:opacity-10"></div>
           <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-blue-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20 dark:opacity-10"></div>
           
-          <div className="flex overflow-x-auto snap-x snap-mandatory gap-6 pb-8 no-scrollbar w-full max-w-7xl mx-auto px-4 relative z-10">
+          <div className="flex overflow-x-auto snap-x snap-mandatory gap-6 pb-8 no-scrollbar [touch-action:pan-y] w-full max-w-7xl mx-auto px-4 relative z-10">
             {loading ? (
               // Skeleton Testimonials
               [...Array(3)].map((_, i) => (

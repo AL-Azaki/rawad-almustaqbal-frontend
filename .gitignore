@@ -1,4 +1,4 @@
-# Logs
+# Logs & Output
 logs
 *.log
 npm-debug.log*
@@ -6,11 +6,32 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
+eslint_output.txt
+storage/logs/*
+!storage/logs/.gitignore
 
-node_modules
-dist
-dist-ssr
+# Environment files
+.env
+.env.*
+!.env.example
 *.local
+
+# Dependencies & Builds
+node_modules/
+vendor/
+dist/
+dist-ssr/
+build/
+dev-dist/
+coverage/
+*.tmp
+*.cache
+
+# Database & Temporary Dev Files
+database/database.sqlite
+*.sqlite
+test_*.php
+test-*.mjs
 
 # Editor directories and files
 .vscode/*

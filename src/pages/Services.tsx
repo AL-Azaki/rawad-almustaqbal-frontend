@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { Helmet } from 'react-helmet-async';
 import { ApiClient } from '../lib/api';
 import { useSettings } from '../contexts/SettingsContext';
+import { FAQSection } from '../components/sections/home/FAQSection';
 
 const iconMap: Record<string, React.ReactNode> = {
   'Zap': <Zap className="w-10 h-10 text-amber-500" aria-hidden="true" />,
@@ -21,6 +22,7 @@ const borderMap = ['group-hover:border-amber-500', 'group-hover:border-blue-500'
 interface ServiceType {
   id: number;
   title: string;
+  slug?: string;
   description: string;
   icon: string | null;
   starting_price: number | null;
@@ -31,17 +33,14 @@ export default function Services() {
   const { settings } = useSettings();
   const isAr = i18n.language === 'ar';
   
-  const [services, setServices] = useState<ServiceType[]>(() => {
-    const cached = localStorage.getItem('services_page_data');
-    return cached ? JSON.parse(cached) : [];
-  });
-  const [loading, setLoading] = useState(!services.length);
+  const [services, setServices] = useState<ServiceType[]>([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     ApiClient.get<ServiceType[]>('/services', { all: true })
       .then(response => {
         setServices(response.data);
-        localStorage.setItem('services_page_data', JSON.stringify(response.data));
         setLoading(false);
       })
       .catch(error => {
@@ -90,12 +89,14 @@ export default function Services() {
             services.map((service, index) => (
               <div 
                 key={service.id} 
-                className={`group bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-sm hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-transparent ${borderMap[index % borderMap.length]} cursor-pointer flex flex-col h-full`}
+                className={`group bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-sm hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-transparent ${borderMap[index % borderMap.length]} flex flex-col h-full`}
               >
-                <div className={`w-20 h-20 rounded-2xl ${colorMap[index % colorMap.length]} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
-                  {service.icon && iconMap[service.icon] ? iconMap[service.icon] : <PenTool className="w-10 h-10 text-gray-500 dark:text-gray-400" aria-hidden="true" />}
-                </div>
-                <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">{service.title}</h3>
+                <Link to={`/services/${service.slug || service.id}`} className="block">
+                  <div className={`w-20 h-20 rounded-2xl ${colorMap[index % colorMap.length]} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
+                    {service.icon && iconMap[service.icon] ? iconMap[service.icon] : <PenTool className="w-10 h-10 text-gray-500 dark:text-gray-400" aria-hidden="true" />}
+                  </div>
+                  <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-amber-500 transition-colors">{service.title}</h3>
+                </Link>
                 {service.starting_price && (
                   <span className="inline-block bg-green-100 dark:bg-green-900/40 text-green-700 dark:text-green-400 text-sm font-semibold px-3 py-1 rounded-full mb-4 w-fit">
                     {t('services.startFrom')} {service.starting_price} {t('services.currency')}
@@ -104,16 +105,29 @@ export default function Services() {
                 <p className="text-gray-600 dark:text-gray-400 mb-8 flex-grow leading-relaxed">
                   {service.description}
                 </p>
-                <Link 
-                  to={`/contact?service=${service.title}`}
-                  className="mt-auto inline-flex items-center text-amber-600 dark:text-amber-500 font-semibold hover:text-amber-700 dark:hover:text-amber-400 transition-colors"
-                >
-                  {t('services.orderNow')}
-                  <ArrowLeft className={`w-5 h-5 mx-2 ${isAr ? '' : 'rotate-180'}`} aria-hidden="true" />
-                </Link>
+                <div className="mt-auto pt-4 border-t border-gray-100 dark:border-gray-700 flex items-center justify-between gap-4">
+                  <Link 
+                    to={`/services/${service.slug || service.id}`}
+                    className="inline-flex items-center text-sm font-bold text-gray-700 dark:text-gray-300 hover:text-amber-600 dark:hover:text-amber-400 transition-colors"
+                  >
+                    <span>{t('serviceDetailPage.heroBadge', 'تصفح التفاصيل')}</span>
+                  </Link>
+                  <Link 
+                    to={`/contact?service=${encodeURIComponent(service.title)}`}
+                    className="inline-flex items-center text-amber-600 dark:text-amber-500 font-bold hover:text-amber-700 dark:hover:text-amber-400 transition-colors"
+                  >
+                    <span>{t('services.orderNow')}</span>
+                    <ArrowLeft className={`w-5 h-5 mx-2 ${isAr ? '' : 'rotate-180'}`} aria-hidden="true" />
+                  </Link>
+                </div>
               </div>
             ))
           )}
+        </div>
+
+        {/* FAQ Section */}
+        <div className="mt-20">
+          <FAQSection />
         </div>
 
         {/* CTA Section */}

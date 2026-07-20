@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://ruwad-almustaqbal.netlify.app/sitemap.xml

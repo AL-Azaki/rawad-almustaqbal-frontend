@@ -52,4 +52,15 @@ export default defineConfig({
       },
     }),
   ],
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: (id) => {
+          if (id.includes('/pages/admin/') || id.includes('/layouts/AdminLayout') || id.includes('/layouts/AuthLayout')) {
+            return 'admin-bundle';
+          }
+        },
+      },
+    },
+  },
 })

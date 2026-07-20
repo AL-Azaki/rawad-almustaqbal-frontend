@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Save, Settings as SettingsIcon, Globe, Phone, Mail, Building2, Link2, LayoutTemplate } from 'lucide-react';
+import { Save, Settings as SettingsIcon, Globe, Phone, Mail, Building2, Link2, LayoutTemplate, MapPin } from 'lucide-react';
 import toast from 'react-hot-toast';
 import { Helmet } from 'react-helmet-async';
 import { useSettings } from '../../contexts/SettingsContext';
@@ -29,6 +29,14 @@ export default function AdminSettings() {
     tiktok: '',
     theme: 'light',
     language: 'ar',
+    googleBusinessName: '',
+    googleMapsUrl: '',
+    googleReviewUrl: '',
+    googlePlaceId: '',
+    googleLatitude: '',
+    googleLongitude: '',
+    googleEnableReviewButton: '1',
+    googleEnableUtmTracking: '1',
   });
 
   useEffect(() => {
@@ -46,6 +54,14 @@ export default function AdminSettings() {
         tiktok: settings.tiktok || '',
         theme: settings.theme || 'light',
         language: settings.language || 'ar',
+        googleBusinessName: settings.googleBusinessName || '',
+        googleMapsUrl: settings.googleMapsUrl || '',
+        googleReviewUrl: settings.googleReviewUrl || '',
+        googlePlaceId: settings.googlePlaceId || '',
+        googleLatitude: settings.googleLatitude || '',
+        googleLongitude: settings.googleLongitude || '',
+        googleEnableReviewButton: settings.googleEnableReviewButton || '1',
+        googleEnableUtmTracking: settings.googleEnableUtmTracking || '1',
       });
     }
   }, [settings]);
@@ -78,6 +94,7 @@ export default function AdminSettings() {
     { id: 'general', label: 'إعدادات عامة', icon: Globe },
     { id: 'contact', label: 'معلومات التواصل', icon: Phone },
     { id: 'social', label: 'التواصل الاجتماعي', icon: Link2 },
+    { id: 'google', label: 'ملف نشاطي على جوجل', icon: MapPin },
     { id: 'appearance', label: 'المظهر', icon: LayoutTemplate },
   ];
 
@@ -302,6 +319,124 @@ export default function AdminSettings() {
                         />
                       </div>
                     </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Google Business Tab */}
+              <div 
+                role="tabpanel" 
+                id="panel-google" 
+                aria-labelledby="tab-google" 
+                className={`${activeTab === 'google' ? 'block animate-in fade-in slide-in-from-bottom-4 duration-500' : 'hidden'}`}
+              >
+                <div className="space-y-6">
+                  <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-2">
+                    <MapPin className="w-5 h-5 text-amber-500" aria-hidden="true" /> ملف نشاطي التجاري على جوجل
+                  </h2>
+                  
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="md:col-span-2">
+                      <label htmlFor="googleBusinessName" className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-2">اسم النشاط على جوجل</label>
+                      <Input 
+                        id="googleBusinessName"
+                        type="text" 
+                        value={formData.googleBusinessName}
+                        onChange={(e) => setFormData({...formData, googleBusinessName: e.target.value})}
+                      />
+                    </div>
+
+                    <div className="md:col-span-2">
+                      <label htmlFor="googleMapsUrl" className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-2">رابط خرائط جوجل (Google Maps URL)</label>
+                      <Input 
+                        id="googleMapsUrl"
+                        type="url" 
+                        dir="ltr"
+                        value={formData.googleMapsUrl}
+                        onChange={(e) => setFormData({...formData, googleMapsUrl: e.target.value})}
+                        className="text-left"
+                      />
+                    </div>
+
+                    <div className="md:col-span-2">
+                      <label htmlFor="googleReviewUrl" className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-2">رابط التقييم المباشر (Google Review URL)</label>
+                      <Input 
+                        id="googleReviewUrl"
+                        type="url" 
+                        dir="ltr"
+                        value={formData.googleReviewUrl}
+                        onChange={(e) => setFormData({...formData, googleReviewUrl: e.target.value})}
+                        className="text-left"
+                      />
+                    </div>
+
+                    <div>
+                      <label htmlFor="googlePlaceId" className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-2">معرف المكان (Place ID)</label>
+                      <Input 
+                        id="googlePlaceId"
+                        type="text" 
+                        dir="ltr"
+                        value={formData.googlePlaceId}
+                        onChange={(e) => setFormData({...formData, googlePlaceId: e.target.value})}
+                        className="text-left"
+                      />
+                    </div>
+
+                    <div></div>
+
+                    <div>
+                      <label htmlFor="googleLatitude" className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-2">خط العرض (Latitude)</label>
+                      <Input 
+                        id="googleLatitude"
+                        type="text" 
+                        dir="ltr"
+                        value={formData.googleLatitude}
+                        onChange={(e) => setFormData({...formData, googleLatitude: e.target.value})}
+                        className="text-left"
+                      />
+                    </div>
+
+                    <div>
+                      <label htmlFor="googleLongitude" className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-2">خط الطول (Longitude)</label>
+                      <Input 
+                        id="googleLongitude"
+                        type="text" 
+                        dir="ltr"
+                        value={formData.googleLongitude}
+                        onChange={(e) => setFormData({...formData, googleLongitude: e.target.value})}
+                        className="text-left"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+                    <fieldset>
+                      <legend className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-4">زر تقييم جوجل</legend>
+                      <div className="flex gap-4">
+                        <label className={`flex-1 border-2 rounded-xl p-4 cursor-pointer transition-all flex items-center justify-center gap-2 focus-within:ring-2 focus-within:ring-amber-500 ${formData.googleEnableReviewButton === '1' ? 'border-amber-500 bg-amber-50 dark:bg-amber-900/20' : 'border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800'}`}>
+                          <input type="radio" name="googleEnableReviewButton" value="1" className="sr-only" checked={formData.googleEnableReviewButton === '1'} onChange={() => setFormData({...formData, googleEnableReviewButton: '1'})} />
+                          <span className="font-bold">مفعل</span>
+                        </label>
+                        <label className={`flex-1 border-2 rounded-xl p-4 cursor-pointer transition-all flex items-center justify-center gap-2 focus-within:ring-2 focus-within:ring-amber-500 ${formData.googleEnableReviewButton === '0' ? 'border-amber-500 bg-amber-50 dark:bg-amber-900/20' : 'border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800'}`}>
+                          <input type="radio" name="googleEnableReviewButton" value="0" className="sr-only" checked={formData.googleEnableReviewButton === '0'} onChange={() => setFormData({...formData, googleEnableReviewButton: '0'})} />
+                          <span className="font-bold">معطل</span>
+                        </label>
+                      </div>
+                    </fieldset>
+
+                    <fieldset>
+                      <legend className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-4">تتبع الروابط (UTM Tracking)</legend>
+                      <div className="flex gap-4">
+                        <label className={`flex-1 border-2 rounded-xl p-4 cursor-pointer transition-all flex items-center justify-center gap-2 focus-within:ring-2 focus-within:ring-amber-500 ${formData.googleEnableUtmTracking === '1' ? 'border-amber-500 bg-amber-50 dark:bg-amber-900/20' : 'border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800'}`}>
+                          <input type="radio" name="googleEnableUtmTracking" value="1" className="sr-only" checked={formData.googleEnableUtmTracking === '1'} onChange={() => setFormData({...formData, googleEnableUtmTracking: '1'})} />
+                          <span className="font-bold">مفعل</span>
+                        </label>
+                        <label className={`flex-1 border-2 rounded-xl p-4 cursor-pointer transition-all flex items-center justify-center gap-2 focus-within:ring-2 focus-within:ring-amber-500 ${formData.googleEnableUtmTracking === '0' ? 'border-amber-500 bg-amber-50 dark:bg-amber-900/20' : 'border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800'}`}>
+                          <input type="radio" name="googleEnableUtmTracking" value="0" className="sr-only" checked={formData.googleEnableUtmTracking === '0'} onChange={() => setFormData({...formData, googleEnableUtmTracking: '0'})} />
+                          <span className="font-bold">معطل</span>
+                        </label>
+                      </div>
+                    </fieldset>
                   </div>
                 </div>
               </div>

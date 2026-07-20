@@ -38,5 +38,5 @@ const options = {
 } as any
 
 // The agent loader code executes immediately on instantiation.
-const nrba = new BrowserAgent(options)
+export const nrba = new BrowserAgent(options)
 // Remaining code

@@ -101,4 +101,14 @@ export const ApiClient = {
   }
 };
 
+export const getImageUrl = (path: string | undefined | null): string => {
+  if (!path) return 'https://via.placeholder.com/80';
+  if (path.startsWith('http') || path.startsWith('blob:')) return path;
+  if (path.startsWith('/storage/')) {
+    const baseUrl = (import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000/api').replace(/\/api$/, '');
+    return `${baseUrl}${path}`;
+  }
+  return path;
+};
+
 export default api;

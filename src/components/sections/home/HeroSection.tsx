@@ -10,7 +10,7 @@ export function HeroSection() {
   const isAr = i18n.language === 'ar';
 
   return (
-    <section className="relative py-16 md:pt-32 md:pb-40 overflow-hidden flex items-center justify-center min-h-[85vh]">
+    <section className="relative py-16 md:pt-32 md:pb-40 overflow-hidden flex items-center justify-center min-h-[85vh] max-w-full">
       <div className="absolute inset-0 w-full h-full z-0 overflow-hidden bg-gray-900">
         <img 
           src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&q=80&w=2000" 
@@ -46,6 +46,9 @@ export function HeroSection() {
             {t('home.explore')}
           </Link>
         </div>
+        <p className="mt-6 text-sm text-gray-300 flex items-center justify-center gap-2 drop-shadow-md font-medium">
+          {t('trust.response')}
+        </p>
       </div>
     </section>
   );

@@ -1,6 +1,7 @@
 {
   "nav": {
     "home": "Home",
+    "about": "About Us",
     "services": "Services",
     "portfolio": "Portfolio",
     "contact": "Contact Us",
@@ -135,6 +136,8 @@
     "formService": "Service Type",
     "formServiceSelect": "Select a service...",
     "formLocation": "District / Location",
+    "locationExamplePlaceholder": "e.g. Al Yaqout District - Prince Abdullah Al-Faisal Rd",
+    "quickAreasLabel": "Quick Service Areas (Tap to select):",
     "formDesc": "Problem Description",
     "formSubmit": "Send Request",
     "formLoading": "Sending...",
@@ -249,5 +252,191 @@
         "submit": "Save & Publish"
       }
     }
+  },
+  "faq": {
+    "badge": "Frequently Asked Questions 💡",
+    "title": "Clear Answers to All Your",
+    "titleHighlight": "Technical & Engineering Inquiries",
+    "subtitle": "At Future Pioneers, we believe in complete transparency. Here are detailed answers to our most common questions regarding wiring, installation, warranties, and our services in Jeddah and Obhur.",
+    "pricing": {
+      "q": "How is the pricing determined for installation and maintenance services at Future Pioneers?",
+      "a": "We rely on a transparent pricing system based on accurate on-site inspection and project scope. We provide a detailed technical quotation outlining material costs (authentic and certified) and execution costs before starting any work, with zero hidden fees."
+    },
+    "golden_warranty": {
+      "q": "What is the 2-Year Golden Warranty and what does it cover?",
+      "a": "The Golden Warranty is our full commitment to the quality of our work for 24 full months (2 years). It covers all electrical, network, and smart home installations executed by our team, ensuring free immediate replacement or maintenance for any technical defect caused by installation."
+    },
+    "installation_obhur": {
+      "q": "How long does response and execution take for projects in North and South Obhur?",
+      "a": "With mobile field units stationed across North Jeddah and Obhur districts, our on-site inspection and emergency response time is under 2 hours. Project execution timelines are strictly defined in a binding schedule based on villa or facility size."
+    },
+    "safety_standards": {
+      "q": "What safety and quality standards do you follow for electrical wiring and networks?",
+      "a": "We adhere to the highest local and international safety codes (such as the Saudi Building Code and IEC standards). We strictly use fire-retardant, high-durability cables, precise engineering load distribution, and advanced circuit breakers to prevent short circuits and surges."
+    },
+    "smart_home_diff": {
+      "q": "What is the key difference between Smart Home electrical wiring and traditional villa wiring?",
+      "a": "Smart wiring relies on flexible infrastructure, neutral wires, and integrated wired/wireless communication networks that allow remote control over lighting, HVAC, curtains, and CCTV via smartphone or voice commands while saving up to 30% on energy. Traditional wiring is limited to manual switches without easy automation options."
+    },
+    "emergency_response": {
+      "q": "Do you provide 24/7 emergency repair and maintenance across North Jeddah and Obhur districts?",
+      "a": "Yes, we provide round-the-clock (24/7) technical support and emergency maintenance covering all districts of Jeddah and Obhur (Al Shiraa, Al Yaqout, Al Lulu, Al Zumurrud, Al Marjan, Al Shati, etc.). You can reach us via WhatsApp anytime for immediate technician dispatch."
+    },
+    "consultation": {
+      "q": "Do you offer on-site technical inspection and consultation before starting execution?",
+      "a": "Certainly. One of our certified engineers or technicians will visit your location (villa, office, or commercial project) to assess actual requirements, provide expert technical consultation, and recommend the best solutions and brands suited for your budget and needs."
+    },
+    "payment_methods": {
+      "q": "What payment methods and options are available upon contracting?",
+      "a": "We offer flexible and secure payment solutions including bank transfers to our official corporate account, electronic payments (Mada, Visa, Mastercard), and milestone-based installment schedules for villas and large projects to ensure full client satisfaction."
+    }
+  },
+  "comparisonTable": {
+    "badge": "Engineering Technical Comparison ⚖️",
+    "title": "The Core Difference Between",
+    "titleHighlight": "Future Pioneers Engineering vs Regular Contracting",
+    "subtitle": "Do not compromise the safety and quality of your facility. Discover the technical standards that distinguish our execution from typical market practices.",
+    "colFeature": "Comparison Criteria & Technical Standard",
+    "colModern": "Smart Engineering Setup (Future Pioneers)",
+    "colTraditional": "Regular Traditional Contracting",
+    "row1_title": "Infrastructure & Future Flexibility",
+    "row1_modern": "Smart wiring with Neutral line and wide independent conduits allowing future automation upgrades without breaking walls.",
+    "row1_traditional": "Limited and entangled wires without future planning, requiring wall demolition and ugly surface conduits for any additions.",
+    "row2_title": "Building Code & Safety Standards",
+    "row2_modern": "Strict adherence to Saudi Building Code, using certified fire-retardant cables, balanced load distribution with RCBO protection breakers.",
+    "row2_traditional": "Random use of counterfeit commercial materials, overloaded breakers, and ungrounded circuits increasing short-circuit and fire hazards.",
+    "row3_title": "Cost & Long-Term Return on Investment",
+    "row3_modern": "An investment that increases property value and saves up to 30% monthly on electricity bills, with zero recurring repair costs.",
+    "row3_traditional": "Initial setup cost appears slightly cheaper but drains money in continuous repairs, high electricity bills, and damage restoration.",
+    "row4_title": "Golden Warranty & Reliability Level",
+    "row4_modern": "True comprehensive 24-month Golden Warranty on all installations and wiring with mobile emergency repair teams arriving in Jeddah & Obhur within 2 hours.",
+    "row4_traditional": "Non-binding verbal promises, contractor/technician disappearance after handover, with delayed and difficult emergency response.",
+    "row5_title": "Smart Control & Monitoring",
+    "row5_modern": "Integrated connection allowing full monitoring and remote control from your smartphone or voice commands anytime, anywhere.",
+    "row5_traditional": "Primitive manual switches that do not allow remote monitoring or intelligent energy management."
+  },
+  "serviceDetailPage": {
+    "breadcrumbHome": "Home",
+    "breadcrumbServices": "Services",
+    "heroBadge": "Certified Specialized Service 🌟",
+    "orderServiceBtn": "Order This Service Now",
+    "whatsappInquireBtn": "Technical WhatsApp Consultation",
+    "startingPriceLabel": "Starting Price:",
+    "whyChooseTitle": "Why Residents of Jeddah & Obhur Prefer",
+    "whyChooseHighlight": "Executing This Service With Us?",
+    "whyChooseSubtitle": "Years of field experience across North Jeddah & Obhur districts, with deep understanding of residential villa and commercial facility requirements.",
+    "benefit1Title": "Immediate Field Response in Obhur & North Jeddah",
+    "benefit1Desc": "With permanent units stationed in Al Shiraa, Al Yaqout, Al Lulu, and Al Zumurrud, we reach your location for inspection and rapid initiation in record time.",
+    "benefit2Title": "Authentic Certified Materials & 24-Month Warranty",
+    "benefit2Desc": "We strictly use top global brands complying with Saudi standards, delivering a written, binding Golden Warranty certificate upon completion.",
+    "benefit3Title": "Engineering Supervision & Flawless Clean Execution",
+    "benefit3Desc": "We adhere to the highest aesthetic finishing standards, concealing wiring and cables using the cleanest modern tools and techniques.",
+    "relatedServicesTitle": "Related Services & Solutions",
+    "relatedServicesSubtitle": "Discover the integrated services frequently requested by our clients alongside this service to fully equip their property."
+  },
+  "about": {
+    "title": "About Us | Future Pioneers Contracting & Technical Solutions",
+    "desc": "Serving clients since 2012 in Jeddah and Obhur by delivering integrated engineering, technical, and electrical solutions with strict commitment to quality and safety.",
+    "keywords": "About Us, Future Pioneers, Contracting Jeddah, Electrical Installations Jeddah, Technical Solutions Obhur, Engineering Jeddah, Experience since 2012",
+    "hero": {
+      "badge": "Reliable Engineering Identity & Established Field Experience 🚀",
+      "title": "Future Pioneers Contracting & Technical Solutions",
+      "subtitle": "Serving clients since 2012 in Jeddah and Obhur by delivering integrated engineering solutions that combine smart electrical and technical installations, meticulous execution, and strict adherence to quality and safety standards."
+    },
+    "aboutCompany": {
+      "title": "About the Company",
+      "titleHighlight": "An Established Engineering Journey",
+      "p1": "Future Pioneers was established to be a trusted benchmark in contracting, smart technical installations, and advanced electrical engineering across Jeddah and North & South Obhur. We set out with a clear vision: elevating engineering services from traditional irregularity to structured professionalism and utmost precision.",
+      "p2": "Serving clients since 2012, our experience has been built through years of practical field work and precise execution across residential villas, commercial facilities, and architectural projects. We believe that proper engineering foundations are the core pillar of any sustainable and comfortable environment."
+    },
+    "vision": {
+      "title": "Our Vision",
+      "desc": "To be the premier and most trusted choice for clients seeking superior engineering quality and integrated smart solutions in Jeddah and Obhur, setting a benchmark for technical discipline and professional integrity."
+    },
+    "mission": {
+      "title": "Our Mission",
+      "desc": "To deliver top-tier engineering and technical services rooted in meticulous planning, advanced tools, and specialized expertise, ensuring a safe, sustainable environment that meets our clients' aspirations and protects their long-term investments."
+    },
+    "philosophy": {
+      "title": "Our Engineering Philosophy",
+      "subtitle": "Our approach is built on science and advance planning, not trial and error",
+      "items": [
+        {
+          "title": "Advance Planning & Engineering Precision",
+          "desc": "Every step in our projects undergoes structured planning and exact load/routing calculations to avoid conflicts or costly modifications later."
+        },
+        {
+          "title": "Sustainability & Future Flexibility",
+          "desc": "We design our systems and foundations to accommodate future expansion and evolving smart technologies seamlessly, adding sustainable value to the property."
+        },
+        {
+          "title": "Transparency & Technical Clarity",
+          "desc": "We commit to absolute transparency with our clients regarding all options and approved specifications, providing comprehensive explanations of every technical detail before and during execution."
+        }
+      ]
+    },
+    "whyChooseUs": {
+      "title": "Why Clients Choose Us",
+      "subtitle": "Core values and professional performance that make the difference in every project",
+      "items": [
+        {
+          "title": "Field Experience Built Since 2012",
+          "desc": "Deep understanding of building structures and installation requirements across Jeddah and Obhur through continuous field practice."
+        },
+        {
+          "title": "Specialization & Professionalism",
+          "desc": "We rely on qualified engineers and field technicians operating under rigorous engineering standards and absolute discipline across all project phases."
+        },
+        {
+          "title": "On-Time Commitment & Organization",
+          "desc": "Disciplined workflow management ensuring structured project stages and prompt delivery without delays or site disorganization."
+        },
+        {
+          "title": "Long-Term Relationships & Reliability",
+          "desc": "Our unwavering focus on customer satisfaction builds enduring partnerships and reliable communication extending years after completion."
+        }
+      ]
+    },
+    "methodology": {
+      "title": "Our Professional Work Methodology",
+      "subtitle": "Structured and systematic steps guaranteeing superior execution",
+      "steps": [
+        {
+          "title": "On-Site Inspection & Assessment",
+          "desc": "Visiting the site, inspecting existing infrastructure, evaluating technical needs precisely, and understanding client objectives."
+        },
+        {
+          "title": "Engineering Planning & Solutions",
+          "desc": "Developing a comprehensive execution plan, defining appropriate standards/specs, and mapping optimal routing paths."
+        },
+        {
+          "title": "Meticulous Execution & Supervision",
+          "desc": "Executing tasks with specialized technical teams under rigorous engineering supervision to ensure alignment with planned standards."
+        },
+        {
+          "title": "Testing, Verification & Handover",
+          "desc": "Conducting comprehensive operational checks and precision tests for all loads, systems, and connections prior to final handover."
+        }
+      ]
+    },
+    "quality": {
+      "title": "Our Commitment to Quality",
+      "desc": "For us, quality is not a slogan—it is a rigorous daily discipline starting with selecting authentic materials that meet strict standards, applying Saudi building code requirements, and conducting thorough technical testing on every single point and connection. We obsess over the finest details to ensure peak operational efficiency and exceptional system longevity."
+    },
+    "safety": {
+      "title": "Safety Standards First",
+      "desc": "We prioritize the safety of lives and property above all else in every project. We enforce stringent safety standards across electrical wiring, cable insulation, panel protection, and load balancing, while maintaining a safe environment for both our team and the job site. Safe foundations are the ultimate shield protecting your facility from future hazards."
+    },
+    "team": {
+      "title": "Our Specialized Engineering & Technical Team",
+      "subtitle": "Qualified professionals combining formal training with deep field practice",
+      "desc": "Our team comprises dedicated engineers and field technicians driven by a passion for craftsmanship and professional discipline. Our projects are executed by qualified personnel trained on state-of-the-art engineering tools and precision diagnostics, continuously evolving to adopt top-tier advancements in smart automation and energy efficiency."
+    },
+    "cta": {
+      "title": "Looking for a Trusted Engineering Partner for Your Project?",
+      "subtitle": "Whether you are building your new home in Jeddah or Obhur, or upgrading your commercial facility, we are here to provide optimal solutions and meticulous technical support.",
+      "btn": "Contact Us for Consultation or Inspection"
+    }
   }
 }
+
