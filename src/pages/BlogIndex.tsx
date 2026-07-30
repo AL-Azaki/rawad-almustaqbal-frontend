@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from 'react';
+﻿import { useState, useEffect, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
@@ -11,7 +11,7 @@ import { useSettings } from '../contexts/SettingsContext';
 export default function BlogIndex() {
   const { i18n } = useTranslation();
   const { settings } = useSettings();
-  const siteName = settings?.siteName || 'رواد المستقبل';
+  const siteName = settings?.siteName || 'العزكي تك';
   const isAr = i18n.language === 'ar';
 
   const [posts, setPosts] = useState<BlogPostItem[]>(BLOG_POSTS_SSOT);
@@ -37,7 +37,7 @@ export default function BlogIndex() {
             image_path: item.image_path ? getImageUrl(item.image_path) : 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&q=80&w=800',
             reading_time: item.reading_time || 5,
             related_service_slug: item.related_service_slug || 'electrical-services-jeddah',
-            author_name: item.author_name || 'مهندسو رواد المستقبل',
+            author_name: item.author_name || 'مهندسو العزكي تك',
             published_at: item.published_at || new Date().toISOString(),
           }));
           setPosts(normalized);
@@ -96,8 +96,8 @@ export default function BlogIndex() {
     ? `المدونة والمعرفة الهندسية | ${siteName}`
     : `Engineering Blog & Knowledge Base | ${siteName}`;
   const pageDesc = isAr
-    ? 'أدلة هندسية ومقالات متخصصة في أعمال الكهرباء والشبكات وكاميرات المراقبة والسباكة في جدة وأبحر الشمالية، نصائح لحماية منزلك وتوفير الطاقة.'
-    : 'Professional engineering guides and technical articles on electrical, structured cabling, CCTV, and plumbing solutions across Jeddah and North Obhur.';
+    ? 'أدلة هندسية ومقالات متخصصة في أعمال الكهرباء والشبكات وكاميرات المراقبة والسباكة في جدة وجميع مناطق المملكة، نصائح لحماية منزلك وتوفير الطاقة.'
+    : 'Professional engineering guides and technical articles on electrical, structured cabling, CCTV, and plumbing solutions across Jeddah and All Saudi Arabia Regions.';
 
   const blogSchema = {
     '@context': 'https://schema.org',
@@ -131,13 +131,13 @@ export default function BlogIndex() {
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight mb-6 leading-tight">
             {isAr ? 'مقالات وأدلة ' : 'Engineering Guides & '}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-orange-500">
-              {isAr ? 'رواد المستقبل الهندسية' : 'Technical Articles'}
+              {isAr ? 'العزكي تك الهندسية' : 'Technical Articles'}
             </span>
           </h1>
           <p className="max-w-3xl mx-auto text-lg md:text-xl text-gray-300 leading-relaxed">
             {isAr
-              ? 'نضع بين يديك خلاصة خبرة مهندسينا الميدانيين في جدة وأبحر الشمالية لمساعدتك في فهم وحل التحديات الكهربائية والشبكية والأمنية في منزلك ومنشأتك.'
-              : 'Practical engineering insights, maintenance tips, and field strategies directly from our certified technicians across Jeddah and North Obhur.'}
+              ? 'نضع بين يديك خلاصة خبرة مهندسينا الميدانيين في جدة وجميع مناطق المملكة لمساعدتك في فهم وحل التحديات الكهربائية والشبكية والأمنية في منزلك ومنشأتك.'
+              : 'Practical engineering insights, maintenance tips, and field strategies directly from our certified technicians across Jeddah and All Saudi Arabia Regions.'}
           </p>
         </div>
       </section>
@@ -297,8 +297,8 @@ export default function BlogIndex() {
           </h2>
           <p className="text-gray-300 text-sm md:text-base max-w-2xl mx-auto mb-8 leading-relaxed">
             {isAr
-              ? 'فريق الطوارئ والصيانة في رواد المستقبل متاح للنزول الميداني الفوري في جميع أحياء جدة وأبحر الشمالية خلال دقائق.'
-              : 'Our rapid emergency response engineers are ready for immediate field dispatch across all Jeddah and North Obhur districts.'}
+              ? 'فريق الطوارئ والصيانة في العزكي تك متاح للنزول الميداني الفوري في جميع أحياء جدة وجميع مناطق المملكة خلال دقائق.'
+              : 'Our rapid emergency response engineers are ready for immediate field dispatch across all Jeddah and All Saudi Arabia Regions districts.'}
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Link
@@ -319,3 +319,4 @@ export default function BlogIndex() {
     </div>
   );
 }
+

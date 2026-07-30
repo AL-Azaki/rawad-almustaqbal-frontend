@@ -1,4 +1,4 @@
-import { CheckCircle2, Zap, Wifi, Camera, Droplets, Lightbulb, PaintRoller, PenTool, ArrowLeft } from 'lucide-react';
+﻿import { CheckCircle2, Zap, Wifi, Camera, Droplets, Lightbulb, PaintRoller, PenTool, ArrowLeft } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 
@@ -69,3 +69,4 @@ export function ServicesSection() {
     </section>
   );
 }
+

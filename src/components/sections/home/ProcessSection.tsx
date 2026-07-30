@@ -1,4 +1,4 @@
-import { PhoneCall, Search, Settings, ShieldCheck } from 'lucide-react';
+﻿import { PhoneCall, Search, Settings, ShieldCheck } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 
 export function ProcessSection() {
@@ -54,3 +54,4 @@ export function ProcessSection() {
     </section>
   );
 }
+

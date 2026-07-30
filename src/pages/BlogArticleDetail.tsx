@@ -32,7 +32,7 @@ export default function BlogArticleDetail() {
   const { slug } = useParams<{ slug: string }>();
   const { i18n } = useTranslation();
   const { settings } = useSettings();
-  const siteName = settings?.siteName || 'رواد المستقبل';
+  const siteName = settings?.siteName || 'العزكي تك';
   const whatsappNumber = settings?.whatsappNumber || '966506396004';
   const isAr = i18n.language === 'ar';
 
@@ -61,7 +61,7 @@ export default function BlogArticleDetail() {
             image_path: item.image_path ? getImageUrl(item.image_path) : 'https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&q=80&w=1200',
             reading_time: item.reading_time || 5,
             related_service_slug: item.related_service_slug || 'electrical-services-jeddah',
-            author_name: item.author_name || 'مهندسو رواد المستقبل',
+            author_name: item.author_name || 'مهندسو العزكي تك',
             published_at: item.published_at || new Date().toISOString(),
           };
           setPost(normalizedPost);
@@ -77,7 +77,7 @@ export default function BlogArticleDetail() {
               image_path: rItem.image_path ? getImageUrl(rItem.image_path) : 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&q=80&w=800',
               reading_time: rItem.reading_time || 5,
               related_service_slug: rItem.related_service_slug || 'electrical-services-jeddah',
-              author_name: rItem.author_name || 'مهندسو رواد المستقبل',
+              author_name: rItem.author_name || 'مهندسو العزكي تك',
               published_at: rItem.published_at || new Date().toISOString(),
             }));
             setRelatedPosts(normalizedRelated);
@@ -229,7 +229,7 @@ export default function BlogArticleDetail() {
       name: siteName,
       logo: {
         '@type': 'ImageObject',
-        url: `${window.location.origin}/icons/icon-512x512.png`,
+        url: `${window.location.origin}/logo.jpg`,
       },
     },
     mainEntityOfPage: {
@@ -442,7 +442,7 @@ export default function BlogArticleDetail() {
 
               <p className="text-gray-300 text-sm leading-relaxed mb-6">
                 {isAr
-                  ? 'مهندسو وفنيو رواد المستقبل مجهزون بأحدث أجهزة الفحص المعتمدة للنزول الميداني الفوري في جدة وأبحر الشمالية بضمان هندسي كامل.'
+                  ? 'مهندسو وفنيو العزكي تك مجهزون بأحدث أجهزة الفحص المعتمدة للنزول الميداني الفوري في جدة وجميع مناطق المملكة بضمان هندسي كامل.'
                   : 'Our certified engineers provide comprehensive diagnostic audits and permanent execution complying with Saudi Building Codes across Jeddah.'}
               </p>
 
@@ -573,3 +573,4 @@ export default function BlogArticleDetail() {
     </div>
   );
 }
+

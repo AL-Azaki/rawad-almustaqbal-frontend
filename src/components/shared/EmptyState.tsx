@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { SearchX, FolderOpen, AlertOctagon, HelpCircle } from 'lucide-react';
 import { Button, type ButtonProps } from '../ui/Button';
 
@@ -122,3 +122,4 @@ export const EmptyState: React.FC<EmptyStateProps> = ({
     </div>
   );
 };
+

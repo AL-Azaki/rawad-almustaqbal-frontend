@@ -1,4 +1,4 @@
-export interface BlogPostItem {
+﻿export interface BlogPostItem {
   id: number;
   slug: string;
   title: { ar: string; en: string };
@@ -17,8 +17,8 @@ export const BLOG_POSTS_SSOT: BlogPostItem[] = [
     id: 1,
     slug: 'causes-of-circuit-breaker-tripping-jeddah-villas',
     title: {
-      ar: 'أسباب انقطاع طبلون الكهرباء وتكرار فصل القاطع الرئيسي في فلل جدة وأبحر وكيفية حله نهائياً',
-      en: 'Causes of Main Circuit Breaker Tripping in Jeddah & North Obhur Villas and Permanent Engineering Solutions',
+      ar: 'أسباب انقطاع طبلون الكهرباء وتكرار فصل القاطع الرئيسي في فلل جدة وجميع مناطق المملكة وكيفية حله نهائياً',
+      en: 'Causes of Main Circuit Breaker Tripping in Jeddah & All Saudi Arabia Regions Villas and Permanent Engineering Solutions',
     },
     excerpt: {
       ar: 'تعرف على الأسباب الفنية الحقيقية وراء تكرار فصل القاطع الرئيسي للكهرباء في فلل جدة وخاصة في أوقات الذروة الصيفية وكيفية معالجة توازن الأحمال.',
@@ -31,23 +31,23 @@ export const BLOG_POSTS_SSOT: BlogPostItem[] = [
     image_path: 'https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&q=80&w=1200',
     reading_time: 7,
     related_service_slug: 'electrical-services-jeddah',
-    author_name: 'فريق الهندسة الكهربائية - رواد المستقبل',
+    author_name: 'فريق الهندسة الكهربائية - العزكي تك',
     published_at: '2026-07-10T10:00:00Z',
     content: {
       ar: `## لماذا يفصل طبلون الكهرباء باستمرار في الفلل السكنية؟
 
-يعتبر تكرار فصل القاطع الكهربائي الرئيسي (Circuit Breaker Tripping) من أكثر المشاكل المزعجة والخطيرة التي تواجه أصحاب الفلل في أحياء جدة وأبحر الشمالية، خاصة خلال فترات الصيف وارتفاع درجات الحرارة وتشغيل أجهزة التكييف المركزي والسبليت بطاقتها القصوى. في هذا الدليل الهندسي، نستعرض معكم الأسباب الجذرية وكيفية المعالجة الصحيحة.
+يعتبر تكرار فصل القاطع الكهربائي الرئيسي (Circuit Breaker Tripping) من أكثر المشاكل المزعجة والخطيرة التي تواجه أصحاب الفلل في أحياء جدة وجميع مناطق المملكة، خاصة خلال فترات الصيف وارتفاع درجات الحرارة وتشغيل أجهزة التكييف المركزي والسبليت بطاقتها القصوى. في هذا الدليل الهندسي، نستعرض معكم الأسباب الجذرية وكيفية المعالجة الصحيحة.
 
 ## 1. زيادة الأحمال الكهربائية وعدم توازن الفازات (Load Imbalance)
 
 السبب الأول والأكثر شيوعاً هو التحميل الزائد على أحد الفازات (Phases) دون غيرها في الطبلون الرئيسي. عند تأسيس الكهرباء من قبل عمالة غير متخصصة، يتم غالباً ربط عدة مكيفات وأجهزة تسخين عالية الاستهلاك على نفس خط الفاز، مما يؤدي إلى تجاوز قدرة القاطع (مثلاً 63 أمبير أو 100 أمبير) فيقوم بالفصل التلقائي لحماية الأسلاك من الانصهار والحريق.
 
 ### الحل الهندسي لمعالجة توازن الأحمال:
-يقوم مهندسو **رواد المستقبل** بإجراء فحص شامل باستخدام أجهزة قياس الأحمال الحرارية والكهربائية (Clamp Meter & Thermal Camera) لإعادة توزيع الأسلاك والأحمال بالتساوي على الفازات الثلاثة (R-Y-B) داخل الطبلون الرئيسي والفرعي، مما يضمن استقرار التيار وانعدام الفصل المفاجئ تماماً.
+يقوم مهندسو **العزكي تك** بإجراء فحص شامل باستخدام أجهزة قياس الأحمال الحرارية والكهربائية (Clamp Meter & Thermal Camera) لإعادة توزيع الأسلاك والأحمال بالتساوي على الفازات الثلاثة (R-Y-B) داخل الطبلون الرئيسي والفرعي، مما يضمن استقرار التيار وانعدام الفصل المفاجئ تماماً.
 
 ## 2. التماس الكهربائي الخفي (Short Circuit) أو تسرب التيار إلى الأرضي (Earth Fault)
 
-يحدث التماس الكهربائي عندما يتلامس سلك الفاز (الحار) مع سلك التعادل (البارد) أو مع جسم معدني مؤرض، وهو ما يؤدي إلى تدفق تيار عالٍ جداً ولحظي يفصل القاطع فوراً. في المناطق الساحلية مثل **أبحر الشمالية والجنوبية**، تتسبب الرطوبة العالية والأملاح في تآكل عازل الأسلاك الخارجية أو داخل علب التفتيش (Junction Boxes)، مما يسبب تسرباً تيارياً يفصل قاطعات التسرب الأرضي (ELCB / RCD).
+يحدث التماس الكهربائي عندما يتلامس سلك الفاز (الحار) مع سلك التعادل (البارد) أو مع جسم معدني مؤرض، وهو ما يؤدي إلى تدفق تيار عالٍ جداً ولحظي يفصل القاطع فوراً. في المناطق الساحلية مثل **جميع مناطق المملكة**، تتسبب الرطوبة العالية والأملاح في تآكل عازل الأسلاك الخارجية أو داخل علب التفتيش (Junction Boxes)، مما يسبب تسرباً تيارياً يفصل قاطعات التسرب الأرضي (ELCB / RCD).
 
 ## 3. تقادم القواطع الكهربائية واستهلاك أطراف التوصيل
 
@@ -60,10 +60,10 @@ export const BLOG_POSTS_SSOT: BlogPostItem[] = [
 * فصل جميع المكيفات والأجهزة الثقيلة ثم تجربة رفع القاطع لتحديد الدائرة المسببة للمشكلة.
 * الاستعانة بجهة هندسية معتمدة لإجراء مسح شامل للمنظومة الكهربائية والتأكد من مطابقة الأسلاك والقواطع للكود السعودي (SBC 401).
 
-إذا كنت تواجه هذه المشكلة في فيلتك أو منشأتك في جدة أو أبحر، يمكنك الاستفادة من خدمة الفحص الميداني الفوري عبر فريق الطوارئ في رواد المستقبل.`,
+إذا كنت تواجه هذه المشكلة في فيلتك أو منشأتك في جدة أو جميع مناطق المملكة، يمكنك الاستفادة من خدمة الفحص الميداني الفوري عبر فريق الطوارئ في العزكي تك.`,
       en: `## Why Does the Main Circuit Breaker Keep Tripping in Residential Villas?
 
-Repeated main circuit breaker tripping is one of the most frustrating and hazardous electrical issues faced by homeowners in Jeddah and North Obhur, particularly during intense summer peak demand when HVAC cooling units operate continuously. In this guide, our engineering team breaks down the root causes and permanent fixes.
+Repeated main circuit breaker tripping is one of the most frustrating and hazardous electrical issues faced by homeowners in Jeddah and All Saudi Arabia Regions, particularly during intense summer peak demand when HVAC cooling units operate continuously. In this guide, our engineering team breaks down the root causes and permanent fixes.
 
 ## 1. Electrical Overload and Phase Load Imbalance
 
@@ -74,7 +74,7 @@ Future Pioneers engineers utilize professional clamp meters and thermal imaging 
 
 ## 2. Hidden Short Circuits & Earth Fault Leakage
 
-A short circuit occurs when a hot wire comes into direct contact with a neutral or ground wire, generating a massive instantaneous current surge that trips the protective device immediately. In coastal areas such as **North Obhur**, high humidity and saline air accelerate insulation breakdown inside exposed exterior junction boxes, triggering Earth Leakage Circuit Breakers (ELCB/RCD).
+A short circuit occurs when a hot wire comes into direct contact with a neutral or ground wire, generating a massive instantaneous current surge that trips the protective device immediately. In coastal areas such as **All Saudi Arabia Regions**, high humidity and saline air accelerate insulation breakdown inside exposed exterior junction boxes, triggering Earth Leakage Circuit Breakers (ELCB/RCD).
 
 ## 3. Breaker Degradation and Loose Terminal Connections
 
@@ -89,11 +89,11 @@ To guarantee infrastructure safety and code compliance (SBC 401), immediately co
     id: 2,
     slug: 'impact-of-coastal-humidity-salinity-jeddah-electrical-cctv',
     title: {
-      ar: 'أثر الرطوبة والأملاح الساحلية على تمديدات الكهرباء وكاميرات المراقبة في فلل أبحر الشمالية وكيفية حمايتها',
-      en: 'Impact of Coastal Humidity & Salinity on Electrical and CCTV Installations in North Obhur Villas',
+      ar: 'أثر الرطوبة والأملاح الساحلية على تمديدات الكهرباء وكاميرات المراقبة في فلل جميع مناطق المملكة وكيفية حمايتها',
+      en: 'Impact of Coastal Humidity & Salinity on Electrical and CCTV Installations in All Saudi Arabia Regions Villas',
     },
     excerpt: {
-      ar: 'دليل مهندسي رواد المستقبل لحماية الأنظمة الإلكترونية والكهربائية من التآكل والأعطال السريعة في البيئة الساحلية عالية الرطوبة بشمال جدة.',
+      ar: 'دليل مهندسي العزكي تك لحماية الأنظمة الإلكترونية والكهربائية من التآكل والأعطال السريعة في البيئة الساحلية عالية الرطوبة بشمال جدة.',
       en: 'Engineering guide by Future Pioneers on protecting electronic and electrical infrastructure from rapid corrosion in North Jeddah coastal environments.',
     },
     category: {
@@ -103,10 +103,10 @@ To guarantee infrastructure safety and code compliance (SBC 401), immediately co
     image_path: 'https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&q=80&w=1200',
     reading_time: 6,
     related_service_slug: 'cctv-security-systems-jeddah',
-    author_name: 'فريق الأنظمة الأمنية - رواد المستقبل',
+    author_name: 'فريق الأنظمة الأمنية - العزكي تك',
     published_at: '2026-07-13T10:00:00Z',
     content: {
-      ar: `## التحدي البيئي في أحياء أبحر الشمالية والجنوبية
+      ar: `## التحدي البيئي في أحياء جميع مناطق المملكة
 
 تتمتع أحياء شمال جدة (مثل الشراع، الياقوت، الزمرد، اللؤلؤ) بموقع استراتيجي وسكني فاخر بالقرب من الساحل، ولكن هذا الموقع يفرض تحدياً هندسياً قاسياً على كافة التمديدات الكهربائية والأنظمة الإلكترونية الخارجية، وتحديداً كاميرات المراقبة وأنظمة الاتصال الداخلي (Intercom).
 
@@ -119,7 +119,7 @@ To guarantee infrastructure safety and code compliance (SBC 401), immediately co
 
 ## 2. المعايير الهندسية لاختيار كاميرات ومواد مقاومة للبيئة الساحلية
 
-لتجنب الصيانة الدورية المكلفة وتلف الكاميرات كل بضعة أشهر، يعتمد مهندسو **رواد المستقبل** على المواصفات الصارمة التالية عند تأسيس أنظمة المراقبة في أبحر:
+لتجنب الصيانة الدورية المكلفة وتلف الكاميرات كل بضعة أشهر، يعتمد مهندسو **العزكي تك** على المواصفات الصارمة التالية عند تأسيس أنظمة المراقبة في جميع مناطق المملكة:
 * **تصنيف الحماية IP67 و IP68:** استخدام كاميرات محكمة الغلق ومقاومة للغمر المائي والأبخرة الملحية بالكامل.
 * **هياكل ألمنيوم معالجة (Corrosion-Resistant Housing):** الاعتماد على كاميرات مطلية بطبقات حماية خاصة تمنع تفاعل المعدن مع رطوبة البحر.
 * **صناديق تفتيش معزولة (Waterproof Junction Boxes):** عدم ترك أي وصلة سلكية مكشوفة في الهواء، بل يتم تجميعها داخل صناديق تفتيش مجهزة بجلد عزل مطاطية (Gaskets) وحقنها بمادة السليكون العازل عند اللزوم.
@@ -127,7 +127,7 @@ To guarantee infrastructure safety and code compliance (SBC 401), immediately co
 ## 3. حماية التمديدات الكهربائية الخارجية وإنارة الحدائق والواجهات
 
 لا يقتصر أثر الرطوبة على الكاميرات فقط، بل يمتد إلى كشافات الواجهات الخارجية ومقابض البوابات الكهربائية. يجب استخدام كابلات مسلحة ومواسير PVC ثقيلة معزولة ضد الأشعة فوق البنفسجية (UV Resistant) لضمان عدم تشقق الأسلاك أو حدوث التماسات كهربائية عند هطول الأمطار أو ارتفاع نسبة الرطوبة الليلية.`,
-      en: `## The Environmental Challenge in North Obhur Districts
+      en: `## The Environmental Challenge in All Saudi Arabia Regions Districts
 
 North Jeddah coastal neighborhoods like Ash-Shera, Al-Yaquat, Al-Zmurud, and Al-Loulou offer premier residential living but impose severe environmental stress on outdoor electrical and electronic infrastructure due to marine humidity and airborne saline moisture.
 
@@ -168,7 +168,7 @@ Exterior electrical circuits, garden lighting, and automatic gate operators must
     image_path: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&q=80&w=1200',
     reading_time: 8,
     related_service_slug: 'network-internet-setup-jeddah',
-    author_name: 'فريق البنية التحتية والشبكات - رواد المستقبل',
+    author_name: 'فريق البنية التحتية والشبكات - العزكي تك',
     published_at: '2026-07-15T10:00:00Z',
     content: {
       ar: `## وداعاً لضعف تغطية الواي فاي والأسلاك المتشابكة
@@ -184,7 +184,7 @@ Exterior electrical circuits, garden lighting, and automatic gate operators must
 
 ## 2. مكونات كابينة السيرفرات الاحترافية (Professional Rack Setup)
 
-لبناء بنية تحتية رقمية تخدمك لـ 15 سنة قادمة بدون مشاكل، يقوم مهندسو **رواد المستقبل** بتصميم وتنفيذ كابينة شبكات (Network Cabinet / Rack) تحتوي على العناصر التالية:
+لبناء بنية تحتية رقمية تخدمك لـ 15 سنة قادمة بدون مشاكل، يقوم مهندسو **العزكي تك** بتصميم وتنفيذ كابينة شبكات (Network Cabinet / Rack) تحتوي على العناصر التالية:
 * **لوحة التوزيع والترقيم (Patch Panel):** يتم ربط وترقيم كافة كابلات الغرف ونقاط الواي فاي في لوحة منظمة، بحيث يحمل كل مخرج رقماً يطابق رقم الغرفة في المخطط.
 * **سويتش تغذية ذكي (PoE Gigabit Switch):** لتزويد أجهزة البث (Access Points) وكاميرات المراقبة بالإنترنت والكهرباء عبر كابل واحد وبسرعات تصل إلى 1000 ميجابت/ثانية.
 * **منظم الأسلاك (Cable Manager):** لإخفاء الأسلاك والتوصيلات ومنح الكابينة مظهراً هندسياً أنيقاً ونظيفاً.
@@ -218,7 +218,7 @@ We deploy ceiling-mounted Enterprise Mesh APs hardwired back to the central rack
     id: 4,
     slug: 'difference-between-standard-and-certified-thermal-plumbing-jeddah',
     title: {
-      ar: 'الفرق بين السباكة الحرارية العادية والمعتمدة في مشاريع جدة وأبحر وأهمية اختبار الضغط',
+      ar: 'الفرق بين السباكة الحرارية العادية والمعتمدة في مشاريع جدة وجميع مناطق المملكة وأهمية اختبار الضغط',
       en: 'Difference Between Standard & Certified Thermal Plumbing in Jeddah and Importance of Pressure Testing',
     },
     excerpt: {
@@ -232,12 +232,12 @@ We deploy ceiling-mounted Enterprise Mesh APs hardwired back to the central rack
     image_path: 'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=1200',
     reading_time: 6,
     related_service_slug: 'plumbing-maintenance-jeddah',
-    author_name: 'فريق الهندسة الصحية والسباكة - رواد المستقبل',
+    author_name: 'فريق الهندسة الصحية والسباكة - العزكي تك',
     published_at: '2026-07-17T10:00:00Z',
     content: {
       ar: `## كابوس تسربات المياه المخفية داخل الجدران وتحت الأرضيات
 
-تعتبر تسربات المياه الداخلية من أخطر العوامل التي تهدد سلامة الهيكل الخرساني للبناء وتسبب تآكل حديد التسليح وتلف ديكورات الجبس والدهانات. في معظم الحالات التي باشرها فريق **رواد المستقبل** في جدة وأبحر، كان السبب يعود إلى استخدام مواسير وتوصيلات تجارية مقلدة، أو لحام حراري غير متقن من قبل الفنيين.
+تعتبر تسربات المياه الداخلية من أخطر العوامل التي تهدد سلامة الهيكل الخرساني للبناء وتسبب تآكل حديد التسليح وتلف ديكورات الجبس والدهانات. في معظم الحالات التي باشرها فريق **العزكي تك** في جدة وجميع مناطق المملكة، كان السبب يعود إلى استخدام مواسير وتوصيلات تجارية مقلدة، أو لحام حراري غير متقن من قبل الفنيين.
 
 ## 1. ما هي السباكة الحرارية المعتمدة (PPR Thermal Piping)؟
 
@@ -296,17 +296,17 @@ No plumbing network should ever be concealed prior to rigorous hydrostatic press
     image_path: 'https://images.unsplash.com/photo-1508873696983-2df529a3c882?auto=format&fit=crop&q=80&w=1200',
     reading_time: 7,
     related_service_slug: 'cctv-security-systems-jeddah',
-    author_name: 'فريق الأنظمة الأمنية - رواد المستقبل',
+    author_name: 'فريق الأنظمة الأمنية - العزكي تك',
     published_at: '2026-07-19T10:00:00Z',
     content: {
       ar: `## تأمين منزلك بذكاء واحترافية هندسية
 
-عند التفكير في تركيب نظام كاميرات مراقبة لفيلا سكنية جديدة في جدة أو أبحر، يقع الكثيرون في حيرة بسبب كثرة الأنواع والماركات المتوفرة في السوق، وغالباً ما يتم اختيار أنظمة رخيصة لا توفر وضوحاً كافياً عند الحاجة لمراجعة التسجيلات أو التعرف على وجوه ولوحات السيارات.
+عند التفكير في تركيب نظام كاميرات مراقبة لفيلا سكنية جديدة في جدة أو جميع مناطق المملكة، يقع الكثيرون في حيرة بسبب كثرة الأنواع والماركات المتوفرة في السوق، وغالباً ما يتم اختيار أنظمة رخيصة لا توفر وضوحاً كافياً عند الحاجة لمراجعة التسجيلات أو التعرف على وجوه ولوحات السيارات.
 
 ## 1. مقارنة حاسمة: كاميرات الـ IP الشبكية مقابل كاميرات الـ Analog التقليدية
 
 * **كاميرات الـ Analog (HD-TVI / CVI):** تستخدم كابلات Coaxial (مثل كابل الدش) وتعتبر تقنية قديمة نسبياً. رغم انخفاض سعرها، إلا أن دقة صورتها تقل للمسافات البعيدة، وتتأثر بشكل كبير بالتشويش الكهربائي، وتتطلب كابلين لكل كاميرا (كابل للصورة وكابل للكهرباء).
-* **كاميرات الـ IP الشبكية (Network IP Cameras):** هي الخيار الهندسي المعتمد في مشاريع **رواد المستقبل**. تعمل عبر كابل شبكة واحد (Ethernet Cat6) ينقل الصورة عالية الدقة (4K / 8MP) والكهرباء معاً عبر تقنية PoE. تتميز بوضوح فائق، وإمكانية التحليل الذكي (Smart AI Analytics) مثل كشف التسلل وتحديد الحركة المريبة.
+* **كاميرات الـ IP الشبكية (Network IP Cameras):** هي الخيار الهندسي المعتمد في مشاريع **العزكي تك**. تعمل عبر كابل شبكة واحد (Ethernet Cat6) ينقل الصورة عالية الدقة (4K / 8MP) والكهرباء معاً عبر تقنية PoE. تتميز بوضوح فائق، وإمكانية التحليل الذكي (Smart AI Analytics) مثل كشف التسلل وتحديد الحركة المريبة.
 
 ## 2. هندسة توزيع الكاميرات للقضاء على الزوايا العمياء (Blind Spots)
 
@@ -320,7 +320,7 @@ No plumbing network should ever be concealed prior to rigorous hydrostatic press
 تأكد من اختيار جهاز تسجيل (NVR) مزود بقرص صلب مخصص لكاميرات المراقبة (مثل Western Digital Purple أو Seagate SkyHawk) يعمل على مدار 24 ساعة دون توقف، مع حساب سعة التخزين لتكفي مدة لا تقل عن 30 يوماً متواصلة بالدقة العالية، وربط النظام بتطبيق مشفر وآمن يتيح للعميل متابعة فيلته من أي مكان في العالم بسهولة.`,
       en: `## Securing Your Villa with Smart Architectural Precision
 
-Selecting the right security camera deployment for a luxury residential villa in Jeddah or North Obhur requires strategic planning beyond simple brand selection to ensure crystal-clear forensic evidence when needed.
+Selecting the right security camera deployment for a luxury residential villa in Jeddah or All Saudi Arabia Regions requires strategic planning beyond simple brand selection to ensure crystal-clear forensic evidence when needed.
 
 ## 1. IP Network Cameras vs. Conventional Analog Cameras
 
@@ -347,3 +347,4 @@ export function getBlogPostBySlug(slugOrId: string): BlogPostItem | undefined {
     (item) => item.slug.toLowerCase() === normalized || String(item.id) === normalized
   );
 }
+

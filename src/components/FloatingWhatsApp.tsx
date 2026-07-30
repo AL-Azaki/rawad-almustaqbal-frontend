@@ -1,4 +1,4 @@
-import { MessageCircle } from 'lucide-react';
+﻿import { MessageCircle } from 'lucide-react';
 import { useSettings } from '../contexts/SettingsContext';
 import { trackWhatsAppClick } from '../lib/analytics';
 
@@ -24,3 +24,4 @@ export default function FloatingWhatsApp() {
     </a>
   );
 }
+

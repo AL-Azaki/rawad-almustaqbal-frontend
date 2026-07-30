@@ -1,4 +1,4 @@
-import { useTranslation } from 'react-i18next';
+﻿import { useTranslation } from 'react-i18next';
 import { useSettings } from '../../../contexts/SettingsContext';
 
 export function EmergencyCTA() {
@@ -17,3 +17,4 @@ export function EmergencyCTA() {
     </section>
   );
 }
+

@@ -1,4 +1,4 @@
-export interface ServicePageData {
+﻿export interface ServicePageData {
   id: string;
   slug: string;
   slugAliases: string[];
@@ -34,18 +34,18 @@ export const SERVICE_PAGES_SSOT: ServicePageData[] = [
     iconName: 'Wifi',
     startingPriceAr: 'يبدأ من 200 ريال / نقطة شبكة',
     startingPriceEn: 'Starting from 200 SAR / network drop',
-    faqIds: ['pricing', 'golden_warranty', 'installation_obhur', 'safety_standards'],
+    faqIds: ['pricing', 'golden_warranty', 'installation_All Saudi Arabia Regions', 'safety_standards'],
     relatedCategoryKeys: ['electrical', 'surveillance', 'interior'],
   },
   {
     id: 'surveillance',
     slug: 'cctv-security-systems-jeddah',
-    slugAliases: ['surveillance', 'cctv', 'cctv-security-surveillance-systems-jeddah', 'أنظمة-المراقبة', 'كاميرات-مراقبة-أبحر'],
+    slugAliases: ['surveillance', 'cctv', 'cctv-security-surveillance-systems-jeddah', 'أنظمة-المراقبة', 'كاميرات-مراقبة-جميع مناطق المملكة'],
     translationKey: 'serviceDetails.surveillance',
     iconName: 'Video',
     startingPriceAr: 'يبدأ من 1200 ريال (طقم كاميرات متكامل)',
     startingPriceEn: 'Starting from 1,200 SAR (Full CCTV Kit)',
-    faqIds: ['pricing', 'golden_warranty', 'installation_obhur', 'emergency_response'],
+    faqIds: ['pricing', 'golden_warranty', 'installation_All Saudi Arabia Regions', 'emergency_response'],
     relatedCategoryKeys: ['electrical', 'network', 'lighting'],
   },
   {
@@ -95,3 +95,4 @@ export function getServicePageBySlug(slugOrId: string): ServicePageData | undefi
       s.slugAliases.some((alias) => alias.toLowerCase() === normalized)
   );
 }
+

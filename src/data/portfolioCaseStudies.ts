@@ -1,4 +1,4 @@
-export interface CaseStudyItem {
+﻿export interface CaseStudyItem {
   id: number | string;
   slug: string;
   title: { ar: string; en: string };
@@ -18,32 +18,32 @@ export interface CaseStudyItem {
 }
 
 export const PORTFOLIO_CATEGORIES = [
-  'الكل',
-  'كهرباء',
-  'شبكات',
-  'كاميرات مراقبة',
-  'أنظمة مراقبة',
-  'منازل ذكية',
-  'ديكور وإنارة',
-  'سباكة',
-  'صيانة',
-] as const;
+  { key: 'all', label: 'الكل' },
+  { key: 'electrical', label: 'كهرباء' },
+  { key: 'networks', label: 'شبكات' },
+  { key: 'cctv', label: 'كاميرات مراقبة' },
+  { key: 'access-control', label: 'أنظمة البصمة والدخول' },
+  { key: 'smart-home', label: 'منازل ذكية' },
+  { key: 'lighting', label: 'ديكور وإنارة' },
+  { key: 'plumbing', label: 'سباكة' },
+  { key: 'maintenance', label: 'صيانة' },
+];
 
 export const PORTFOLIO_CASE_STUDIES_SSOT: CaseStudyItem[] = [
   {
     id: 1,
     slug: 'smart-home-villa-al-marjan',
     title: {
-      ar: 'أتمتة ذكية شاملة وحلول تحكم مركزي (KNX) لفيلا خاصة في حي المرجان، أبحر الشمالية',
-      en: 'Complete Smart Home Automation & Central Control (KNX) for Private Villa in Al Marjan, North Obhur'
+      ar: 'أتمتة ذكية شاملة وحلول تحكم مركزي (KNX) لفيلا خاصة في حي المرجان، جميع مناطق المملكة',
+      en: 'Complete Smart Home Automation & Central Control (KNX) for Private Villa in Al Marjan, All Saudi Arabia Regions'
     },
     category: {
       ar: 'منازل ذكية',
       en: 'Smart Homes'
     },
     location_district: {
-      ar: 'حي المرجان، أبحر الشمالية، جدة',
-      en: 'Al Marjan District, North Obhur, Jeddah'
+      ar: 'حي المرجان، جميع مناطق المملكة، جدة',
+      en: 'Al Marjan District, All Saudi Arabia Regions, Jeddah'
     },
     duration: {
       ar: '4 أسابيع تنفيذ واختبار ميداني',
@@ -58,7 +58,7 @@ export const PORTFOLIO_CASE_STUDIES_SSOT: CaseStudyItem[] = [
       en: `The homeowner in this prestigious residential property in Al Marjan faced a complex challenge involving legacy wiring conflicts with smart load requirements, alongside incompatibility between VRF central HVAC controllers and DALI dimming lighting systems. The client strictly required zero disruption to existing marble finishes, alongside integrating all subsystems (lighting, HVAC, curtains, intercom, and security) into a single, highly secure, zero-latency mobile and wall-touch interface.`
     },
     solution: {
-      ar: `قام المهندسون المتخصصون في رواد المستقبل بإجراء مسح فني دقيق وهندسة شبكة كابلات KNX موازية مع استخدام وحدات بوابة (KNX-DALI & KNX-VRF Gateways) لتحقيق التوافق التام بدون أي تكسير للرخام. تم تركيب لوحات تحكم ذكية متعددة المهام من فئة قسط، وبرمجة مشاهد ذكية تفاعلية (مثل مشهد الخروج، مشهد المساء، ومشهد توفير الطاقة) تعمل على ضبط الإضاءة والتكييف والستائر بضغطة زر أو عبر الأوامر الصوتية. كما تم تأريض الكبائن المركزية واختبار استقرار الإشارات لضمان تشغيل مستدام ومقاوم لتقلبات الجهد.`,
+      ar: `قام المهندسون المتخصصون في العزكي تك بإجراء مسح فني دقيق وهندسة شبكة كابلات KNX موازية مع استخدام وحدات بوابة (KNX-DALI & KNX-VRF Gateways) لتحقيق التوافق التام بدون أي تكسير للرخام. تم تركيب لوحات تحكم ذكية متعددة المهام من فئة قسط، وبرمجة مشاهد ذكية تفاعلية (مثل مشهد الخروج، مشهد المساء، ومشهد توفير الطاقة) تعمل على ضبط الإضاءة والتكييف والستائر بضغطة زر أو عبر الأوامر الصوتية. كما تم تأريض الكبائن المركزية واختبار استقرار الإشارات لضمان تشغيل مستدام ومقاوم لتقلبات الجهد.`,
       en: `Future Pioneers engineers conducted a meticulous technical survey and engineered a parallel KNX bus network using specialized KNX-DALI and KNX-VRF Gateways to achieve 100% synchronization across subsystems without structural modification. Premium multi-function smart wallpads were installed, and custom automated scenes (e.g., All-Off, Evening Ambience, Energy Saver) were programmed. All central enclosures were grounded and signal tested to ensure zero packet drop and high voltage stability.`
     },
     installed_equipment: [
@@ -88,8 +88,8 @@ export const PORTFOLIO_CASE_STUDIES_SSOT: CaseStudyItem[] = [
       en: 'Surveillance Cameras'
     },
     location_district: {
-      ar: 'حي الشراع، أبحر الشمالية، جدة',
-      en: 'Al Shiraa District, North Obhur, Jeddah'
+      ar: 'حي الشراع، جميع مناطق المملكة، جدة',
+      en: 'Al Shiraa District, All Saudi Arabia Regions, Jeddah'
     },
     duration: {
       ar: '3 أسابيع عمل متواصل',
@@ -100,8 +100,8 @@ export const PORTFOLIO_CASE_STUDIES_SSOT: CaseStudyItem[] = [
       en: 'Engineering and deployment of internal fiber optic cabling (FTTH/Cat6A) with high-definition perimeter surveillance (4K IP CCTV) and ceiling access points covering the entire villa and landscape.'
     },
     challenge: {
-      ar: `عانت الفيلا الواقعة في حي الشراع من ضعف شديد في إشارة الإنترنت وتداخل في الشبكة اللاسلكية بين الطوابق، مع وجود جدران خرسانية مسلحة سميكة تمنع اختراق الإشارة. كما كانت كاميرات المراقبة القديمة تناظرية (Analog) تقدم رؤية ضبابية ليلاً وتتعرض لكابلات مكشوفة تتلف بفعل الرطوبة الساحلية المرتفعة وأملاح البحر في أبحر الشمالية.`,
-      en: `The residential villa located in Al Shiraa suffered from severe WiFi dead zones and signal attenuation caused by dense reinforced concrete shear walls between floors. Additionally, existing legacy analog CCTV cameras provided blurry night vision and suffered from exposed exterior wiring deteriorating rapidly due to high coastal humidity and saline corrosion prevalent in North Obhur.`
+      ar: `عانت الفيلا الواقعة في حي الشراع من ضعف شديد في إشارة الإنترنت وتداخل في الشبكة اللاسلكية بين الطوابق، مع وجود جدران خرسانية مسلحة سميكة تمنع اختراق الإشارة. كما كانت كاميرات المراقبة القديمة تناظرية (Analog) تقدم رؤية ضبابية ليلاً وتتعرض لكابلات مكشوفة تتلف بفعل الرطوبة الساحلية المرتفعة وأملاح البحر في جميع مناطق المملكة.`,
+      en: `The residential villa located in Al Shiraa suffered from severe WiFi dead zones and signal attenuation caused by dense reinforced concrete shear walls between floors. Additionally, existing legacy analog CCTV cameras provided blurry night vision and suffered from exposed exterior wiring deteriorating rapidly due to high coastal humidity and saline corrosion prevalent in All Saudi Arabia Regions.`
     },
     solution: {
       ar: `تم سحب وتمديد كابلات شبكة نحاسية معزولة Cat6A وقنوات ألياف ضوئية مقاومة للرطوبة والحرارة داخل مسارات محمية (Conduits). تم تركيب كابينة سيرفر رئيسية منظمة (24U Rack) تحتوي على لوحة تجميع Patch Panel وأجهزة توزيع POE Switch صناعية. وفي الجانب الأمني، تم نشر كاميرات IP بدقة 4K مع رؤية ليلية ملونة كاملة (ColorVu) ومقاومة للطقس (IP67)، مربوطة بجهاز تسجيل متطور NVR مع نسخ احتياطي للطاقة (UPS) يدوم لساعات عند انقطاع التيار.`,
@@ -132,8 +132,8 @@ export const PORTFOLIO_CASE_STUDIES_SSOT: CaseStudyItem[] = [
       en: 'Electrical'
     },
     location_district: {
-      ar: 'حي الياقوت، أبحر الشمالية، جدة',
-      en: 'Al Yaqout District, North Obhur, Jeddah'
+      ar: 'حي الياقوت، جميع مناطق المملكة، جدة',
+      en: 'Al Yaqout District, All Saudi Arabia Regions, Jeddah'
     },
     duration: {
       ar: '5 أسابيع على مراحل العظم والتشطيب',
@@ -148,7 +148,7 @@ export const PORTFOLIO_CASE_STUDIES_SSOT: CaseStudyItem[] = [
       en: `The project owner in Al Yaqout requested urgent intervention to correct hazardous, non-compliant electrical wiring left by a previous contractor violating Saudi Building Code (SBC 401). Field diagnostics revealed severe phase imbalance on the 3-phase supply and uncertified commercial cabling prone to thermal overheating under combined load from central HVAC, elevators, and water heating banks.`
     },
     solution: {
-      ar: `قام فريق المقاولات الكهربائية في رواد المستقبل بسحب جميع الأسلاك السابقة واستبدالها بكابلات وأسلاك وطنية معتمدة من (كابلات الرياض / الترا) ذات عزل حراري مضاعف. تم تصميم وتركيب طبلونات رئيسية وفرعية من علامة (Schneider Electric) مع قواطع حماية ضد التسرب الأرضي والتماس (RCBO & MCCB). تم توزيع أحمال المكيفات والمصعد والإنارة توازناً دقيقاً بين الفازات الثلاثة (R-Y-B)، وتركيب شبكة تأريض نحاسية عميقة مع فحص مقاومة التربة لتكون أقل من 2 أوم.`,
+      ar: `قام فريق المقاولات الكهربائية في العزكي تك بسحب جميع الأسلاك السابقة واستبدالها بكابلات وأسلاك وطنية معتمدة من (كابلات الرياض / الترا) ذات عزل حراري مضاعف. تم تصميم وتركيب طبلونات رئيسية وفرعية من علامة (Schneider Electric) مع قواطع حماية ضد التسرب الأرضي والتماس (RCBO & MCCB). تم توزيع أحمال المكيفات والمصعد والإنارة توازناً دقيقاً بين الفازات الثلاثة (R-Y-B)، وتركيب شبكة تأريض نحاسية عميقة مع فحص مقاومة التربة لتكون أقل من 2 أوم.`,
       en: `Future Pioneers electrical engineering team stripped out non-compliant wiring and installed SASO-certified high-conduciveness cabling with double thermal insulation. Custom Schneider Electric main and distribution boards featuring advanced RCBO earth leakage protection and MCCB breakers were engineered and balanced precisely across R-Y-B phases. Deep copper grounding electrodes were driven and resistance-tested below 2 Ohms.`
     },
     installed_equipment: [
@@ -167,18 +167,18 @@ export const PORTFOLIO_CASE_STUDIES_SSOT: CaseStudyItem[] = [
   },
   {
     id: 4,
-    slug: 'cctv-intercom-resort-obhur-corniche',
+    slug: 'cctv-intercom-resort-All Saudi Arabia Regions-corniche',
     title: {
-      ar: 'أنظمة مراقبة أمنية محيطية وإنتركم مرئي IP متعدد النقاط لمنتجع شاطئي على كورنيش أبحر الشمالية',
-      en: 'Perimeter CCTV Surveillance & Multi-Point IP Video Intercom for Beach Resort on North Obhur Corniche'
+      ar: 'أنظمة مراقبة أمنية محيطية وإنتركم مرئي IP متعدد النقاط لمنتجع شاطئي على كورنيش جميع مناطق المملكة',
+      en: 'Perimeter CCTV Surveillance & Multi-Point IP Video Intercom for Beach Resort on All Saudi Arabia Regions Corniche'
     },
     category: {
       ar: 'أنظمة مراقبة',
       en: 'Monitoring Systems'
     },
     location_district: {
-      ar: 'كورنيش أبحر الشمالية، جدة',
-      en: 'North Obhur Corniche, Jeddah'
+      ar: 'كورنيش جميع مناطق المملكة، جدة',
+      en: 'All Saudi Arabia Regions Corniche, Jeddah'
     },
     duration: {
       ar: '3 أسابيع عمل وتكامل فني',
@@ -189,8 +189,8 @@ export const PORTFOLIO_CASE_STUDIES_SSOT: CaseStudyItem[] = [
       en: 'Securing a coastal resort and chalets using salt- and high-humidity-resistant exterior surveillance cameras, integrated with an IP video intercom and smart gate entry controls.'
     },
     challenge: {
-      ar: `طبيعة الموقع المباشر على كورنيش أبحر الشمالية تفرض تحدياً بيئياً قاسياً؛ فالهواء المشبع بالرطوبة والأملاح تسبب في تأكل الكاميرات والمحولات المعدنية السابقة في أقل من عام. كما أن اتساع مساحة المنتجع تطلب تمديدات ألياف ضوئية خارجية لربط بوابات الشاليهات المتفرقة بغرفة التحكم المركزية دون فقدان جودة الإشارة أو تأخر الصورة عند استدعاء الإنتركم.`,
-      en: `The direct beachfront location on North Obhur Corniche presents a harsh environmental challenge; airborne salinity and elevated coastal humidity corroded previous metallic cameras and enclosures within less than a year. Furthermore, the expansive footprint required outdoor optical fiber links to connect remote chalet gates to the central control room with zero latency when handling high-def intercom calls.`
+      ar: `طبيعة الموقع المباشر على كورنيش جميع مناطق المملكة تفرض تحدياً بيئياً قاسياً؛ فالهواء المشبع بالرطوبة والأملاح تسبب في تأكل الكاميرات والمحولات المعدنية السابقة في أقل من عام. كما أن اتساع مساحة المنتجع تطلب تمديدات ألياف ضوئية خارجية لربط بوابات الشاليهات المتفرقة بغرفة التحكم المركزية دون فقدان جودة الإشارة أو تأخر الصورة عند استدعاء الإنتركم.`,
+      en: `The direct beachfront location on All Saudi Arabia Regions Corniche presents a harsh environmental challenge; airborne salinity and elevated coastal humidity corroded previous metallic cameras and enclosures within less than a year. Furthermore, the expansive footprint required outdoor optical fiber links to connect remote chalet gates to the central control room with zero latency when handling high-def intercom calls.`
     },
     solution: {
       ar: `تم اختيار ونشر كاميرات مراقبة خارجية من سبائك خاصة مقاومة للتآكل والأملاح (Marine-grade anti-corrosion housing IP67/IK10) من علامة (Hikvision/Dahua Enterprise). تم ربط جميع النقاط الساحلية عبر كابلات ألياف ضوئية مدفونة في مواسير معزولة بختم مطاطي مانع لتسرب المياه. تم دمج محطات إنتركم مرئي IP بشاشات عالية الوضوح تتيح لحراس الأمن والزوار التواصل وفتح البوابات ببطاقات RFID أو عن بعد من الهواتف الذكية.`,
@@ -298,3 +298,4 @@ export const PORTFOLIO_CASE_STUDIES_SSOT: CaseStudyItem[] = [
     image_path: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80'
   }
 ];
+

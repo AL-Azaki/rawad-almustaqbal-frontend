@@ -1,4 +1,4 @@
-import { useTranslation } from 'react-i18next';
+﻿import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { AREA_CATEGORIES, SERVICE_AREAS } from '../../data/serviceAreas';
 
@@ -20,8 +20,8 @@ export default function GeoServiceAreas() {
         </h2>
         <p className="text-gray-400 text-xs mt-2 leading-relaxed">
           {isEn
-            ? 'Fast on-site technical support and installation services across North Jeddah and Obhur districts.'
-            : 'خدمات الدعم الفني الميداني والتأسيس الفوري تغطي كافة أحياء شمال جدة وأبحر على مدار الساعة بضمان جودة معتمد.'}
+            ? 'Fast on-site technical support and installation services across Jeddah and All Saudi Arabia Regions districts.'
+            : 'خدمات الدعم الفني الميداني والتأسيس الفوري تغطي كافة أحياء جدة وجميع مناطق المملكة على مدار الساعة بضمان جودة معتمد.'}
         </p>
       </div>
 
@@ -56,3 +56,4 @@ export default function GeoServiceAreas() {
     </section>
   );
 }
+

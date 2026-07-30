@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+﻿import React, { useState, useEffect, useRef } from 'react';
 import { Pencil, Trash2, Plus, Search, BookOpen, X, CheckCircle2, Clock, Globe, UploadCloud, Image as ImageIcon, Zap, Cpu, Video, Wifi, Wrench, Shield, Wand2 } from 'lucide-react';
 import toast from 'react-hot-toast';
 import { ApiClient, getImageUrl } from '../../lib/api';
@@ -36,7 +36,7 @@ const TEMPLATES = [
       title_en: 'Complete Guide to Electrical Maintenance and Safety',
       excerpt_ar: 'دليل هندسي متكامل للتعرف على المشاكل الكهربائية الشائعة وأسبابها، مع خطوات عملية للحماية وتوفير استهلاك الطاقة.',
       excerpt_en: 'A comprehensive engineering guide to identifying common electrical issues and their causes, with actionable steps for protection and energy saving.',
-      content_ar: `## مقدمة\nتعتبر الأنظمة الكهربائية عصب الحياة في أي منشأة... \n\n## المشاكل الشائعة\n* انقطاع التيار المتكرر\n* التماس الكهربائي\n* ارتفاع الفاتورة بشكل غير مبرر\n\n## الأسباب الفنية\nغالباً ما تعود هذه المشاكل إلى التأسيس السيء أو تقادم الأسلاك...\n\n## الحلول الهندسية والتوصيات\n1. فحص لوحة القواطع الرئيسية.\n2. استخدام أجهزة القياس الحرارية.\n\n## خطوات التنفيذ\n* فصل التيار.\n* الفحص والمعالجة.\n\n## أسئلة شائعة (FAQ)\n**س: متى يجب تغيير القاطع الرئيسي؟**\nج: ينصح بتغييره عند ملاحظة حرارة عالية أو أصوات طنين مستمرة.\n\n## الخاتمة\nالصيانة الوقائية تحميك من المخاطر...\n\n## اطلب استشارة هندسية\nللفحص الميداني، تواصل مع فريق رواد المستقبل.`,
+      content_ar: `## مقدمة\nتعتبر الأنظمة الكهربائية عصب الحياة في أي منشأة... \n\n## المشاكل الشائعة\n* انقطاع التيار المتكرر\n* التماس الكهربائي\n* ارتفاع الفاتورة بشكل غير مبرر\n\n## الأسباب الفنية\nغالباً ما تعود هذه المشاكل إلى التأسيس السيء أو تقادم الأسلاك...\n\n## الحلول الهندسية والتوصيات\n1. فحص لوحة القواطع الرئيسية.\n2. استخدام أجهزة القياس الحرارية.\n\n## خطوات التنفيذ\n* فصل التيار.\n* الفحص والمعالجة.\n\n## أسئلة شائعة (FAQ)\n**س: متى يجب تغيير القاطع الرئيسي؟**\nج: ينصح بتغييره عند ملاحظة حرارة عالية أو أصوات طنين مستمرة.\n\n## الخاتمة\nالصيانة الوقائية تحميك من المخاطر...\n\n## اطلب استشارة هندسية\nللفحص الميداني، تواصل مع فريق العزكي تك.`,
       content_en: `## Introduction\nElectrical systems are the backbone of any facility...\n\n## Common Problems\n* Frequent breaker trips\n* Short circuits\n* High energy bills\n\n## Technical Causes\nThese issues are often due to poor wiring or aging components...\n\n## Engineering Solutions & Recommendations\n1. Inspect main breaker panel.\n2. Thermal imaging checks.\n\n## Implementation Steps\n* Disconnect power.\n* Inspect and repair.\n\n## FAQ\n**Q: When should the main breaker be replaced?**\nA: When excessive heat or buzzing is detected.\n\n## Conclusion\nPreventive maintenance protects you...\n\n## Request Engineering Audit\nContact Future Pioneers for field testing.`,
     }
   },
@@ -152,7 +152,7 @@ export default function AdminBlogPosts() {
     image_path: '',
     reading_time: 5,
     related_service_slug: 'electrical-services-jeddah',
-    author_name: 'فريق مهندسي رواد المستقبل',
+    author_name: 'فريق مهندسي العزكي تك',
     status: 'published' as 'published' | 'draft',
   };
   
@@ -194,7 +194,7 @@ export default function AdminBlogPosts() {
         image_path: post.image_path || '',
         reading_time: post.reading_time || 5,
         related_service_slug: post.related_service_slug || '',
-        author_name: post.author_name || 'فريق مهندسي رواد المستقبل',
+        author_name: post.author_name || 'فريق مهندسي العزكي تك',
         status: post.status || 'published',
       });
       setImagePreview(post.image_path || null);
@@ -706,3 +706,4 @@ export default function AdminBlogPosts() {
     </div>
   );
 }
+

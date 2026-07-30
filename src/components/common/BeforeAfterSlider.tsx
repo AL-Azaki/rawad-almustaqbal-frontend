@@ -1,4 +1,4 @@
-import React, { useState, useRef, useCallback, useEffect } from 'react';
+﻿import React, { useState, useRef, useCallback, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ChevronsLeftRight, Sparkles, AlertTriangle } from 'lucide-react';
 
@@ -32,7 +32,7 @@ export const BeforeAfterSlider: React.FC<BeforeAfterSliderProps> = ({
 
   // Bilingual default labels according to TASK-ENG-014 acceptance criteria
   const defaultBeforeLabel = isAr ? 'قبل الصيانة والتنظيم' : 'Before Maintenance & Organization';
-  const defaultAfterLabel = isAr ? 'بعد التنفيذ الهندسي لرواد المستقبل' : 'After Future Pioneers Engineering Execution';
+  const defaultAfterLabel = isAr ? 'بعد التنفيذ الهندسي لالعزكي تك' : 'After Future Pioneers Engineering Execution';
 
   const displayBeforeLabel = beforeLabel || defaultBeforeLabel;
   const displayAfterLabel = afterLabel || defaultAfterLabel;
@@ -202,3 +202,4 @@ export const BeforeAfterSlider: React.FC<BeforeAfterSliderProps> = ({
 };
 
 export default BeforeAfterSlider;
+

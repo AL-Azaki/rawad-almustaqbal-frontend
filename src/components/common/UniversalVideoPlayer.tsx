@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 
 export interface UniversalVideoPlayerProps {
   videoPath?: string | null;
@@ -82,3 +82,4 @@ export const UniversalVideoPlayer: React.FC<UniversalVideoPlayerProps> = ({
     </div>
   );
 };
+

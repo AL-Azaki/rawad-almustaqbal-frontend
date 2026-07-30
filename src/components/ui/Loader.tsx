@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+﻿import React, { forwardRef } from 'react';
 import { Loader2 } from 'lucide-react';
 
 export type LoaderVariant = 'spinner' | 'dots' | 'pulse';
@@ -97,3 +97,4 @@ export const Loader = forwardRef<HTMLDivElement, LoaderProps>(
 );
 
 Loader.displayName = 'Loader';
+

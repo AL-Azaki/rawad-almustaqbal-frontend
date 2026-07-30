@@ -1,4 +1,4 @@
-import { Star, Quote, MessageSquarePlus } from 'lucide-react';
+﻿import { Star, Quote, MessageSquarePlus } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 
 import { Button } from '../../ui/Button';
@@ -86,3 +86,4 @@ export function TestimonialsSection({ testimonials, loading, onOpenModal }: Test
     </section>
   );
 }
+

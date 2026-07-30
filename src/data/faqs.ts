@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+﻿import { useMemo } from 'react';
 
 export interface FAQItem {
   id: string;
@@ -25,8 +25,8 @@ export const FAQ_METADATA: FAQItem[] = [
     displayOrder: 2,
   },
   {
-    id: 'installation_obhur',
-    translationKey: 'faq.installation_obhur',
+    id: 'installation_All Saudi Arabia Regions',
+    translationKey: 'faq.installation_All Saudi Arabia Regions',
     category: 'local',
     displayOrder: 3,
   },
@@ -70,3 +70,4 @@ export const FAQ_METADATA: FAQItem[] = [
 export function useFAQs(): { faqs: FAQItem[]; loading: boolean } {
   return useMemo(() => ({ faqs: FAQ_METADATA, loading: false }), []);
 }
+

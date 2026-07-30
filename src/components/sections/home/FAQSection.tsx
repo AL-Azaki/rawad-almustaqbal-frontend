@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { ChevronDown, HelpCircle } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { useFAQs } from '../../../data/faqs';
@@ -53,7 +53,7 @@ export const FAQSection: React.FC = () => {
             {t('faq.title', 'إجابات واضحة لجميع')} <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-orange-600">{t('faq.titleHighlight', 'استفساراتك التقنية والفنية')}</span>
           </h2>
           <p className="text-base md:text-lg text-gray-600 dark:text-gray-400 leading-relaxed max-w-2xl mx-auto">
-            {t('faq.subtitle', 'نؤمن في رواد المستقبل بالشفافية المطلقة. إليك الإجابات المفصلة عن أكثر الأسئلة شيوعاً حول التأسيس، التركيب، الضمان، وخدماتنا في جدة وأبحر.')}
+            {t('faq.subtitle', 'نؤمن في العزكي تك بالشفافية المطلقة. إليك الإجابات المفصلة عن أكثر الأسئلة شيوعاً حول التأسيس، التركيب، الضمان، وخدماتنا في جدة وجميع مناطق المملكة.')}
           </p>
         </div>
 
@@ -124,3 +124,4 @@ export const FAQSection: React.FC = () => {
 };
 
 export default FAQSection;
+

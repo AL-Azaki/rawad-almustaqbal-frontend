@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { X } from 'lucide-react';
 
 export interface ModalHeaderProps {
@@ -10,7 +10,7 @@ export interface ModalHeaderProps {
 export const ModalHeader: React.FC<ModalHeaderProps> = ({ children, onClose, className = '' }) => {
   return (
     <div className={`flex items-center justify-between px-6 py-5 border-b border-gray-100 dark:border-gray-700 bg-white dark:bg-gray-800 ${className}`}>
-      <h3 className="text-xl font-bold text-gray-900 dark:text-white">
+      <h3 id="modal-title" className="text-xl font-bold text-gray-900 dark:text-white">
         {children}
       </h3>
       {onClose && (
@@ -26,3 +26,4 @@ export const ModalHeader: React.FC<ModalHeaderProps> = ({ children, onClose, cla
     </div>
   );
 };
+

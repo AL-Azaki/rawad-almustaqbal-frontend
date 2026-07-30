@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useTranslation } from 'react-i18next';
 import { useSettings } from '../contexts/SettingsContext';
@@ -66,22 +66,29 @@ export default function Home() {
     <div className="flex flex-col min-h-screen dark:bg-gray-900 transition-colors duration-300">
       <Helmet>
         <title>
-          {settings?.siteName || 'رواد المستقبل'} | حلول تقنية وكهربائية وصيانة في جدة وأبحر
+          {settings?.siteName || 'العزكي تك'} | حلول تقنية وكهربائية وصيانة في جدة وجميع مناطق المملكة
         </title>
         <meta
           name="description"
           content={
             settings?.siteDescription ||
-            "شركة رواد المستقبل للحلول التقنية المتكاملة في جدة وأبحر، مع تغطية مباشرة لأبحر الشمالية وأبحر الجنوبية. متخصصون في تأسيس المنازل الذكية، وتركيب كاميرات المراقبة، وأنظمة السنترال، وتمديد الشبكات والألياف الضوئية، والصيانة الكهربائية والتقنية بأعلى معايير الجودة والضمان."
+            "شركة العزكي تك المتكاملة في جدة وجميع مناطق المملكة، مع تغطية مباشرة لجميع مناطق المملكة وجميع مناطق المملكة. متخصصون في تأسيس المنازل الذكية، وتركيب كاميرات المراقبة، وأنظمة السنترال، وتمديد الشبكات والألياف الضوئية، والصيانة الكهربائية والتقنية بأعلى معايير الجودة والضمان."
           }
         />
         <meta
           name="keywords"
           content={t(
             'home.keywords',
-            'رواد المستقبل, حلول تقنية جدة, حلول تقنية أبحر, أبحر, أبحر الشمالية, أبحر الجنوبية, سمارت هوم جدة, كاميرات مراقبة أبحر, شبكات أبحر, كهربائي جدة, شمال جدة'
+            'العزكي تك, حلول تقنية جدة, حلول تقنية جميع مناطق المملكة, جميع مناطق المملكة, جميع مناطق المملكة, جميع مناطق المملكة, سمارت هوم جدة, كاميرات مراقبة جميع مناطق المملكة, شبكات جميع مناطق المملكة, كهربائي جدة, شمال جدة'
           )}
-        />      </Helmet>
+        />
+        <link rel="canonical" href={`${window.location.origin}/`} />
+        <meta property="og:title" content={`${settings?.siteName || 'العزكي تك'} | حلول تقنية وكهربائية وصيانة في جدة وجميع مناطق المملكة`} />
+        <meta property="og:description" content={settings?.siteDescription || "شركة العزكي تك المتكاملة في جدة وجميع مناطق المملكة."} />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={`${window.location.origin}/`} />
+        <meta name="twitter:card" content="summary_large_image" />
+      </Helmet>
       
       <HeroSection />
 
@@ -110,3 +117,4 @@ export default function Home() {
     </div>
   );
 }
+

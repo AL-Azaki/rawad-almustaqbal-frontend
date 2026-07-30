@@ -4,6 +4,7 @@ import { Rocket, Lock, Mail } from 'lucide-react';
 import { Helmet } from 'react-helmet-async';
 import { ApiClient } from '../../lib/api';
 import { useSettings, useAuth } from '../../contexts';
+import BrandIdentity from '../../components/common/BrandIdentity';
 import { Button } from '../../components/ui/Button';
 import { Input } from '../../components/ui/Input';
 
@@ -42,17 +43,19 @@ export default function Login() {
   return (
     <>
       <Helmet>
-        <title>تسجيل الدخول - {settings?.siteName || 'رواد المستقبل'}</title>
+        <title>تسجيل الدخول - {settings?.siteName || 'العزكي تك'}</title>
         <meta name="robots" content="noindex, nofollow" />
       </Helmet>
       <div className="max-w-md w-full bg-white dark:bg-gray-800 rounded-3xl shadow-xl overflow-hidden border border-gray-100 dark:border-gray-700">
         
-        <div className="bg-gray-900 dark:bg-black p-8 text-center">
-          <div className="w-16 h-16 bg-amber-500 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg shadow-amber-500/30">
-            <Rocket className="w-8 h-8 text-white" />
-          </div>
+        <div className="bg-gray-900 dark:bg-black p-8 text-center flex flex-col items-center">
+          <BrandIdentity 
+            className="justify-center mb-6"
+            imageClassName="max-h-16"
+            textClassName="text-white"
+          />
           <h1 className="text-3xl font-bold text-white mb-2">تسجيل الدخول</h1>
-          <p className="text-gray-400">لوحة تحكم إدارة نظام {settings?.siteName || 'رواد المستقبل'}</p>
+          <p className="text-gray-400">لوحة تحكم إدارة نظام {settings?.siteName || 'العزكي تك'}</p>
         </div>
 
         <div className="p-8">
@@ -116,3 +119,4 @@ export default function Login() {
     </>
   );
 }
+

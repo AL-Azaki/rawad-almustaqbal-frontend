@@ -1,4 +1,4 @@
-import React, { forwardRef, useState } from 'react';
+﻿import React, { forwardRef, useState } from 'react';
 import { Eye, EyeOff, AlertCircle, CheckCircle2 } from 'lucide-react';
 
 export type InputSize = 'sm' | 'md' | 'lg';
@@ -117,3 +117,4 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
 );
 
 Input.displayName = 'Input';
+

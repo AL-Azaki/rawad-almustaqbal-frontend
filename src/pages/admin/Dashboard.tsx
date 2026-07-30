@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import { ShoppingCart, Briefcase, Wrench, ArrowUpRight, Clock, CheckCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
@@ -164,3 +164,4 @@ export default function AdminDashboard() {
     </div>
   );
 }
+

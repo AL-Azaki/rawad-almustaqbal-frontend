@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+﻿import { Link } from 'react-router-dom';
 import { Image as ImageIcon } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { Badge } from '../../ui/Badge';
@@ -63,7 +63,7 @@ export function ProjectsSection({ projects, loading }: ProjectsSectionProps) {
                 <OptimizedImage
                   src={activeMedia}
                   isVideo={isVideo}
-                  alt={`${project.title} - ${project.category} في جدة وأبحر الشمالية`}
+                  alt={`${project.title} - ${project.category} في جدة وجميع مناطق المملكة`}
                   className="w-full h-full object-cover transition-transform duration-700 group-hover/card:scale-110 pointer-events-none"
                   fallback={
                     <div className="w-full h-full bg-gray-200 dark:bg-gray-800 flex items-center justify-center text-gray-400">
@@ -88,3 +88,4 @@ export function ProjectsSection({ projects, loading }: ProjectsSectionProps) {
     </section>
   );
 }
+

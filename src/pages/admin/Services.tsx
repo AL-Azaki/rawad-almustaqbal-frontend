@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import { Plus, RefreshCw, Wrench, Trash2 } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { Helmet } from 'react-helmet-async';
@@ -18,6 +18,8 @@ interface Service {
   description: string;
   icon: string | null;
   starting_price: number | null;
+  category?: string;
+  slug: string;
   status: 'active' | 'inactive';
 }
 
@@ -29,14 +31,28 @@ export default function AdminServices() {
   const [submitting, setSubmitting] = useState(false);
   const [editingId, setEditingId] = useState<number | null>(null);
   const [deleteConfirmId, setDeleteConfirmId] = useState<number | null>(null);
+  const [slugEdited, setSlugEdited] = useState(false);
 
   const [formData, setFormData] = useState({
     title: '',
+    slug: '',
     description: '',
     icon: 'Wrench',
     starting_price: '',
+    category: 'electrical',
     status: 'active'
   });
+
+  const categoryOptions = [
+    { value: 'electrical', label: 'كهرباء (Electrical)' },
+    { value: 'networks', label: 'شبكات (Networks)' },
+    { value: 'cctv', label: 'كاميرات مراقبة (CCTV)' },
+    { value: 'access-control', label: 'أنظمة البصمة والدخول (Access Control)' },
+    { value: 'smart-home', label: 'منازل ذكية (Smart Home)' },
+    { value: 'lighting', label: 'ديكور وإنارة (Lighting)' },
+    { value: 'plumbing', label: 'سباكة (Plumbing)' },
+    { value: 'maintenance', label: 'صيانة (Maintenance)' },
+  ];
 
   useEffect(() => {
     fetchServices();
@@ -105,7 +121,8 @@ export default function AdminServices() {
       fetchServices();
       setShowForm(false);
       setEditingId(null);
-      setFormData({ title: '', description: '', icon: 'Wrench', starting_price: '', status: 'active' });
+      setSlugEdited(false);
+      setFormData({ title: '', slug: '', description: '', icon: 'Wrench', starting_price: '', category: 'electrical', status: 'active' });
     } catch (error) {
       console.error('Failed to save service', error);
       toast.error('حدث خطأ أثناء الحفظ');
@@ -117,13 +134,34 @@ export default function AdminServices() {
   const handleEdit = (service: Service) => {
     setFormData({
       title: service.title,
+      slug: service.slug || '',
       description: service.description,
       icon: service.icon || 'Wrench',
       starting_price: service.starting_price ? service.starting_price.toString() : '',
+      category: service.category || 'electrical',
       status: service.status
     });
+    setSlugEdited(!!service.slug);
     setEditingId(service.id);
     setShowForm(true);
+  };
+
+  const handleTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newTitle = e.target.value;
+    if (!slugEdited) {
+      const generatedSlug = newTitle
+        .toLowerCase()
+        .replace(/[^a-z0-9\u0600-\u06FF]+/g, '-')
+        .replace(/(^-|-$)/g, '');
+      setFormData({ ...formData, title: newTitle, slug: generatedSlug });
+    } else {
+      setFormData({ ...formData, title: newTitle });
+    }
+  };
+
+  const handleSlugChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSlugEdited(true);
+    setFormData({ ...formData, slug: e.target.value });
   };
 
   if (loading && services.length === 0) {
@@ -156,8 +194,9 @@ export default function AdminServices() {
           <Button 
             variant="primary" 
             onClick={() => { 
-              setEditingId(null); 
-              setFormData({ title: '', description: '', icon: 'Wrench', starting_price: '', status: 'active' }); 
+              setEditingId(null);
+              setSlugEdited(false);
+              setFormData({ title: '', slug: '', description: '', icon: 'Wrench', starting_price: '', category: 'electrical', status: 'active' }); 
               setShowForm(true); 
             }} 
             className="flex-1 sm:flex-none"
@@ -181,10 +220,24 @@ export default function AdminServices() {
                   required 
                   type="text" 
                   value={formData.title} 
-                  onChange={e => setFormData({...formData, title: e.target.value})} 
+                  onChange={handleTitleChange} 
                   placeholder={t('admin.services.modal.namePlaceholder')} 
                 />
               </div>
+              <div>
+                <label htmlFor="service-slug" className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-1">الرابط الدائم (Slug)</label>
+                <Input 
+                  id="service-slug" 
+                  required 
+                  type="text" 
+                  value={formData.slug} 
+                  onChange={handleSlugChange} 
+                  placeholder="مثال: my-service" 
+                  dir="ltr"
+                />
+              </div>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
               <div>
                 <label htmlFor="service-price" className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-1">{t('admin.services.modal.priceLabel')}</label>
                 <Input 
@@ -221,6 +274,21 @@ export default function AdminServices() {
                 >
                   <option value="active">{t('admin.services.status.active')}</option>
                   <option value="inactive">{t('admin.services.status.inactive')}</option>
+                </select>
+              </div>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+              <div>
+                <label htmlFor="service-category" className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-1">التصنيف (Category)</label>
+                <select 
+                  id="service-category"
+                  value={formData.category} 
+                  onChange={e => setFormData({...formData, category: e.target.value})} 
+                  className="w-full px-4 py-3 border border-gray-200 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-xl focus:ring-2 focus:ring-amber-500 outline-none transition-shadow"
+                >
+                  {categoryOptions.map(cat => (
+                    <option key={cat.value} value={cat.value}>{cat.label}</option>
+                  ))}
                 </select>
               </div>
             </div>
@@ -307,7 +375,12 @@ export default function AdminServices() {
                   </button>
                 </div>
               </div>
-              <h3 className="font-bold text-xl mb-2 text-gray-900 dark:text-white group-hover:text-amber-500 transition-colors">{service.title}</h3>
+              <h3 className="font-bold text-xl mb-1 text-gray-900 dark:text-white group-hover:text-amber-500 transition-colors">{service.title}</h3>
+              {service.category && (
+                <div className="mb-2">
+                  <Badge variant="info" size="sm">{categoryOptions.find(c => c.value === service.category)?.label?.split(' ')[0] || service.category}</Badge>
+                </div>
+              )}
               {service.starting_price && (
                 <div className="text-green-600 dark:text-green-400 text-sm font-bold mb-3 bg-green-50 dark:bg-green-900/30 inline-block px-2 py-1 rounded w-fit">
                   {t('admin.services.startsFrom')} {service.starting_price} {t('admin.services.currency')}
@@ -326,3 +399,4 @@ export default function AdminServices() {
     </div>
   );
 }
+

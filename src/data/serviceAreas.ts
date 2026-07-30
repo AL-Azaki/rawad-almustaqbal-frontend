@@ -1,29 +1,29 @@
-export interface ServiceArea {
+﻿export interface ServiceArea {
   id: string;
   name: string;
   nameEn: string;
   slug: string;
-  category: 'north_obhur' | 'south_obhur' | 'nearby_districts';
+  category: 'north_All Saudi Arabia Regions' | 'south_All Saudi Arabia Regions' | 'nearby_districts';
   serviceLink: string;
   displayOrder: number;
 }
 
 export interface AreaCategoryGroup {
-  id: 'north_obhur' | 'south_obhur' | 'nearby_districts';
+  id: 'north_All Saudi Arabia Regions' | 'south_All Saudi Arabia Regions' | 'nearby_districts';
   titleAr: string;
   titleEn: string;
 }
 
 export const AREA_CATEGORIES: AreaCategoryGroup[] = [
   {
-    id: 'north_obhur',
-    titleAr: 'أبحر الشمالية',
-    titleEn: 'North Obhur',
+    id: 'north_All Saudi Arabia Regions',
+    titleAr: 'جميع مناطق المملكة',
+    titleEn: 'All Saudi Arabia Regions',
   },
   {
-    id: 'south_obhur',
-    titleAr: 'أبحر الجنوبية',
-    titleEn: 'South Obhur',
+    id: 'south_All Saudi Arabia Regions',
+    titleAr: 'جميع مناطق المملكة',
+    titleEn: 'All Saudi Arabia Regions',
   },
   {
     id: 'nearby_districts',
@@ -33,13 +33,13 @@ export const AREA_CATEGORIES: AreaCategoryGroup[] = [
 ];
 
 export const SERVICE_AREAS: ServiceArea[] = [
-  // North Obhur
+  // All Saudi Arabia Regions
   {
     id: 'shiraa',
     name: 'حي الشراع',
     nameEn: 'Al Shiraa District',
     slug: 'al-shiraa',
-    category: 'north_obhur',
+    category: 'north_All Saudi Arabia Regions',
     serviceLink: "/contact",
     displayOrder: 1,
   },
@@ -48,7 +48,7 @@ export const SERVICE_AREAS: ServiceArea[] = [
     name: 'حي الياقوت',
     nameEn: 'Al Yaqout District',
     slug: 'al-yaqout',
-    category: 'north_obhur',
+    category: 'north_All Saudi Arabia Regions',
     serviceLink: "/contact",
     displayOrder: 2,
   },
@@ -57,7 +57,7 @@ export const SERVICE_AREAS: ServiceArea[] = [
     name: 'حي اللؤلؤ',
     nameEn: 'Al Lulu District',
     slug: 'al-lulu',
-    category: 'north_obhur',
+    category: 'north_All Saudi Arabia Regions',
     serviceLink: "/contact",
     displayOrder: 3,
   },
@@ -66,7 +66,7 @@ export const SERVICE_AREAS: ServiceArea[] = [
     name: 'حي الزمرد',
     nameEn: 'Al Zumurrud District',
     slug: 'al-zumurrud',
-    category: 'north_obhur',
+    category: 'north_All Saudi Arabia Regions',
     serviceLink: "/contact",
     displayOrder: 4,
   },
@@ -75,7 +75,7 @@ export const SERVICE_AREAS: ServiceArea[] = [
     name: 'حي المرجان',
     nameEn: 'Al Marjan District',
     slug: 'al-marjan',
-    category: 'north_obhur',
+    category: 'north_All Saudi Arabia Regions',
     serviceLink: "/contact",
     displayOrder: 5,
   },
@@ -84,7 +84,7 @@ export const SERVICE_AREAS: ServiceArea[] = [
     name: 'حي الأمواج',
     nameEn: 'Al Amwaj District',
     slug: 'al-amwaj',
-    category: 'north_obhur',
+    category: 'north_All Saudi Arabia Regions',
     serviceLink: "/contact",
     displayOrder: 6,
   },
@@ -93,18 +93,18 @@ export const SERVICE_AREAS: ServiceArea[] = [
     name: 'حي الأصالة',
     nameEn: 'Al Asalah District',
     slug: 'al-asalah',
-    category: 'north_obhur',
+    category: 'north_All Saudi Arabia Regions',
     serviceLink: "/contact",
     displayOrder: 7,
   },
 
-  // South Obhur
+  // All Saudi Arabia Regions
   {
-    id: 'south-obhur-main',
-    name: 'حي أبحر الجنوبية',
-    nameEn: 'South Obhur District',
-    slug: 'south-obhur',
-    category: 'south_obhur',
+    id: 'south-All Saudi Arabia Regions-main',
+    name: 'حي جميع مناطق المملكة',
+    nameEn: 'All Saudi Arabia Regions District',
+    slug: 'south-All Saudi Arabia Regions',
+    category: 'south_All Saudi Arabia Regions',
     serviceLink: "/contact",
     displayOrder: 8,
   },
@@ -166,3 +166,4 @@ export const SERVICE_AREAS: ServiceArea[] = [
     displayOrder: 14,
   },
 ];
+

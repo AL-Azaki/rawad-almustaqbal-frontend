@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { CheckCircle2, XCircle, Scale } from 'lucide-react';
 
@@ -21,7 +21,7 @@ export const ServiceComparisonTable: React.FC = () => {
           id="comparison-table-title"
           className="text-2xl md:text-3xl lg:text-4xl font-extrabold text-gray-900 dark:text-white mb-4 tracking-tight"
         >
-          {t('comparisonTable.title', 'الفرق الجوهري بين')} <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-orange-600">{t('comparisonTable.titleHighlight', 'هندسة رواد المستقبل والمقاولة العادية')}</span>
+          {t('comparisonTable.title', 'الفرق الجوهري بين')} <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-orange-600">{t('comparisonTable.titleHighlight', 'هندسة العزكي تك والمقاولة العادية')}</span>
         </h2>
         <p className="text-gray-600 dark:text-gray-400 text-sm md:text-base leading-relaxed">
           {t('comparisonTable.subtitle', 'لا تخاطر بسلامة وجودة منشأتك. تعرف على المعايير الفنية التي تميز أعمالنا عن التنفيذ التقليدي في السوق.')}
@@ -38,7 +38,7 @@ export const ServiceComparisonTable: React.FC = () => {
               <th scope="col" className="py-5 px-4 md:px-6 text-sm md:text-base font-extrabold text-amber-600 dark:text-amber-400 bg-amber-50/50 dark:bg-amber-900/20 w-3/8 border-x border-gray-200 dark:border-gray-600">
                 <div className="flex items-center gap-2">
                   <CheckCircle2 className="w-5 h-5 text-amber-500 shrink-0" aria-hidden="true" />
-                  <span>{t('comparisonTable.colModern', 'التأسيس الهندسي الذكي (رواد المستقبل)')}</span>
+                  <span>{t('comparisonTable.colModern', 'التأسيس الهندسي الذكي (العزكي تك)')}</span>
                 </div>
               </th>
               <th scope="col" className="py-5 px-4 md:px-6 text-sm md:text-base font-bold text-gray-500 dark:text-gray-400 w-3/8">
@@ -77,3 +77,4 @@ export const ServiceComparisonTable: React.FC = () => {
 };
 
 export default ServiceComparisonTable;
+

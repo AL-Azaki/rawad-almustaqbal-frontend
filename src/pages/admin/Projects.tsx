@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import { Plus, RefreshCw, Image as ImageIcon, Trash2, ArrowUp, ArrowDown, MapPin, Clock, Video, Layers, CheckCircle2, AlertCircle, Wrench, FileText, UploadCloud, FileVideo, X } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { Helmet } from 'react-helmet-async';
@@ -12,6 +12,7 @@ import { Textarea } from '../../components/ui/Textarea';
 import { Badge } from '../../components/ui/Badge';
 import { Modal } from '../../components/ui/Modal';
 import LocationAutocompleteField from '../../components/common/LocationAutocompleteField';
+import { PORTFOLIO_CATEGORIES } from '../../data/portfolioCaseStudies';
 
 interface Project {
   id: number;
@@ -49,6 +50,7 @@ export default function AdminProjects() {
   const [submitting, setSubmitting] = useState(false);
   const [editingId, setEditingId] = useState<number | null>(null);
   const [deleteConfirmId, setDeleteConfirmId] = useState<number | null>(null);
+  const [slugEdited, setSlugEdited] = useState(false);
 
   // Active section tab in modal
   const [activeTab, setActiveTab] = useState<'basic' | 'case_study' | 'equipment' | 'media'>('basic');
@@ -69,7 +71,7 @@ export default function AdminProjects() {
   const [formData, setFormData] = useState({
     title: '',
     slug: '',
-    category: '',
+    category: PORTFOLIO_CATEGORIES[0].key,
     location_district: '',
     description: '',
     challenge: '',
@@ -194,10 +196,8 @@ export default function AdminProjects() {
       data.append('title', formData.title.trim());
       data.append('category', formData.category.trim());
       data.append('description', formData.description.trim());
+      data.append('slug', formData.slug.trim());
 
-      if (formData.slug.trim()) {
-        data.append('slug', formData.slug.trim());
-      }
       if (formData.location_district.trim()) {
         data.append('location_district', formData.location_district.trim());
       }
@@ -284,7 +284,7 @@ export default function AdminProjects() {
     setFormData({
       title: project.title || '',
       slug: project.slug || '',
-      category: project.category || '',
+      category: project.category || PORTFOLIO_CATEGORIES[0].key,
       location_district: project.location_district || '',
       description: project.description || '',
       challenge: challenge,
@@ -296,6 +296,7 @@ export default function AdminProjects() {
       before_image_path: project.raw_before_image_path || project.before_image_path || '',
       after_image_path: project.raw_after_image_path || project.after_image_path || '',
     });
+    setSlugEdited(!!project.slug);
 
     setEquipmentList(eqItems);
 
@@ -322,11 +323,12 @@ export default function AdminProjects() {
   const resetAndCloseForm = () => {
     setShowForm(false);
     setEditingId(null);
+    setSlugEdited(false);
     setActiveTab('basic');
     setFormData({
       title: '',
       slug: '',
-      category: '',
+      category: PORTFOLIO_CATEGORIES[0].key,
       location_district: '',
       description: '',
       challenge: '',
@@ -468,7 +470,18 @@ export default function AdminProjects() {
                     required
                     type="text"
                     value={formData.title}
-                    onChange={e => setFormData({ ...formData, title: e.target.value })}
+                    onChange={(e) => {
+                      const newTitle = e.target.value;
+                      if (!slugEdited) {
+                        const generatedSlug = newTitle
+                          .toLowerCase()
+                          .replace(/[^a-z0-9\u0600-\u06FF]+/g, '-')
+                          .replace(/(^-|-$)/g, '');
+                        setFormData({ ...formData, title: newTitle, slug: generatedSlug });
+                      } else {
+                        setFormData({ ...formData, title: newTitle });
+                      }
+                    }}
                     placeholder="مثال: مشروع أتمتة وحلول تحكم مركزي (Smart Home) لفيلا خاصة"
                   />
                 </div>
@@ -476,31 +489,38 @@ export default function AdminProjects() {
                   <label htmlFor="project-category" className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-1">
                     التصنيف الفني <span className="text-red-500">*</span>
                   </label>
-                  <Input
+                  <select
                     id="project-category"
                     required
-                    type="text"
                     value={formData.category}
                     onChange={e => setFormData({ ...formData, category: e.target.value })}
-                    placeholder="مثال: الأنظمة الذكية (Smart Home) أو كاميرات مراقبة"
-                  />
+                    className="w-full px-4 py-3 border border-gray-200 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-xl focus:ring-2 focus:ring-amber-500 outline-none transition-shadow"
+                  >
+                    {PORTFOLIO_CATEGORIES.map(cat => (
+                      <option key={cat.key} value={cat.key}>{cat.label}</option>
+                    ))}
+                  </select>
                 </div>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                 <div>
                   <label htmlFor="project-slug" className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-1">
-                    الرابط الصديق لمحركات البحث (Slug - اختياري)
+                    الرابط الصديق لمحركات البحث (Slug) <span className="text-red-500">*</span>
                   </label>
                   <Input
                     id="project-slug"
+                    required
                     type="text"
                     value={formData.slug}
-                    onChange={e => setFormData({ ...formData, slug: e.target.value })}
-                    placeholder="يُترك فارغاً للتوليد التلقائي (مثال: smart-home-villa-al-marjan)"
+                    onChange={e => {
+                      setSlugEdited(true);
+                      setFormData({ ...formData, slug: e.target.value });
+                    }}
+                    placeholder="مثال: smart-home-villa-al-marjan"
                     dir="ltr"
                   />
-                  <p className="text-xs text-gray-400 mt-1">يُترك فارغاً ليقوم النظام بتوليده تلقائياً من العنوان.</p>
+                  <p className="text-xs text-gray-400 mt-1">يتم توليده تلقائياً من العنوان، ويمكنك تعديله يدوياً.</p>
                 </div>
                 <div>
                   <LocationAutocompleteField
@@ -509,7 +529,7 @@ export default function AdminProjects() {
                     onChange={val => setFormData({ ...formData, location_district: val })}
                     required={false}
                     label="الحي والمنطقة (اختياري، يظهر بالشارات ومحركات البحث)"
-                    placeholder="مثال: حي المرجان، أبحر الشمالية، جدة"
+                    placeholder="مثال: حي المرجان، جميع مناطق المملكة، جدة"
                   />
                 </div>
               </div>
@@ -561,7 +581,7 @@ export default function AdminProjects() {
                   id="project-challenge"
                   value={formData.challenge}
                   onChange={e => setFormData({ ...formData, challenge: e.target.value })}
-                  placeholder="اشرح العقبات الفنية أو المشاكل المعمارية والكهربائية التي كان يعاني منها المالك قبل تدخل رواد المستقبل..."
+                  placeholder="اشرح العقبات الفنية أو المشاكل المعمارية والكهربائية التي كان يعاني منها المالك قبل تدخل العزكي تك..."
                   rows={5}
                 />
               </div>
@@ -1268,3 +1288,4 @@ export default function AdminProjects() {
     </div>
   );
 }
+

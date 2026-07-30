@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Helmet } from 'react-helmet-async';
@@ -35,7 +35,7 @@ const SERVICE_BEFORE_AFTER_MAP: Record<
     afterImage: 'https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&q=80&w=1200',
     beforeLabelAr: 'لوحة كهرباء وتوزيع أحمال تقليدي عشوائي',
     beforeLabelEn: 'Disorganized & Unsafe Conventional Wiring Panel',
-    afterLabelAr: 'طبلون وتوزيع كهربائي منظم ومدروس هندسياً من رواد المستقبل',
+    afterLabelAr: 'طبلون وتوزيع كهربائي منظم ومدروس هندسياً من العزكي تك',
     afterLabelEn: 'Engineered & Certified Electrical Distribution Panel by Future Pioneers',
   },
   network: {
@@ -73,7 +73,7 @@ const SERVICE_BEFORE_AFTER_MAP: Record<
   interior: {
     beforeImage: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&q=80&w=1200',
     afterImage: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=1200',
-    beforeLabelAr: 'هيكل خام وتمديدات غير معالجة قبل تدخل رواد المستقبل',
+    beforeLabelAr: 'هيكل خام وتمديدات غير معالجة قبل تدخل العزكي تك',
     beforeLabelEn: 'Raw Structural Shell & Unfinished Interiors',
     afterLabelAr: 'تشطيب ديكور داخلي فاخر ومطابق للمخطط الهندسي المعتمد',
     afterLabelEn: 'Luxury Architectural Interior Finish Complying with Blueprint',
@@ -93,9 +93,18 @@ interface ApiServiceData {
   id: number;
   title: string;
   slug?: string;
+  category?: string;
   description: string;
   icon?: string;
   starting_price?: string | number;
+}
+
+interface ProjectType {
+  id: number | string;
+  slug?: string;
+  title: string;
+  category: string;
+  image_path: string | null;
 }
 
 export const ServiceDetailPage: React.FC = () => {
@@ -106,6 +115,7 @@ export const ServiceDetailPage: React.FC = () => {
   const ssotData = getServicePageBySlug(slug);
   const [apiData, setApiData] = useState<ApiServiceData | null>(null);
   const [loading, setLoading] = useState<boolean>(!ssotData);
+  const [relatedProjects, setRelatedProjects] = useState<ProjectType[]>([]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -115,11 +125,25 @@ export const ServiceDetailPage: React.FC = () => {
       .then((res) => {
         if (res?.data) {
           setApiData(res.data);
+          
+          // Fetch related projects
+          ApiClient.get<ProjectType[]>('/projects').then(pRes => {
+            const allProjects = pRes.data || [];
+            const filtered = allProjects.filter(p => p.category === res.data.category || p.category === ssotData?.id);
+            setRelatedProjects(filtered.slice(0, 3)); // show top 3
+          }).catch(err => console.error("Error fetching projects", err));
         }
       })
       .catch((err) => {
-        // If not found in API, silently fall back to SSOT data if available
         console.debug('Service not found in API, relying on SSOT dataset:', err?.message);
+        // Try fetching projects based on SSOT category
+        if (ssotData) {
+          ApiClient.get<ProjectType[]>('/projects').then(pRes => {
+            const allProjects = pRes.data || [];
+            const filtered = allProjects.filter(p => p.category === ssotData.id);
+            setRelatedProjects(filtered.slice(0, 3));
+          }).catch(e => console.error(e));
+        }
       })
       .finally(() => {
         setLoading(false);
@@ -173,29 +197,29 @@ export const ServiceDetailPage: React.FC = () => {
     description: descText,
     provider: {
       '@type': 'LocalBusiness',
-      name: isAr ? 'رواد المستقبل للمقاولات والحلول التقنية' : 'Future Pioneers Contracting & Technical Solutions',
+      name: isAr ? 'العزكي تك' : 'Future Pioneers Contracting & Technical Solutions',
       address: {
         '@type': 'PostalAddress',
         addressLocality: isAr ? 'جدة' : 'Jeddah',
-        addressRegion: isAr ? 'أبحر الشمالية' : 'North Obhur',
+        addressRegion: isAr ? 'جميع مناطق المملكة' : 'All Saudi Arabia Regions',
         addressCountry: 'SA',
       },
     },
     areaServed: [
       { '@type': 'AdministrativeArea', name: isAr ? 'جدة' : 'Jeddah' },
-      { '@type': 'AdministrativeArea', name: isAr ? 'أبحر الشمالية' : 'North Obhur' },
-      { '@type': 'AdministrativeArea', name: isAr ? 'أبحر الجنوبية' : 'South Obhur' },
+      { '@type': 'AdministrativeArea', name: isAr ? 'جميع مناطق المملكة' : 'All Saudi Arabia Regions' },
+      { '@type': 'AdministrativeArea', name: isAr ? 'جميع مناطق المملكة' : 'All Saudi Arabia Regions' },
     ],
   };
   return (
     <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300 pb-20">
       {/* Helmet SEO Tags */}
       <Helmet>
-        <title>{`${titleText} | ${isAr ? 'رواد المستقبل - جدة وأبحر' : 'Future Pioneers - Jeddah & Obhur'}`}</title>
+        <title>{`${titleText} | ${isAr ? 'العزكي تك - جدة وجميع مناطق المملكة' : 'Future Pioneers - Jeddah & All Saudi Arabia Regions'}`}</title>
         <meta name="description" content={descText} />
         <meta
           name="keywords"
-          content={`${titleText}, ${isAr ? 'جدة, أبحر الشمالية, أبحر الجنوبية, رواد المستقبل, مقاولات جدة, صيانة منازل أبحر' : 'Jeddah, North Obhur, South Obhur, Future Pioneers, Contracting Jeddah'}`}
+          content={`${titleText}, ${isAr ? 'جدة, جميع مناطق المملكة, جميع مناطق المملكة, العزكي تك, مقاولات جدة, صيانة منازل جميع مناطق المملكة' : 'Jeddah, All Saudi Arabia Regions, All Saudi Arabia Regions, Future Pioneers, Contracting Jeddah'}`}
         />
         <script type="application/ld+json">{JSON.stringify(schemaData)}</script>
       </Helmet>
@@ -277,17 +301,17 @@ export const ServiceDetailPage: React.FC = () => {
       </section>
 
       <div className="container mx-auto px-4 max-w-5xl">
-        {/* Why Choose Obhur & North Jeddah Section */}
+        {/* Why Choose All Saudi Arabia Regions & North Jeddah Section */}
         <section className="py-16 my-8">
           <div className="text-center max-w-3xl mx-auto mb-12">
             <h2 className="text-2xl md:text-4xl font-extrabold text-gray-900 dark:text-white mb-4">
-              {t('serviceDetailPage.whyChooseTitle', 'لماذا يفضل سكان جدة وأبحر')}{' '}
+              {t('serviceDetailPage.whyChooseTitle', 'لماذا يفضل سكان جدة وجميع مناطق المملكة')}{' '}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-orange-600">
                 {t('serviceDetailPage.whyChooseHighlight', 'تنفيذ هذه الخدمة معنا؟')}
               </span>
             </h2>
             <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-              {t('serviceDetailPage.whyChooseSubtitle', 'خبرة ميدانية تمتد لسنوات في أحياء شمال جدة وأبحر، مع فهم عميق لاحتياجات الفلل السكنية والمباني التجارية.')}
+              {t('serviceDetailPage.whyChooseSubtitle', 'خبرة ميدانية تمتد لسنوات في أحياء جدة وجميع مناطق المملكة، مع فهم عميق لاحتياجات الفلل السكنية والمباني التجارية.')}
             </p>
           </div>
 
@@ -297,7 +321,7 @@ export const ServiceDetailPage: React.FC = () => {
                 <MapPin className="w-6 h-6" aria-hidden="true" />
               </div>
               <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">
-                {t('serviceDetailPage.benefit1Title', 'استجابة ميدانية فورية في أبحر والشمال')}
+                {t('serviceDetailPage.benefit1Title', 'استجابة ميدانية فورية في جميع مناطق المملكة والشمال')}
               </h3>
               <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
                 {t('serviceDetailPage.benefit1Desc', 'لتواجد فرقنا الدائم في أحياء الشراع، الياقوت، اللؤلؤ، والزمرد، نصل لموقعك للمعاينة والبدء السريع في قياسي وقت.')}
@@ -349,7 +373,7 @@ export const ServiceDetailPage: React.FC = () => {
                 </h2>
                 <p className="text-gray-600 dark:text-gray-400 text-sm md:text-base leading-relaxed">
                   {isAr
-                    ? 'اسحب المقبض التفاعلي أدناه لمقارنة جودة وكفاءة العمل بين الأساليب العشوائية القديمة واحترافية مهندسي رواد المستقبل.'
+                    ? 'اسحب المقبض التفاعلي أدناه لمقارنة جودة وكفاءة العمل بين الأساليب العشوائية القديمة واحترافية مهندسي العزكي تك.'
                     : 'Drag the interactive slider below to compare conventional hazardous methods against Future Pioneers certified engineering craftsmanship.'}
                 </p>
               </div>
@@ -400,6 +424,47 @@ export const ServiceDetailPage: React.FC = () => {
           </div>
         </section>
 
+        {/* Related Projects Links */}
+        {relatedProjects.length > 0 && (
+          <section className="py-16 my-8 border-t border-gray-100 dark:border-gray-800">
+            <div className="text-center max-w-3xl mx-auto mb-10">
+              <h2 className="text-2xl md:text-3xl font-extrabold text-gray-900 dark:text-white mb-3">
+                {isAr ? 'مشاريع منفذة ذات صلة' : 'Related Executed Projects'}
+              </h2>
+              <p className="text-gray-600 dark:text-gray-400 text-sm md:text-base">
+                {isAr ? 'تصفح بعض أعمالنا المرتبطة بهذه الخدمة' : 'Browse some of our works related to this service'}
+              </p>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+              {relatedProjects.map((project) => (
+                <Link
+                  key={project.id}
+                  to={`/portfolio/${project.slug}`}
+                  className="group relative rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 h-64 bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 block"
+                >
+                  {project.image_path ? (
+                    <img src={project.image_path.startsWith('http') ? project.image_path : (project.image_path.startsWith('/storage') ? `${(import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000/api').replace('/api', '')}${project.image_path}` : project.image_path)} alt={project.title} className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                  ) : (
+                    <div className="absolute inset-0 w-full h-full flex items-center justify-center text-gray-400">بدون صورة</div>
+                  )}
+                  <div className="absolute inset-0 bg-gradient-to-t from-gray-950 via-gray-900/60 to-transparent opacity-90 transition-opacity duration-300 pointer-events-none"></div>
+                  <div className="relative z-10 p-6 flex flex-col justify-end h-full">
+                    <h3 className="text-lg font-bold text-white mb-2 leading-snug group-hover:text-amber-400 transition-colors line-clamp-2">
+                      {project.title}
+                    </h3>
+                  </div>
+                </Link>
+              ))}
+            </div>
+            <div className="text-center mt-8">
+              <Link to="/portfolio" className="inline-flex items-center gap-2 text-amber-500 font-bold hover:text-amber-600 transition-colors">
+                <span>{isAr ? 'عرض كافة المشاريع' : 'View all projects'}</span>
+                {isAr ? <ArrowLeft className="w-4 h-4" /> : <ArrowRight className="w-4 h-4" />}
+              </Link>
+            </div>
+          </section>
+        )}
+
         {/* FAQ Section */}
         <FAQSection />
 
@@ -411,8 +476,8 @@ export const ServiceDetailPage: React.FC = () => {
           <h2 className="text-2xl md:text-4xl font-bold mb-4 relative z-10">{titleText}</h2>
           <p className="text-base md:text-lg text-gray-300 mb-8 max-w-2xl mx-auto relative z-10">
             {isAr
-              ? 'هل تحتاج لعرض سعر هندسي أو معاينة ميدانية لمشروعك في جدة أو أبحر؟ تواصل معنا الآن وسيقوم فريقنا الميداني بالاستجابة الفورية.'
-              : 'Need an engineering quotation or on-site inspection for your project in Jeddah or Obhur? Contact us now for rapid dispatch.'}
+              ? 'هل تحتاج لعرض سعر هندسي أو معاينة ميدانية لمشروعك في جدة أو جميع مناطق المملكة؟ تواصل معنا الآن وسيقوم فريقنا الميداني بالاستجابة الفورية.'
+              : 'Need an engineering quotation or on-site inspection for your project in Jeddah or All Saudi Arabia Regions? Contact us now for rapid dispatch.'}
           </p>
 
           <Link
@@ -429,3 +494,4 @@ export const ServiceDetailPage: React.FC = () => {
 };
 
 export default ServiceDetailPage;
+

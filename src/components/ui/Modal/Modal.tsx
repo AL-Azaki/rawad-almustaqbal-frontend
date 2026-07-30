@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+﻿import React, { useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 
 export type ModalSize = 'sm' | 'md' | 'lg' | 'xl' | 'fullscreen';
@@ -9,6 +9,8 @@ export interface ModalProps {
   size?: ModalSize;
   children: React.ReactNode;
   closeOnOutsideClick?: boolean;
+  'aria-labelledby'?: string;
+  'aria-describedby'?: string;
 }
 
 const sizeClasses: Record<ModalSize, string> = {
@@ -25,6 +27,8 @@ export const ModalBase: React.FC<ModalProps> = ({
   size = 'md',
   children,
   closeOnOutsideClick = true,
+  'aria-labelledby': ariaLabelledBy = 'modal-title',
+  'aria-describedby': ariaDescribedBy,
 }) => {
   const modalRef = useRef<HTMLDivElement>(null);
   const previouslyFocusedElement = useRef<HTMLElement | null>(null);
@@ -104,6 +108,8 @@ export const ModalBase: React.FC<ModalProps> = ({
       onClick={handleOutsideClick}
       role="dialog"
       aria-modal="true"
+      aria-labelledby={ariaLabelledBy}
+      aria-describedby={ariaDescribedBy}
     >
       <div 
         ref={modalRef}
@@ -120,3 +126,4 @@ export const ModalBase: React.FC<ModalProps> = ({
 
   return createPortal(modalContent, document.body);
 };
+

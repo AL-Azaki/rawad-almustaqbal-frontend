@@ -1,4 +1,4 @@
-import { PhoneCall, MessageCircle } from 'lucide-react';
+﻿import { PhoneCall, MessageCircle } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { useSettings } from '../../contexts/SettingsContext';
 import { trackWhatsAppClick, trackPhoneCallClick } from '../../lib/analytics';
@@ -15,7 +15,7 @@ export default function StickyMobileCTA() {
   const whatsappNumber = (settings?.whatsappNumber || defaultWhatsApp).replace('+', '');
   
   const whatsappMessage = encodeURIComponent(
-    isAr ? 'مرحباً، أود الاستفسار وطلب الخدمة من رواد المستقبل.' : 'Hello, I would like to request a service from Rawad Al-Mustaqbal.'
+    isAr ? 'مرحباً، أود الاستفسار وطلب الخدمة من العزكي تك.' : 'Hello, I would like to request a service from ALAZAKITECH.'
   );
   
   const waLink = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
@@ -46,3 +46,4 @@ export default function StickyMobileCTA() {
     </div>
   );
 }
+

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import { Zap, Wifi, Video, Droplet, Lightbulb, PenTool, ArrowLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
@@ -23,6 +23,7 @@ interface ServiceType {
   id: number;
   title: string;
   slug?: string;
+  category?: string;
   description: string;
   icon: string | null;
   starting_price: number | null;
@@ -55,6 +56,11 @@ export default function Services() {
         <title>{t('nav.services')} | {settings?.siteName || t('home.title')}</title>
         <meta name="description" content={settings?.siteDescription || t('home.subtitle')} />
         <meta name="keywords" content={t('home.keywords', "الخدمات الكهربائية, كاميرات مراقبة, شبكات, ديكور")} />
+        <link rel="canonical" href={`${window.location.origin}/services`} />
+        <meta property="og:title" content={`${t('nav.services')} | ${settings?.siteName || t('home.title')}`} />
+        <meta property="og:description" content={settings?.siteDescription || t('home.subtitle')} />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={`${window.location.origin}/services`} />
       </Helmet>
       <div className="container mx-auto px-4">
         {/* Header Section */}
@@ -91,23 +97,30 @@ export default function Services() {
                 key={service.id} 
                 className={`group bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-sm hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-transparent ${borderMap[index % borderMap.length]} flex flex-col h-full`}
               >
-                <Link to={`/services/${service.slug || service.id}`} className="block">
+                <Link to={`/services/${service.slug}`} className="block">
                   <div className={`w-20 h-20 rounded-2xl ${colorMap[index % colorMap.length]} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
                     {service.icon && iconMap[service.icon] ? iconMap[service.icon] : <PenTool className="w-10 h-10 text-gray-500 dark:text-gray-400" aria-hidden="true" />}
                   </div>
                   <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-amber-500 transition-colors">{service.title}</h3>
                 </Link>
-                {service.starting_price && (
-                  <span className="inline-block bg-green-100 dark:bg-green-900/40 text-green-700 dark:text-green-400 text-sm font-semibold px-3 py-1 rounded-full mb-4 w-fit">
-                    {t('services.startFrom')} {service.starting_price} {t('services.currency')}
-                  </span>
-                )}
+                <div className="flex flex-wrap gap-2 mb-4">
+                  {service.category && (
+                    <span className="inline-block bg-blue-100 dark:bg-blue-900/40 text-blue-700 dark:text-blue-400 text-sm font-semibold px-3 py-1 rounded-full w-fit">
+                      {service.category}
+                    </span>
+                  )}
+                  {service.starting_price && (
+                    <span className="inline-block bg-green-100 dark:bg-green-900/40 text-green-700 dark:text-green-400 text-sm font-semibold px-3 py-1 rounded-full w-fit">
+                      {t('services.startFrom')} {service.starting_price} {t('services.currency')}
+                    </span>
+                  )}
+                </div>
                 <p className="text-gray-600 dark:text-gray-400 mb-8 flex-grow leading-relaxed">
                   {service.description}
                 </p>
                 <div className="mt-auto pt-4 border-t border-gray-100 dark:border-gray-700 flex items-center justify-between gap-4">
                   <Link 
-                    to={`/services/${service.slug || service.id}`}
+                    to={`/services/${service.slug}`}
                     className="inline-flex items-center text-sm font-bold text-gray-700 dark:text-gray-300 hover:text-amber-600 dark:hover:text-amber-400 transition-colors"
                   >
                     <span>{t('serviceDetailPage.heroBadge', 'تصفح التفاصيل')}</span>
@@ -147,3 +160,4 @@ export default function Services() {
     </div>
   );
 }
+

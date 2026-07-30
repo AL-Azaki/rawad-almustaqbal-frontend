@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
@@ -64,3 +64,4 @@ export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ items, className = '' 
     </>
   );
 };
+

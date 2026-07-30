@@ -1,8 +1,9 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import { Outlet, Link, useNavigate, useLocation } from 'react-router-dom';
 import { 
   LayoutDashboard, ShoppingCart, Briefcase, Wrench, LogOut, 
-  Menu, X, User, Moon, Sun, Rocket, Settings, MessageSquare, Loader2, BookOpen
+  Menu, X, User, Moon, Sun, Rocket, Settings, MessageSquare, Loader2, BookOpen,
+  LineChart, MousePointerClick, Megaphone, Link2, ChevronDown, ChevronRight
 } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { Toaster } from 'react-hot-toast';
@@ -43,6 +44,17 @@ export default function AdminLayout() {
     { name: t('admin.nav.settings'), path: '/admin/settings', icon: Settings },
   ];
 
+  const marketingItems = [
+    { name: 'نظرة عامة', path: '/admin/marketing/overview', icon: LayoutDashboard },
+    { name: 'التتبع والتحليلات', path: '/admin/marketing/tracking', icon: LineChart },
+    { name: 'صفحات الهبوط', path: '/admin/marketing/landing-pages', icon: MousePointerClick },
+    { name: 'قوالب الحملات', path: '/admin/marketing/campaigns', icon: Megaphone },
+    { name: 'منشئ الروابط', path: '/admin/marketing/url-builder', icon: Link2 },
+    { name: 'دليل الاستخدام', path: '/admin/marketing/guide', icon: BookOpen },
+  ];
+
+  const [isMarketingOpen, setIsMarketingOpen] = useState(false);
+
   if (isLoading) return null;
 
   return (
@@ -57,7 +69,12 @@ export default function AdminLayout() {
         <div 
           className="fixed inset-0 bg-black/50 z-40 lg:hidden"
           onClick={() => setIsSidebarOpen(false)}
-          aria-hidden="true"
+          onKeyDown={(e) => {
+            if (e.key === 'Escape' || e.key === 'Enter') setIsSidebarOpen(false);
+          }}
+          role="button"
+          tabIndex={0}
+          aria-label={t('admin.a11y.closeMenu', 'إغلاق القائمة')}
         />
       )}
 
@@ -115,6 +132,44 @@ export default function AdminLayout() {
               </Link>
             );
           })}
+
+          {/* Marketing Menu */}
+          <div className="pt-2 mt-2 border-t border-gray-800">
+            <button
+              onClick={() => setIsMarketingOpen(!isMarketingOpen)}
+              className="flex items-center justify-between w-full px-4 py-3 rounded-xl transition-all text-gray-400 hover:bg-gray-800 hover:text-white"
+            >
+              <div className="flex items-center gap-3">
+                <Rocket className="w-5 h-5" aria-hidden="true" />
+                <span className="font-semibold">مركز التسويق</span>
+              </div>
+              {isMarketingOpen ? <ChevronDown className="w-4 h-4" /> : <ChevronRight className="w-4 h-4" />}
+            </button>
+            
+            {isMarketingOpen && (
+              <div className="mt-2 ml-4 space-y-1">
+                {marketingItems.map((item) => {
+                  const Icon = item.icon;
+                  const isActive = location.pathname === item.path;
+                  return (
+                    <Link
+                      key={item.path}
+                      to={item.path}
+                      onClick={() => setIsSidebarOpen(false)}
+                      className={`flex items-center gap-3 px-4 py-2 text-sm rounded-xl transition-all ${
+                        isActive 
+                          ? 'bg-amber-500/10 text-amber-500 font-semibold' 
+                          : 'text-gray-400 hover:bg-gray-800 hover:text-white'
+                      }`}
+                    >
+                      <Icon className="w-4 h-4" aria-hidden="true" />
+                      <span>{item.name}</span>
+                    </Link>
+                  );
+                })}
+              </div>
+            )}
+          </div>
         </nav>
 
         <div className="p-4 border-t border-gray-800">
@@ -185,3 +240,4 @@ export default function AdminLayout() {
     </div>
   );
 }
+

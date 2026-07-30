@@ -112,121 +112,55 @@ export default function Contact() {
       <div className="container mx-auto px-4">
         
         {/* Header Section */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6 tracking-tight">
-            {t('contact.title')} <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-orange-600">{t('contact.titleHighlight')}</span> {t('contact.titleAfter')}
+        <div className="text-center max-w-3xl mx-auto mb-12">
+          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-extrabold uppercase tracking-wider bg-amber-100 dark:bg-amber-900/40 text-amber-700 dark:text-amber-400 mb-4 border border-amber-200 dark:border-amber-800/50 shadow-sm">
+            ⚡ {isAr ? 'خدمة سريعة ومضمونة' : 'Fast & Guaranteed Service'}
+          </span>
+          <h1 className="text-3xl md:text-5xl font-extrabold text-gray-900 dark:text-white mb-4 tracking-tight leading-tight">
+            {t('contact.title')} <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 via-orange-500 to-amber-600">{t('contact.titleHighlight')}</span> {t('contact.titleAfter')}
           </h1>
-          <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
+          <p className="text-base md:text-lg text-gray-600 dark:text-gray-400 leading-relaxed max-w-2xl mx-auto">
             {t('contact.subtitle')}
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 max-w-6xl mx-auto">
-          
-          {/* Contact Information Sidebar */}
-          <div className="lg:col-span-1 space-y-8">
-            <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-sm border border-gray-100 dark:border-gray-700">
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">{t('contact.infoTitle')}</h3>
-              
-              <div className="space-y-6">
-                <div className="flex items-start gap-4">
-                  <div className="bg-amber-100 dark:bg-amber-900/40 p-3 rounded-full text-amber-600 dark:text-amber-500" aria-hidden="true">
-                    <Phone className="w-6 h-6" />
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-gray-900 dark:text-white">{t('contact.phone')}</h4>
-                    <a href={`tel:${settings?.contactPhone || '+966506396004'}`} onClick={() => trackPhoneCallClick('contact_page')} className="text-gray-600 dark:text-gray-400 mt-1 hover:text-amber-500 transition-colors block" dir="ltr">{settings?.contactPhone || '+966 50 639 6004'}</a>
-                  </div>
-                </div>
+        {/* Main Form Container - Primary Focus */}
+        <div className="max-w-4xl mx-auto">
+          <div className="bg-white dark:bg-gray-800 rounded-3xl p-6 sm:p-10 shadow-xl border border-gray-100 dark:border-gray-700/80 transition-all duration-300">
 
-                <div className="flex items-start gap-4">
-                  <div className="bg-green-100 dark:bg-green-900/40 p-3 rounded-full text-green-600 dark:text-green-500" aria-hidden="true">
-                    <MessageCircle className="w-6 h-6" />
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-gray-900 dark:text-white">{t('contact.whatsapp')}</h4>
-                    <a href={`https://wa.me/${(settings?.whatsappNumber || '966506396004').replace('+', '')}`} onClick={() => trackWhatsAppClick('contact_page')} target="_blank" rel="noreferrer" className="text-green-600 dark:text-green-500 font-medium hover:underline mt-1 block">
-                      {t('contact.whatsappLink')}
-                    </a>
-                  </div>
-                </div>
+            {success ? (
+              <div className="bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-900/40 dark:to-emerald-900/20 p-8 md:p-10 rounded-3xl text-center shadow-lg border border-green-100 dark:border-green-800/50 animate-in fade-in zoom-in duration-500 relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-green-200/50 dark:bg-green-700/20 rounded-full blur-3xl -mr-10 -mt-10" aria-hidden="true"></div>
+                <div className="absolute bottom-0 left-0 w-24 h-24 bg-emerald-200/50 dark:bg-emerald-700/20 rounded-full blur-2xl -ml-10 -mb-10" aria-hidden="true"></div>
 
-                <div className="flex items-start gap-4">
-                  <div className="bg-blue-100 dark:bg-blue-900/40 p-3 rounded-full text-blue-600 dark:text-blue-500" aria-hidden="true">
-                    <MapPin className="w-6 h-6" />
+                <div className="relative z-10">
+                  <div className="w-20 h-20 bg-white dark:bg-green-800 text-green-500 dark:text-green-400 rounded-full flex items-center justify-center mx-auto mb-6 shadow-md border-4 border-green-50 dark:border-green-900">
+                    <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M5 13l4 4L19 7"></path></svg>
                   </div>
-                  <div>
-                    <h4 className="font-semibold text-gray-900 dark:text-white">{t('contact.location')}</h4>
-                    <p className="text-gray-600 dark:text-gray-400 mt-1 text-sm">{t('contact.locationValue')}<br/>{t('contact.hoursValue')}</p>
-                  </div>
-                </div>
+                  <h3 className="text-2xl md:text-3xl font-extrabold mb-4 text-green-800 dark:text-green-300 tracking-tight">تم استلام طلبك بنجاح! 🚀</h3>
 
-                <div className="flex items-start gap-4">
-                  <div className="bg-red-100 dark:bg-red-900/40 p-3 rounded-full text-red-600 dark:text-red-500" aria-hidden="true">
-                    <Mail className="w-6 h-6" />
+                  <div className="space-y-4 text-gray-700 dark:text-gray-200 text-lg leading-relaxed font-medium text-right md:text-center">
+                    <p>أهلاً بك في عائلة <span className="text-amber-600 dark:text-amber-400 font-bold">{settings?.siteName || 'رواد المستقبل'}</span>.</p>
+                    <p>لقد وصل طلبك بأمان إلى فريقنا المختص، ونحن نوليه <strong className="text-green-700 dark:text-green-400">أولوية قصوى</strong>. سيقوم أحد المهندسين أو الفنيين المختصين بدراسة تفاصيل طلبك والتواصل معك في أسرع وقت ممكن (عادةً خلال وقت قصير جداً).</p>
+
+                    <div className="bg-white/60 dark:bg-black/20 backdrop-blur-sm p-5 rounded-2xl mt-6 border border-white/50 dark:border-white/5 shadow-sm text-center">
+                      <p className="text-base text-gray-800 dark:text-gray-300">
+                        نحن نقدر ثقتك الغالية بنا، ونعدك بتقديم خدمة <strong className="text-amber-600 dark:text-amber-400">احترافية ومضمونة ترضيك 100%</strong>.<br />
+                        <span className="inline-block mt-2 font-bold text-green-700 dark:text-green-400">لا داعي للبحث بعيداً.. الحل المضمون صار بين أيدينا! 🛠️✨</span>
+                      </p>
+                    </div>
                   </div>
-                  <div>
-                    <h4 className="font-semibold text-gray-900 dark:text-white">{t('contact.email')}</h4>
-                    <a href={`mailto:${settings?.contactEmail || 'info@futurepioneers.com'}`} className="text-gray-600 dark:text-gray-400 mt-1 hover:text-amber-500 transition-colors block">{settings?.contactEmail || 'info@futurepioneers.com'}</a>
-                  </div>
+
+                  <Button onClick={() => setSuccess(false)} className="mt-8 px-8 py-3 w-full md:w-auto flex items-center justify-center gap-2 mx-auto rounded-full font-bold shadow-lg">
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 4v16m8-8H4"></path></svg>
+                    تقديم طلب جديد
+                  </Button>
                 </div>
               </div>
-
-              {/* Added Social Media to Sidebar */}
-              <div className="mt-10 pt-8 border-t border-gray-100 dark:border-gray-700">
-                 <h4 className="font-bold text-gray-900 dark:text-white mb-4 text-center">{t('contact.socialTitle')}</h4>
-                 <div className="flex justify-center gap-4">
-                   <a href="https://instagram.com/jeddah_technician" target="_blank" rel="noreferrer" className="w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 flex items-center justify-center hover:bg-pink-600 hover:text-white transition-all transform hover:scale-110" aria-label="Instagram">
-                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
-                   </a>
-                   <a href="https://www.snapchat.com/add/blzky2021" target="_blank" rel="noreferrer" className="w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 flex items-center justify-center hover:bg-yellow-400 hover:text-gray-900 transition-all transform hover:scale-110" aria-label="Snapchat">
-                     <Ghost className="w-5 h-5" aria-hidden="true" />
-                   </a>
-                   <a href="https://facebook.com/Jeddahtechnician" target="_blank" rel="noreferrer" className="w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 flex items-center justify-center hover:bg-blue-600 hover:text-white transition-all transform hover:scale-110" aria-label="Facebook">
-                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
-                   </a>
-                 </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Contact Form */}
-          <div className="lg:col-span-2">
-            <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 md:p-10 shadow-xl border border-gray-100 dark:border-gray-700">
-              
-              {success ? (
-                <div className="bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-900/40 dark:to-emerald-900/20 p-8 md:p-10 rounded-3xl text-center shadow-lg border border-green-100 dark:border-green-800/50 animate-in fade-in zoom-in duration-500 relative overflow-hidden">
-                  <div className="absolute top-0 right-0 w-32 h-32 bg-green-200/50 dark:bg-green-700/20 rounded-full blur-3xl -mr-10 -mt-10" aria-hidden="true"></div>
-                  <div className="absolute bottom-0 left-0 w-24 h-24 bg-emerald-200/50 dark:bg-emerald-700/20 rounded-full blur-2xl -ml-10 -mb-10" aria-hidden="true"></div>
-                  
-                  <div className="relative z-10">
-                    <div className="w-20 h-20 bg-white dark:bg-green-800 text-green-500 dark:text-green-400 rounded-full flex items-center justify-center mx-auto mb-6 shadow-md border-4 border-green-50 dark:border-green-900">
-                      <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M5 13l4 4L19 7"></path></svg>
-                    </div>
-                    <h3 className="text-2xl md:text-3xl font-extrabold mb-4 text-green-800 dark:text-green-300 tracking-tight">تم استلام طلبك بنجاح! 🚀</h3>
-                    
-                    <div className="space-y-4 text-gray-700 dark:text-gray-200 text-lg leading-relaxed font-medium text-right md:text-center">
-                      <p>أهلاً بك في عائلة <span className="text-amber-600 dark:text-amber-400 font-bold">{settings?.siteName || 'رواد المستقبل'}</span>.</p>
-                      <p>لقد وصل طلبك بأمان إلى فريقنا المختص، ونحن نوليه <strong className="text-green-700 dark:text-green-400">أولوية قصوى</strong>. سيقوم أحد المهندسين أو الفنيين المختصين بدراسة تفاصيل طلبك والتواصل معك في أسرع وقت ممكن (عادةً خلال وقت قصير جداً).</p>
-                      
-                      <div className="bg-white/60 dark:bg-black/20 backdrop-blur-sm p-5 rounded-2xl mt-6 border border-white/50 dark:border-white/5 shadow-sm text-center">
-                        <p className="text-base text-gray-800 dark:text-gray-300">
-                          نحن نقدر ثقتك الغالية بنا، ونعدك بتقديم خدمة <strong className="text-amber-600 dark:text-amber-400">احترافية ومضمونة ترضيك 100%</strong>.<br/>
-                          <span className="inline-block mt-2 font-bold text-green-700 dark:text-green-400">لا داعي للبحث بعيداً.. الحل المضمون صار بين أيدينا! 🛠️✨</span>
-                        </p>
-                      </div>
-                    </div>
-                    
-                    <Button onClick={() => setSuccess(false)} className="mt-8 px-8 py-3 w-full md:w-auto flex items-center justify-center gap-2 mx-auto rounded-full font-bold shadow-lg">
-                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 4v16m8-8H4"></path></svg>
-                      تقديم طلب جديد
-                    </Button>
-                  </div>
-                </div>
-              ) : (
-                <>
-                  {error && (
-                    <div className="mb-6 bg-red-50 dark:bg-red-900/30 border border-red-200 dark:border-red-800 text-red-700 dark:text-red-400 px-4 py-3 rounded-xl relative flex items-center gap-3" role="alert">
+            ) : (
+              <>
+                {error && (
+                    <div className="mb-8 bg-red-50 dark:bg-red-900/30 border border-red-200 dark:border-red-800 text-red-700 dark:text-red-400 px-5 py-4 rounded-2xl relative flex items-center gap-3 shadow-sm" role="alert">
                       <div className="w-8 h-8 bg-red-100 dark:bg-red-800 rounded-full flex items-center justify-center shrink-0" aria-hidden="true">
                         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path></svg>
                       </div>
@@ -234,10 +168,24 @@ export default function Contact() {
                     </div>
                   )}
 
-                  <form onSubmit={handleSubmit} className="space-y-6">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <form onSubmit={handleSubmit} className="space-y-8">
+
+                    {/* Section 1: Customer Information */}
+                    <div className="space-y-4">
+                      <div className="flex items-center gap-2.5 pb-2 border-b border-gray-100 dark:border-gray-700/60">
+                        <div className="w-8 h-8 rounded-lg bg-amber-50 dark:bg-amber-900/40 text-amber-600 dark:text-amber-400 flex items-center justify-center shrink-0" aria-hidden="true">
+                          <User className="w-4 h-4" />
+                        </div>
+                        <h3 className="text-base font-bold text-gray-900 dark:text-white tracking-wide">
+                          {isAr ? 'معلومات العميل' : 'Customer Information'}
+                        </h3>
+                      </div>
+
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-1">
                       <div>
-                        <label htmlFor="contact-name" className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">{t('contact.formName')} <span className="text-red-500">*</span></label>
+                          <label htmlFor="contact-name" className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
+                            {t('contact.formName')} <span className="text-red-500">*</span>
+                          </label>
                         <div className="relative group">
                           <div className="absolute inset-y-0 right-0 pr-4 flex items-center pointer-events-none text-gray-400 group-focus-within:text-amber-500 transition-colors">
                             <User className="h-5 w-5" aria-hidden="true" />
@@ -250,13 +198,16 @@ export default function Contact() {
                             minLength={3}
                             value={formData.name}
                             onChange={handleChange}
-                            className="!w-full !pr-12 !pl-4 !bg-gray-50 dark:!bg-gray-700"
+                              className="!w-full !pr-12 !pl-4 !bg-gray-50 dark:!bg-gray-700/60 focus:!bg-white dark:focus:!bg-gray-800 transition-all rounded-xl"
                             placeholder="الاسم الثلاثي..."
                           />
                         </div>
                       </div>
+
                       <div>
-                        <label htmlFor="contact-phone" className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">{t('contact.formPhone')} <span className="text-red-500">*</span></label>
+                          <label htmlFor="contact-phone" className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
+                            {t('contact.formPhone')} <span className="text-red-500">*</span>
+                          </label>
                         <div className="relative group">
                           <div className="absolute inset-y-0 right-0 pr-4 flex items-center pointer-events-none text-gray-400 group-focus-within:text-amber-500 transition-colors">
                             <Phone className="h-5 w-5" aria-hidden="true" />
@@ -271,17 +222,31 @@ export default function Contact() {
                             value={formData.phone}
                             onChange={handleChange}
                             dir="ltr"
-                            className="!w-full !pr-12 !pl-4 text-right !bg-gray-50 dark:!bg-gray-700"
+                              className="!w-full !pr-12 !pl-4 text-right !bg-gray-50 dark:!bg-gray-700/60 focus:!bg-white dark:focus:!bg-gray-800 transition-all rounded-xl"
                             placeholder="05X XXX XXXX"
                           />
                         </div>
-                        <p className="text-xs text-gray-500 mt-1">مثال: 0501234567</p>
+                          <p className="text-xs text-gray-500 mt-1.5">مثال: 0501234567</p>
+                        </div>
                       </div>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    {/* Section 2: Service Information */}
+                    <div className="space-y-4 pt-2">
+                      <div className="flex items-center gap-2.5 pb-2 border-b border-gray-100 dark:border-gray-700/60">
+                        <div className="w-8 h-8 rounded-lg bg-orange-50 dark:bg-orange-900/40 text-orange-600 dark:text-orange-400 flex items-center justify-center shrink-0" aria-hidden="true">
+                          <Wrench className="w-4 h-4" />
+                        </div>
+                        <h3 className="text-base font-bold text-gray-900 dark:text-white tracking-wide">
+                          {isAr ? 'معلومات الخدمة والموقع' : 'Service Information'}
+                        </h3>
+                      </div>
+
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-1">
                       <div>
-                        <label htmlFor="contact-service" className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">{t('contact.formService')} <span className="text-red-500">*</span></label>
+                          <label htmlFor="contact-service" className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
+                            {t('contact.formService')} <span className="text-red-500">*</span>
+                          </label>
                         <div className="relative group">
                           <div className="absolute inset-y-0 right-0 pr-4 flex items-center pointer-events-none text-gray-400 group-focus-within:text-amber-500 transition-colors">
                             <Wrench className="h-5 w-5" aria-hidden="true" />
@@ -292,7 +257,7 @@ export default function Contact() {
                             required
                             value={formData.service}
                             onChange={handleChange}
-                            className="w-full pr-12 pl-4 py-3 rounded-xl border border-gray-200 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-amber-500 focus:bg-white dark:focus:bg-gray-800 transition-all shadow-sm appearance-none"
+                              className="w-full pr-12 pl-4 py-3 rounded-xl border border-gray-200 dark:border-gray-600 bg-gray-50 dark:bg-gray-700/60 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-amber-500 focus:bg-white dark:focus:bg-gray-800 transition-all shadow-sm appearance-none"
                           >
                             <option value="" disabled>{t('contact.formServiceSelect')}</option>
                             {servicesList.map((s, i) => <option key={i} value={s.id}>{s.title}</option>)}
@@ -302,16 +267,31 @@ export default function Contact() {
                           </select>
                         </div>
                       </div>
+
                       <LocationAutocompleteField 
                         value={formData.location} 
                         onChange={(val) => setFormData(prev => ({ ...prev, location: val }))} 
                       />
                     </div>
+                    </div>
 
-                    <div>
-                      <label htmlFor="contact-description" className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">{t('contact.formDesc')} <span className="text-red-500">*</span></label>
+                    {/* Section 3: Request Details */}
+                    <div className="space-y-4 pt-2">
+                      <div className="flex items-center gap-2.5 pb-2 border-b border-gray-100 dark:border-gray-700/60">
+                        <div className="w-8 h-8 rounded-lg bg-amber-50 dark:bg-amber-900/40 text-amber-600 dark:text-amber-400 flex items-center justify-center shrink-0" aria-hidden="true">
+                          <AlignLeft className="w-4 h-4" />
+                        </div>
+                        <h3 className="text-base font-bold text-gray-900 dark:text-white tracking-wide">
+                          {isAr ? 'تفاصيل الطلب' : 'Request Details'}
+                        </h3>
+                      </div>
+
+                      <div className="pt-1">
+                        <label htmlFor="contact-description" className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
+                          {t('contact.formDesc')} <span className="text-red-500">*</span>
+                        </label>
                       <div className="relative group">
-                        <div className="absolute top-3 right-4 flex items-start pointer-events-none text-gray-400 group-focus-within:text-amber-500 transition-colors">
+                          <div className="absolute top-3.5 right-4 flex items-start pointer-events-none text-gray-400 group-focus-within:text-amber-500 transition-colors">
                           <AlignLeft className="h-5 w-5" aria-hidden="true" />
                         </div>
                         <Textarea 
@@ -322,38 +302,50 @@ export default function Contact() {
                           value={formData.description}
                           onChange={handleChange}
                           rows={4}
-                          className="!w-full !pr-12 !pl-4 !bg-gray-50 dark:!bg-gray-700 resize-none"
+                            className="!w-full !pr-12 !pl-4 !bg-gray-50 dark:!bg-gray-700/60 focus:!bg-white dark:focus:!bg-gray-800 transition-all rounded-xl resize-none"
                           placeholder="يرجى كتابة تفاصيل المشكلة أو الطلب بدقة لتسهيل خدمتك..."
                         />
                       </div>
                     </div>
+                    </div>
 
+                    {/* Primary CTA - Dominant Button */}
+                    <div className="pt-4 space-y-4">
                     <Button 
                       type="submit" 
                       loading={loading}
                       fullWidth
-                      className="py-4 rounded-xl flex items-center justify-center gap-2 group font-bold text-lg"
+                        className="py-4.5 rounded-2xl flex items-center justify-center gap-3 group font-extrabold text-lg md:text-xl bg-gradient-to-r from-amber-500 via-orange-500 to-amber-600 hover:from-amber-600 hover:to-orange-600 text-white shadow-xl shadow-amber-500/25 hover:shadow-amber-500/40 hover:scale-[1.005] active:scale-[0.995] transition-all duration-200"
                     >
                       {!loading && (
                         <>
                           <span>{t('contact.formSubmit')}</span>
-                          <Send className={`w-5 h-5 transition-transform ${isAr ? 'group-hover:-translate-x-1' : 'group-hover:translate-x-1'}`} aria-hidden="true" />
+                            <Send className={`w-5 h-5 transition-transform duration-300 ${isAr ? 'group-hover:-translate-x-1.5' : 'group-hover:translate-x-1.5'}`} aria-hidden="true" />
                         </>
                       )}
                     </Button>
-                    <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-6 text-xs sm:text-sm font-medium text-gray-600 dark:text-gray-400">
-                      <span className="flex items-center gap-1">{t('trust.response')}</span>
-                      <span className="hidden sm:inline-block w-1 h-1 bg-gray-300 dark:bg-gray-600 rounded-full"></span>
-                      <span className="flex items-center gap-1">{t('trust.secure')}</span>
+
+                    <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-6 text-xs sm:text-sm font-semibold text-gray-500 dark:text-gray-400 pt-1">
+                      <span className="flex items-center gap-1.5">
+                        <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+                        {t('trust.response')}
+                      </span>
+                      <span className="hidden sm:inline-block w-1.5 h-1.5 bg-gray-300 dark:bg-gray-600 rounded-full"></span>
+                      <span className="flex items-center gap-1.5">
+                        🛡️ {t('trust.secure')}
+                      </span>
                     </div>
-                  </form>
-                </>
-              )}
-            </div>
+                  </div>
+                </form>
+              </>
+            )}
           </div>
+
+          {/* Quick Contact Section - Positioned Below Submission Button */}
 
         </div>
       </div>
     </div>
   );
 }
+

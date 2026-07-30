@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useMemo } from 'react';
+﻿import React, { useState, useEffect, useRef, useMemo } from 'react';
 import { MapPin } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { SERVICE_AREAS, type ServiceArea } from '../../data/serviceAreas';
@@ -173,10 +173,10 @@ export default function LocationAutocompleteField({
                   <span className="truncate">{displayName}</span>
                 </div>
                 <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-md bg-gray-100 dark:bg-gray-700 text-gray-500 dark:text-gray-400 shrink-0">
-                  {area.category === 'north_obhur'
-                    ? isEn ? 'North Obhur' : 'أبحر الشمالية'
-                    : area.category === 'south_obhur'
-                    ? isEn ? 'South Obhur' : 'أبحر الجنوبية'
+                  {area.category === 'north_All Saudi Arabia Regions'
+                    ? isEn ? 'All Saudi Arabia Regions' : 'جميع مناطق المملكة'
+                    : area.category === 'south_All Saudi Arabia Regions'
+                    ? isEn ? 'All Saudi Arabia Regions' : 'جميع مناطق المملكة'
                     : isEn ? 'Nearby District' : 'حي مجاور'}
                 </span>
               </li>
@@ -215,3 +215,4 @@ export default function LocationAutocompleteField({
     </div>
   );
 }
+

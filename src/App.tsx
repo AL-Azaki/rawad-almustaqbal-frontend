@@ -1,5 +1,5 @@
 import React, { Suspense } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import PublicLayout from './layouts/PublicLayout';
 import Home from './pages/Home';
 
@@ -27,6 +27,14 @@ const AdminServices = React.lazy(() => import('./pages/admin/Services'));
 const AdminSettings = React.lazy(() => import('./pages/admin/Settings'));
 const AdminTestimonials = React.lazy(() => import('./pages/admin/Testimonials'));
 const AdminBlogPosts = React.lazy(() => import('./pages/admin/BlogPosts'));
+
+// Lazy Load Admin Marketing Pages
+const AdminMarketingOverview = React.lazy(() => import('./pages/admin/marketing/Overview'));
+const AdminMarketingGuide = React.lazy(() => import('./pages/admin/marketing/Guide'));
+const AdminMarketingTracking = React.lazy(() => import('./pages/admin/marketing/Tracking'));
+const AdminMarketingLandingPages = React.lazy(() => import('./pages/admin/marketing/LandingPages'));
+const AdminMarketingCampaigns = React.lazy(() => import('./pages/admin/marketing/Campaigns'));
+const AdminMarketingUrlBuilder = React.lazy(() => import('./pages/admin/marketing/UrlBuilder'));
 
 // Loading Fallbacks
 const AdminFallback = () => (
@@ -63,7 +71,7 @@ function App() {
           <Route path="services" element={<LazyPublicRoute><Services /></LazyPublicRoute>} />
           <Route path="services/:slug" element={<LazyPublicRoute><ServiceDetailPage /></LazyPublicRoute>} />
           <Route path="portfolio" element={<LazyPublicRoute><Portfolio /></LazyPublicRoute>} />
-          <Route path="portfolio/:id" element={<LazyPublicRoute><CaseStudyDetailPage /></LazyPublicRoute>} />
+          <Route path="portfolio/:slug" element={<LazyPublicRoute><CaseStudyDetailPage /></LazyPublicRoute>} />
           <Route path="blog" element={<LazyPublicRoute><BlogIndex /></LazyPublicRoute>} />
           <Route path="blog/:slug" element={<LazyPublicRoute><BlogArticleDetail /></LazyPublicRoute>} />
           <Route path="contact" element={<LazyPublicRoute><Contact /></LazyPublicRoute>} />
@@ -97,6 +105,16 @@ function App() {
           <Route path="testimonials" element={<AdminTestimonials />} />
           <Route path="blog" element={<AdminBlogPosts />} />
           <Route path="settings" element={<AdminSettings />} />
+          
+          <Route path="marketing">
+            <Route index element={<Navigate to="overview" replace />} />
+            <Route path="overview" element={<AdminMarketingOverview />} />
+            <Route path="guide" element={<AdminMarketingGuide />} />
+            <Route path="tracking" element={<AdminMarketingTracking />} />
+            <Route path="landing-pages" element={<AdminMarketingLandingPages />} />
+            <Route path="campaigns" element={<AdminMarketingCampaigns />} />
+            <Route path="url-builder" element={<AdminMarketingUrlBuilder />} />
+          </Route>
         </Route>
       </Routes>
     </BrowserRouter>

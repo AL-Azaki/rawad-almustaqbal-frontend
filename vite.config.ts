@@ -1,4 +1,4 @@
-import { defineConfig } from 'vite'
+﻿import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 import { VitePWA } from 'vite-plugin-pwa'
@@ -19,8 +19,8 @@ export default defineConfig({
 
       manifest: {
         id: '/',
-        name: 'رواد المستقبل',
-        short_name: 'رواد المستقبل',
+        name: 'العزكي تك',
+        short_name: 'العزكي تك',
         description:
           'أفضل خدمات الشبكات، أنظمة المراقبة، الصيانة، والبرمجة.',
 

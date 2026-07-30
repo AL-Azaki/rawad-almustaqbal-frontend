@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+﻿import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
@@ -41,19 +41,19 @@ export default function About() {
     description: pageDesc,
     mainEntity: {
       '@type': 'LocalBusiness',
-      name: isAr ? 'رواد المستقبل للمقاولات والحلول التقنية' : 'Future Pioneers Contracting & Technical Solutions',
+      name: isAr ? 'العزكي تك' : 'Future Pioneers Contracting & Technical Solutions',
       foundingDate: '2012',
       description: pageDesc,
       address: {
         '@type': 'PostalAddress',
         addressLocality: isAr ? 'جدة' : 'Jeddah',
-        addressRegion: isAr ? 'أبحر' : 'Obhur',
+        addressRegion: isAr ? 'جميع مناطق المملكة' : 'All Saudi Arabia Regions',
         addressCountry: 'SA',
       },
       areaServed: [
         { '@type': 'AdministrativeArea', name: isAr ? 'جدة' : 'Jeddah' },
-        { '@type': 'AdministrativeArea', name: isAr ? 'أبحر الشمالية' : 'North Obhur' },
-        { '@type': 'AdministrativeArea', name: isAr ? 'أبحر الجنوبية' : 'South Obhur' },
+        { '@type': 'AdministrativeArea', name: isAr ? 'جميع مناطق المملكة' : 'All Saudi Arabia Regions' },
+        { '@type': 'AdministrativeArea', name: isAr ? 'جميع مناطق المملكة' : 'All Saudi Arabia Regions' },
       ],
     },
   };
@@ -372,3 +372,4 @@ export default function About() {
     </div>
   );
 }
+

@@ -43,9 +43,10 @@ interface ApiProjectResponse {
 }
 
 export default function CaseStudyDetailPage() {
-  const { id: slugOrId } = useParams<{ id: string }>();
+  const { slug } = useParams<{ slug: string }>();
   const { t, i18n } = useTranslation();
   const { settings } = useSettings();
+  const navigate = useNavigate();
   const isAr = i18n.language === 'ar';
 
   const [loading, setLoading] = useState(true);
@@ -53,12 +54,12 @@ export default function CaseStudyDetailPage() {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    if (!slugOrId) {
-      setLoading(false);
+    if (!slug) {
+      navigate('/portfolio');
       return;
     }
 
-    ApiClient.get<ApiProjectResponse>(`/projects/${slugOrId}`)
+    ApiClient.get<ApiProjectResponse>(`/projects/${slug}`)
       .then((res) => {
         const p = res.data;
         if (p) {
@@ -119,8 +120,8 @@ export default function CaseStudyDetailPage() {
             title: { ar: p.title, en: p.title },
             category: { ar: p.category, en: p.category },
             location_district: {
-              ar: p.location_district || 'أبحر الشمالية، جدة',
-              en: p.location_district || 'North Obhur, Jeddah',
+              ar: p.location_district || 'جميع مناطق المملكة، جدة',
+              en: p.location_district || 'All Saudi Arabia Regions, Jeddah',
             },
             duration: {
               ar: p.duration || '3 أسابيع عمل',
@@ -150,7 +151,7 @@ export default function CaseStudyDetailPage() {
         console.error('API fetch error for project:', err);
         setLoading(false);
       });
-  }, [slugOrId]);
+  }, [slug]);
 
   if (loading) {
     return (
@@ -209,14 +210,14 @@ export default function CaseStudyDetailPage() {
     dateModified: '2026-07-19T10:00:00+03:00',
     author: {
       '@type': 'Organization',
-      name: isAr ? 'رواد المستقبل للمقاولات والحلول التقنية' : 'Future Pioneers Contracting & Technical Solutions',
+      name: isAr ? 'العزكي تك' : 'Future Pioneers Contracting & Technical Solutions',
     },
     publisher: {
       '@type': 'Organization',
-      name: isAr ? 'رواد المستقبل للمقاولات والحلول التقنية' : 'Future Pioneers Contracting & Technical Solutions',
+      name: isAr ? 'العزكي تك' : 'Future Pioneers Contracting & Technical Solutions',
       logo: {
         '@type': 'ImageObject',
-        url: `${window.location.origin}/logo.png`,
+        url: `${window.location.origin}/logo.jpg`,
       },
     },
     spatialCoverage: {
@@ -225,7 +226,7 @@ export default function CaseStudyDetailPage() {
       address: {
         '@type': 'PostalAddress',
         addressLocality: isAr ? 'جدة' : 'Jeddah',
-        addressRegion: isAr ? 'أبحر الشمالية' : 'North Obhur',
+        addressRegion: isAr ? 'جميع مناطق المملكة' : 'All Saudi Arabia Regions',
         addressCountry: 'SA',
       },
     },
@@ -236,7 +237,7 @@ export default function CaseStudyDetailPage() {
       <Helmet>
         <title>{pageTitle}</title>
         <meta name="description" content={pageDesc} />
-        <meta name="keywords" content={`${category}, ${locationDistrict}, دراسة حالة هندسية, مشاريع رواد المستقبل, صيانة تقنية`} />
+        <meta name="keywords" content={`${category}, ${locationDistrict}, دراسة حالة هندسية, مشاريع العزكي تك, صيانة تقنية`} />
         <meta property="og:title" content={pageTitle} />
         <meta property="og:description" content={pageDesc} />
         <meta property="og:type" content="article" />
@@ -441,7 +442,7 @@ export default function CaseStudyDetailPage() {
                 {caseStudy.before_image_path && (
                   <div className="rounded-3xl overflow-hidden bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 shadow-md">
                     <div className="bg-red-500/10 text-red-600 dark:text-red-400 font-bold px-4 py-2 text-sm border-b border-red-500/20 text-center">
-                      {isAr ? 'الوضع السابق قبل تدخل رواد المستقبل' : 'Condition Before Future Pioneers Intervention'}
+                      {isAr ? 'الوضع السابق قبل تدخل العزكي تك' : 'Condition Before Future Pioneers Intervention'}
                     </div>
                     <img
                       src={caseStudy.before_image_path}
@@ -484,6 +485,23 @@ export default function CaseStudyDetailPage() {
           </div>
         </section>
 
+        {/* Related Service Link */}
+        <section className="mb-14 p-8 bg-blue-50 dark:bg-blue-900/20 rounded-3xl border border-blue-100 dark:border-blue-800 text-center flex flex-col items-center gap-4">
+          <h3 className="text-xl font-bold text-gray-900 dark:text-white">
+            {isAr ? 'هل ترغب بتنفيذ مشروع مشابه؟' : 'Interested in a similar project?'}
+          </h3>
+          <p className="text-gray-600 dark:text-gray-400">
+            {isAr ? 'اكتشف المزيد عن خدماتنا المتخصصة في هذا المجال' : 'Learn more about our specialized services in this field'}
+          </p>
+          <Link
+            to={`/services/${caseStudy.category.en}`}
+            className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl transition-all"
+          >
+            <span>{isAr ? 'عرض تفاصيل الخدمة ذات الصلة' : 'View Related Service Details'}</span>
+            {isAr ? <ArrowLeft className="w-5 h-5" /> : <ArrowRight className="w-5 h-5" />}
+          </Link>
+        </section>
+
         {/* 6. CTA Banner */}
         <section className="bg-gradient-to-r from-gray-900 to-gray-800 dark:from-black dark:to-gray-900 rounded-3xl p-10 sm:p-14 text-center text-white shadow-2xl relative overflow-hidden">
           <div className="absolute top-0 right-0 -mt-10 -mr-10 w-40 h-40 bg-amber-500 rounded-full opacity-20 blur-3xl pointer-events-none" aria-hidden="true"></div>
@@ -496,7 +514,7 @@ export default function CaseStudyDetailPage() {
           </h2>
           <p className="text-base sm:text-lg text-gray-300 mb-8 max-w-2xl mx-auto relative z-10 leading-relaxed">
             {isAr
-              ? 'تواصل مع فريق مهندسي رواد المستقبل الآن لطلب معاينة ميدانية فنية ووضع خطة هندسية دقيقة تضمن حماية ممتلكاتك وبنيتك التحتية.'
+              ? 'تواصل مع فريق مهندسي العزكي تك الآن لطلب معاينة ميدانية فنية ووضع خطة هندسية دقيقة تضمن حماية ممتلكاتك وبنيتك التحتية.'
               : 'Contact Future Pioneers engineering team right now for an on-site technical inspection and tailored infrastructure engineering plan.'}
           </p>
 
@@ -521,3 +539,4 @@ export default function CaseStudyDetailPage() {
     </div>
   );
 }
+

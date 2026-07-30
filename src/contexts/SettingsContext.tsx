@@ -2,6 +2,13 @@ import React, { createContext, useContext, useState, useEffect } from 'react';
 import { ApiClient } from '../lib/api';
 
 interface Settings {
+  companyNameAr?: string;
+  companyNameEn?: string;
+  logoUrl?: string;
+  faviconUrl?: string;
+  ogImageUrl?: string;
+  siteTitle?: string;
+  copyrightText?: string;
   siteName: string;
   siteDescription: string;
   contactEmail: string;
@@ -22,6 +29,20 @@ interface Settings {
   googleLongitude?: string;
   googleEnableReviewButton?: string;
   googleEnableUtmTracking?: string;
+  
+  // Tracking & Analytics
+  googleAnalyticsId?: string;
+  googleAnalyticsEnabled?: string;
+  gtmId?: string;
+  gtmEnabled?: string;
+  metaPixelId?: string;
+  metaPixelEnabled?: string;
+  tiktokPixelId?: string;
+  tiktokPixelEnabled?: string;
+  snapchatPixelId?: string;
+  snapchatPixelEnabled?: string;
+  googleSearchConsoleId?: string;
+  googleSearchConsoleEnabled?: string;
 }
 
 interface SettingsContextType {
@@ -45,19 +66,26 @@ export function SettingsProvider({ children }: { children: React.ReactNode }) {
       const res = await ApiClient.get<{ [key: string]: string }>('/settings');
       
       const defaultSettings = {
-        siteName: 'رواد المستقبل',
-        siteDescription: 'شركة رواد المستقبل للحلول التقنية المتكاملة في جدة وأبحر الشمالية وأحياء شمال جدة. متخصصون في تأسيس المنازل الذكية، كاميرات المراقبة، الشبكات، والصيانة الكهربائية بأعلى جودة وضمان.',
+        companyNameAr: 'العزكي تك',
+        companyNameEn: 'ALAZAKITECH',
+        logoUrl: '/logo.jpg',
+        faviconUrl: '/favicon.ico',
+        ogImageUrl: '/logo.jpg',
+        siteTitle: 'العزكي تك | ALAZAKITECH',
+        copyrightText: '© ALAZAKITECH. جميع الحقوق محفوظة.',
+        siteName: 'العزكي تك',
+        siteDescription: 'شركة العزكي تك للحلول التقنية المتكاملة في جدة وجميع مناطق المملكة العربية السعودية. متخصصون في تأسيس المنازل الذكية، كاميرات المراقبة، الشبكات، والصيانة الكهربائية بأعلى جودة وضمان.',
         contactEmail: 'abdoalazaki190@gmail.com',
         contactPhone: '+966 50 639 6004',
         whatsappNumber: '966506396004',
-        facebook: 'https://facebook.com/Jeddahtechnician',
-        twitter: '',
-        instagram: 'https://instagram.com/jeddah_technician',
-        snapchat: 'https://www.snapchat.com/add/blzky2021',
-        tiktok: '',
+        facebook: 'https://facebook.com/alazakitech',
+        twitter: 'https://twitter.com/alazakitech',
+        instagram: 'https://instagram.com/alazakitech',
+        snapchat: 'https://snapchat.com/add/alazakitech',
+        tiktok: 'https://tiktok.com/@alazakitech',
         theme: 'light',
         language: 'ar',
-        googleBusinessName: 'رواد المستقبل للحلول التقنية',
+        googleBusinessName: 'العزكي تك للحلول التقنية',
         googleMapsUrl: 'https://maps.google.com/?cid=1234567890',
         googleReviewUrl: 'https://g.page/r/1234567890/review',
         googlePlaceId: 'ChIJxxxxxxxxxxxx',
@@ -72,19 +100,26 @@ export function SettingsProvider({ children }: { children: React.ReactNode }) {
     } catch (error) {
       console.error('Failed to fetch settings:', error);
       setSettings({
-        siteName: 'رواد المستقبل',
-        siteDescription: 'شركة رواد المستقبل للحلول التقنية المتكاملة في جدة وأبحر الشمالية وأحياء شمال جدة. متخصصون في تأسيس المنازل الذكية، كاميرات المراقبة، الشبكات، والصيانة الكهربائية بأعلى جودة وضمان.',
+        companyNameAr: 'العزكي تك',
+        companyNameEn: 'ALAZAKITECH',
+        logoUrl: '/logo.jpg',
+        faviconUrl: '/favicon.ico',
+        ogImageUrl: '/logo.jpg',
+        siteTitle: 'العزكي تك | ALAZAKITECH',
+        copyrightText: '© ALAZAKITECH. جميع الحقوق محفوظة.',
+        siteName: 'العزكي تك',
+        siteDescription: 'شركة العزكي تك للحلول التقنية المتكاملة في جدة وجميع مناطق المملكة العربية السعودية. متخصصون في تأسيس المنازل الذكية، كاميرات المراقبة، الشبكات، والصيانة الكهربائية بأعلى جودة وضمان.',
         contactEmail: 'abdoalazaki190@gmail.com',
         contactPhone: '+966506396004',
         whatsappNumber: '966506396004',
-        facebook: 'https://facebook.com/Jeddahtechnician',
-        twitter: '',
-        instagram: 'https://instagram.com/jeddah_technician',
-        snapchat: 'https://www.snapchat.com/add/blzky2021',
-        tiktok: '',
+        facebook: 'https://facebook.com/alazakitech',
+        twitter: 'https://twitter.com/alazakitech',
+        instagram: 'https://instagram.com/alazakitech',
+        snapchat: 'https://snapchat.com/add/alazakitech',
+        tiktok: 'https://tiktok.com/@alazakitech',
         theme: 'light',
         language: 'ar',
-        googleBusinessName: 'رواد المستقبل للحلول التقنية',
+        googleBusinessName: 'العزكي تك للحلول التقنية',
         googleMapsUrl: 'https://maps.google.com/?cid=1234567890',
         googleReviewUrl: 'https://g.page/r/1234567890/review',
         googlePlaceId: 'ChIJxxxxxxxxxxxx',

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Rocket, Menu, X, ShieldUser, Moon, Sun, Globe } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { useSettings } from '../contexts/SettingsContext';
+import BrandIdentity from './common/BrandIdentity';
 
 export default function Header() {
   const { t, i18n } = useTranslation();
@@ -27,11 +28,10 @@ export default function Header() {
       <div className="container mx-auto px-4 py-4 flex justify-between items-center">
         
         {/* Logo */}
-        <Link to="/" className="flex items-center gap-2 text-amber-500 font-bold text-2xl z-50">
-          <Rocket className="w-8 h-8" />
-          <span className="text-gray-900 dark:text-white">
-            {i18n.language === 'en' && (settings?.siteName === 'رواد المستقبل' || !settings?.siteName) ? 'Future Pioneers' : (settings?.siteName || 'رواد المستقبل')}
-          </span>
+        <Link to="/" className="flex items-center z-50 group transition-transform duration-300 hover:opacity-90">
+          <BrandIdentity 
+            imageClassName="max-h-12 md:max-h-14 group-hover:scale-105"
+          />
         </Link>
 
         {/* Desktop Navigation */}
@@ -107,3 +107,4 @@ export default function Header() {
     </header>
   );
 }
+

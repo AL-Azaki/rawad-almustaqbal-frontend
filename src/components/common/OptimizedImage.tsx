@@ -1,4 +1,4 @@
-import { useState, type ReactNode } from 'react';
+﻿import { useState, type ReactNode } from 'react';
 import { Image as ImageIcon } from 'lucide-react';
 
 interface OptimizedImageProps {
@@ -52,3 +52,4 @@ export function OptimizedImage({
     />
   );
 }
+

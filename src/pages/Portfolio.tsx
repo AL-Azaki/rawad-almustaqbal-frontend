@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import { Maximize2, MapPin, ArrowRight, ArrowLeft, Sparkles } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { Helmet } from 'react-helmet-async';
@@ -25,7 +25,7 @@ export default function Portfolio() {
   const { t, i18n } = useTranslation();
   const { settings } = useSettings();
   const isAr = i18n.language === 'ar';
-  const [activeCategory, setActiveCategory] = useState<string>(PORTFOLIO_CATEGORIES[0]);
+  const [activeCategory, setActiveCategory] = useState<string>(PORTFOLIO_CATEGORIES[0].key);
   
   const [projects, setProjects] = useState<ProjectType[]>(() => {
     const cached = localStorage.getItem('portfolio_projects');
@@ -56,7 +56,7 @@ export default function Portfolio() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [t, i18n.language]);
 
-  const filteredProjects = activeCategory === PORTFOLIO_CATEGORIES[0] || activeCategory === t('portfolio.all') 
+  const filteredProjects = activeCategory === PORTFOLIO_CATEGORIES[0].key || activeCategory === 'all'
     ? projects 
     : projects.filter(p => p.category === activeCategory);
 
@@ -65,7 +65,12 @@ export default function Portfolio() {
       <Helmet>
         <title>{t('nav.portfolio')} | {settings?.siteName || t('home.title')}</title>
         <meta name="description" content={settings?.siteDescription || t('home.subtitle')} />
-        <meta name="keywords" content={t('home.keywords', "معرض أعمال, سابقة أعمال, مشاريع تقنية, مشاريع شبكات, دراسات حالة هندسية, أبحر الشمالية, جدة")} />
+        <meta name="keywords" content={t('home.keywords', "معرض أعمال, سابقة أعمال, مشاريع تقنية, مشاريع شبكات, دراسات حالة هندسية, جميع مناطق المملكة, جدة")} />
+        <link rel="canonical" href={`${window.location.origin}/portfolio`} />
+        <meta property="og:title" content={`${t('nav.portfolio')} | ${settings?.siteName || t('home.title')}`} />
+        <meta property="og:description" content={settings?.siteDescription || t('home.subtitle')} />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={`${window.location.origin}/portfolio`} />
       </Helmet>
       <div className="container mx-auto px-4">
         {/* Header Section */}
@@ -82,16 +87,16 @@ export default function Portfolio() {
         <div className="flex flex-wrap justify-center gap-3 mb-12">
           {categories.map((cat) => (
             <button
-              key={cat}
-              onClick={() => setActiveCategory(cat)}
-              aria-pressed={activeCategory === cat}
+              key={cat.key}
+              onClick={() => setActiveCategory(cat.key)}
+              aria-pressed={activeCategory === cat.key}
               className={`px-6 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
-                activeCategory === cat 
+                activeCategory === cat.key 
                   ? 'bg-gray-900 dark:bg-amber-500 text-white shadow-md transform scale-105' 
                   : 'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'
               }`}
             >
-              {cat}
+              {cat.label}
             </button>
           ))}
         </div>
@@ -108,14 +113,14 @@ export default function Portfolio() {
             </h2>
             <p className="text-gray-600 dark:text-gray-400 text-sm md:text-base leading-relaxed">
               {isAr
-                ? 'مقارنة حقيقية من مشاريعنا المنفذة في الفلل والمباني التجارية بجدة وأبحر الشمالية. اسحب الشريط التفاعلي لرؤية الفرق الميداني.'
-                : 'Real comparison from our executed villa and commercial projects in Jeddah and North Obhur. Drag the slider to experience the difference.'}
+                ? 'مقارنة حقيقية من مشاريعنا المنفذة في الفلل والمباني التجارية بجدة وجميع مناطق المملكة. اسحب الشريط التفاعلي لرؤية الفرق الميداني.'
+                : 'Real comparison from our executed villa and commercial projects in Jeddah and All Saudi Arabia Regions. Drag the slider to experience the difference.'}
             </p>
           </div>
           <BeforeAfterSlider
             beforeImage="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&q=80&w=1200"
             afterImage="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=1200"
-            beforeLabel={isAr ? 'الوضع السابق قبل تدخل رواد المستقبل' : 'Condition Before Future Pioneers Intervention'}
+            beforeLabel={isAr ? 'الوضع السابق قبل تدخل العزكي تك' : 'Condition Before Future Pioneers Intervention'}
             afterLabel={isAr ? 'النتيجة النهائية والتشطيب الهندسي المتقن' : 'Final Engineered & Organized Result'}
           />
         </div>
@@ -147,7 +152,7 @@ export default function Portfolio() {
               const videoUrl = getImageUrl(project.video_path || project.video_url || null);
               const activeMedia = imageUrl || videoUrl;
               const isVideo = (activeMedia && /\.(mp4|webm|ogg|mov)$/i.test(activeMedia.split('?')[0])) || (!imageUrl && !!videoUrl);
-              const targetLink = `/portfolio/${project.slug || project.id}`;
+              const targetLink = `/portfolio/${project.slug}`;
               
               return (
                 <Link
@@ -158,7 +163,7 @@ export default function Portfolio() {
                   <OptimizedImage
                     src={activeMedia}
                     isVideo={isVideo}
-                    alt={`${project.title} - ${project.category} ${project.location_district ? `في ${project.location_district}` : 'في جدة وأبحر الشمالية'}`}
+                    alt={`${project.title} - ${project.category} ${project.location_district ? `في ${project.location_district}` : 'في جدة وجميع مناطق المملكة'}`}
                     className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                     fallback={
                       <div className="absolute inset-0 w-full h-full flex items-center justify-center bg-gray-100 dark:bg-gray-800 text-gray-400 dark:text-gray-500 font-medium">
@@ -174,7 +179,7 @@ export default function Portfolio() {
                   <div className="relative z-10 p-6 flex flex-col justify-end transition-transform duration-300">
                     <div className="flex items-center gap-2 mb-3 flex-wrap">
                       <span className="inline-flex items-center px-3 py-1 rounded-full bg-amber-500/20 text-amber-400 text-xs font-semibold border border-amber-500/30">
-                        {project.category}
+                        {PORTFOLIO_CATEGORIES.find(c => c.key === project.category)?.label || project.category}
                       </span>
                       {project.location_district && (
                         <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-black/40 backdrop-blur-sm text-gray-300 text-xs font-medium border border-white/10">
@@ -211,3 +216,4 @@ export default function Portfolio() {
     </div>
   );
 }
+

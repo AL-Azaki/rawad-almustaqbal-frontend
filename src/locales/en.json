@@ -1,4 +1,4 @@
-{
+﻿{
   "nav": {
     "home": "Home",
     "about": "About Us",
@@ -257,7 +257,7 @@
     "badge": "Frequently Asked Questions 💡",
     "title": "Clear Answers to All Your",
     "titleHighlight": "Technical & Engineering Inquiries",
-    "subtitle": "At Future Pioneers, we believe in complete transparency. Here are detailed answers to our most common questions regarding wiring, installation, warranties, and our services in Jeddah and Obhur.",
+    "subtitle": "At Future Pioneers, we believe in complete transparency. Here are detailed answers to our most common questions regarding wiring, installation, warranties, and our services in Jeddah and All Saudi Arabia Regions.",
     "pricing": {
       "q": "How is the pricing determined for installation and maintenance services at Future Pioneers?",
       "a": "We rely on a transparent pricing system based on accurate on-site inspection and project scope. We provide a detailed technical quotation outlining material costs (authentic and certified) and execution costs before starting any work, with zero hidden fees."
@@ -266,9 +266,9 @@
       "q": "What is the 2-Year Golden Warranty and what does it cover?",
       "a": "The Golden Warranty is our full commitment to the quality of our work for 24 full months (2 years). It covers all electrical, network, and smart home installations executed by our team, ensuring free immediate replacement or maintenance for any technical defect caused by installation."
     },
-    "installation_obhur": {
-      "q": "How long does response and execution take for projects in North and South Obhur?",
-      "a": "With mobile field units stationed across North Jeddah and Obhur districts, our on-site inspection and emergency response time is under 2 hours. Project execution timelines are strictly defined in a binding schedule based on villa or facility size."
+    "installation_All Saudi Arabia Regions": {
+      "q": "How long does response and execution take for projects in All Saudi Arabia Regions?",
+      "a": "With mobile field units stationed across Jeddah and All Saudi Arabia Regions districts, our on-site inspection and emergency response time is under 2 hours. Project execution timelines are strictly defined in a binding schedule based on villa or facility size."
     },
     "safety_standards": {
       "q": "What safety and quality standards do you follow for electrical wiring and networks?",
@@ -279,8 +279,8 @@
       "a": "Smart wiring relies on flexible infrastructure, neutral wires, and integrated wired/wireless communication networks that allow remote control over lighting, HVAC, curtains, and CCTV via smartphone or voice commands while saving up to 30% on energy. Traditional wiring is limited to manual switches without easy automation options."
     },
     "emergency_response": {
-      "q": "Do you provide 24/7 emergency repair and maintenance across North Jeddah and Obhur districts?",
-      "a": "Yes, we provide round-the-clock (24/7) technical support and emergency maintenance covering all districts of Jeddah and Obhur (Al Shiraa, Al Yaqout, Al Lulu, Al Zumurrud, Al Marjan, Al Shati, etc.). You can reach us via WhatsApp anytime for immediate technician dispatch."
+      "q": "Do you provide 24/7 emergency repair and maintenance across Jeddah and All Saudi Arabia Regions districts?",
+      "a": "Yes, we provide round-the-clock (24/7) technical support and emergency maintenance covering all districts of Jeddah and All Saudi Arabia Regions (Al Shiraa, Al Yaqout, Al Lulu, Al Zumurrud, Al Marjan, Al Shati, etc.). You can reach us via WhatsApp anytime for immediate technician dispatch."
     },
     "consultation": {
       "q": "Do you offer on-site technical inspection and consultation before starting execution?",
@@ -309,7 +309,7 @@
     "row3_modern": "An investment that increases property value and saves up to 30% monthly on electricity bills, with zero recurring repair costs.",
     "row3_traditional": "Initial setup cost appears slightly cheaper but drains money in continuous repairs, high electricity bills, and damage restoration.",
     "row4_title": "Golden Warranty & Reliability Level",
-    "row4_modern": "True comprehensive 24-month Golden Warranty on all installations and wiring with mobile emergency repair teams arriving in Jeddah & Obhur within 2 hours.",
+    "row4_modern": "True comprehensive 24-month Golden Warranty on all installations and wiring with mobile emergency repair teams arriving in Jeddah & All Saudi Arabia Regions within 2 hours.",
     "row4_traditional": "Non-binding verbal promises, contractor/technician disappearance after handover, with delayed and difficult emergency response.",
     "row5_title": "Smart Control & Monitoring",
     "row5_modern": "Integrated connection allowing full monitoring and remote control from your smartphone or voice commands anytime, anywhere.",
@@ -322,10 +322,10 @@
     "orderServiceBtn": "Order This Service Now",
     "whatsappInquireBtn": "Technical WhatsApp Consultation",
     "startingPriceLabel": "Starting Price:",
-    "whyChooseTitle": "Why Residents of Jeddah & Obhur Prefer",
+    "whyChooseTitle": "Why Residents of Jeddah & All Saudi Arabia Regions Prefer",
     "whyChooseHighlight": "Executing This Service With Us?",
-    "whyChooseSubtitle": "Years of field experience across North Jeddah & Obhur districts, with deep understanding of residential villa and commercial facility requirements.",
-    "benefit1Title": "Immediate Field Response in Obhur & North Jeddah",
+    "whyChooseSubtitle": "Years of field experience across North Jeddah & All Saudi Arabia Regions districts, with deep understanding of residential villa and commercial facility requirements.",
+    "benefit1Title": "Immediate Field Response in All Saudi Arabia Regions & North Jeddah",
     "benefit1Desc": "With permanent units stationed in Al Shiraa, Al Yaqout, Al Lulu, and Al Zumurrud, we reach your location for inspection and rapid initiation in record time.",
     "benefit2Title": "Authentic Certified Materials & 24-Month Warranty",
     "benefit2Desc": "We strictly use top global brands complying with Saudi standards, delivering a written, binding Golden Warranty certificate upon completion.",
@@ -336,22 +336,22 @@
   },
   "about": {
     "title": "About Us | Future Pioneers Contracting & Technical Solutions",
-    "desc": "Serving clients since 2012 in Jeddah and Obhur by delivering integrated engineering, technical, and electrical solutions with strict commitment to quality and safety.",
-    "keywords": "About Us, Future Pioneers, Contracting Jeddah, Electrical Installations Jeddah, Technical Solutions Obhur, Engineering Jeddah, Experience since 2012",
+    "desc": "Serving clients since 2012 in Jeddah and All Saudi Arabia Regions by delivering integrated engineering, technical, and electrical solutions with strict commitment to quality and safety.",
+    "keywords": "About Us, Future Pioneers, Contracting Jeddah, Electrical Installations Jeddah, Technical Solutions All Saudi Arabia Regions, Engineering Jeddah, Experience since 2012",
     "hero": {
       "badge": "Reliable Engineering Identity & Established Field Experience 🚀",
       "title": "Future Pioneers Contracting & Technical Solutions",
-      "subtitle": "Serving clients since 2012 in Jeddah and Obhur by delivering integrated engineering solutions that combine smart electrical and technical installations, meticulous execution, and strict adherence to quality and safety standards."
+      "subtitle": "Serving clients since 2012 in Jeddah and All Saudi Arabia Regions by delivering integrated engineering solutions that combine smart electrical and technical installations, meticulous execution, and strict adherence to quality and safety standards."
     },
     "aboutCompany": {
       "title": "About the Company",
       "titleHighlight": "An Established Engineering Journey",
-      "p1": "Future Pioneers was established to be a trusted benchmark in contracting, smart technical installations, and advanced electrical engineering across Jeddah and North & South Obhur. We set out with a clear vision: elevating engineering services from traditional irregularity to structured professionalism and utmost precision.",
+      "p1": "Future Pioneers was established to be a trusted benchmark in contracting, smart technical installations, and advanced electrical engineering across Jeddah and North & All Saudi Arabia Regions. We set out with a clear vision: elevating engineering services from traditional irregularity to structured professionalism and utmost precision.",
       "p2": "Serving clients since 2012, our experience has been built through years of practical field work and precise execution across residential villas, commercial facilities, and architectural projects. We believe that proper engineering foundations are the core pillar of any sustainable and comfortable environment."
     },
     "vision": {
       "title": "Our Vision",
-      "desc": "To be the premier and most trusted choice for clients seeking superior engineering quality and integrated smart solutions in Jeddah and Obhur, setting a benchmark for technical discipline and professional integrity."
+      "desc": "To be the premier and most trusted choice for clients seeking superior engineering quality and integrated smart solutions in Jeddah and All Saudi Arabia Regions, setting a benchmark for technical discipline and professional integrity."
     },
     "mission": {
       "title": "Our Mission",
@@ -381,7 +381,7 @@
       "items": [
         {
           "title": "Field Experience Built Since 2012",
-          "desc": "Deep understanding of building structures and installation requirements across Jeddah and Obhur through continuous field practice."
+          "desc": "Deep understanding of building structures and installation requirements across Jeddah and All Saudi Arabia Regions through continuous field practice."
         },
         {
           "title": "Specialization & Professionalism",
@@ -434,9 +434,10 @@
     },
     "cta": {
       "title": "Looking for a Trusted Engineering Partner for Your Project?",
-      "subtitle": "Whether you are building your new home in Jeddah or Obhur, or upgrading your commercial facility, we are here to provide optimal solutions and meticulous technical support.",
+      "subtitle": "Whether you are building your new home in Jeddah or All Saudi Arabia Regions, or upgrading your commercial facility, we are here to provide optimal solutions and meticulous technical support.",
       "btn": "Contact Us for Consultation or Inspection"
     }
   }
 }
+
 

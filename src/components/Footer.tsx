@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { useSettings } from '../contexts/SettingsContext';
 import GeoServiceAreas from './common/GeoServiceAreas';
+import BrandIdentity from './common/BrandIdentity';
 import { googleBusinessService } from '../lib/googleBusiness';
 
 export default function Footer() {
@@ -16,9 +17,12 @@ export default function Footer() {
           
           {/* About Section */}
           <div className="space-y-4">
-            <h3 className="text-2xl font-bold text-white mb-4">
-              {i18n.language === 'en' && (settings?.siteName === 'رواد المستقبل' || !settings?.siteName) ? 'Future Pioneers' : (settings?.siteName || 'رواد المستقبل')}
-            </h3>
+            <Link to="/" className="inline-block mb-2 hover:opacity-90 transition-opacity">
+              <BrandIdentity 
+                imageClassName="max-h-12"
+                textClassName="text-white"
+              />
+            </Link>
             <p className="text-gray-400 leading-relaxed text-sm">
               {settings?.siteDescription || t('footer.about')}
             </p>
@@ -102,14 +106,14 @@ export default function Footer() {
 
         </div>
 
-        {/* Geographical Coverage & Service Areas */}
-        <GeoServiceAreas />
+        {/* Geographical Coverage & Service Areas (Removed for broader coverage) */}
 
         <div className="border-t border-gray-800 mt-12 pt-8 text-center text-gray-500 text-sm flex flex-col md:flex-row justify-between items-center">
-          <p>© {new Date().getFullYear()} {settings?.siteName || t('home.title')}. {t('footer.allRightsReserved', 'جميع الحقوق محفوظة.')}</p>
+          <p>{settings?.copyrightText || `© ${new Date().getFullYear()} ALAZAKITECH. ${t('footer.allRightsReserved', 'جميع الحقوق محفوظة.')}`}</p>
           <p className="mt-2 md:mt-0">{t('footer.madeWith')}</p>
         </div>
       </div>
     </footer>
   );
 }
+

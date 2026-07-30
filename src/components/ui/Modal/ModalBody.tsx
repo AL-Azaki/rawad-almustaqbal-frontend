@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 
 export interface ModalBodyProps {
   children: React.ReactNode;
@@ -12,3 +12,4 @@ export const ModalBody: React.FC<ModalBodyProps> = ({ children, className = '' }
     </div>
   );
 };
+

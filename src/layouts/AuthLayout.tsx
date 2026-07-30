@@ -1,4 +1,4 @@
-import { Outlet, Link } from 'react-router-dom';
+﻿import { Outlet, Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 
 export default function AuthLayout() {
@@ -14,3 +14,4 @@ export default function AuthLayout() {
     </div>
   );
 }
+

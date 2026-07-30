@@ -6,6 +6,7 @@ import Footer from '../components/Footer';
 import FloatingWhatsApp from '../components/FloatingWhatsApp';
 import StickyMobileCTA from '../components/common/StickyMobileCTA';
 import { useSettings } from '../contexts/SettingsContext';
+import TrackingScripts from '../components/marketing/TrackingScripts';
 
 export default function PublicLayout() {
   const { settings } = useSettings();
@@ -22,15 +23,15 @@ export default function PublicLayout() {
   const schemaData = {
     "@context": "https://schema.org",
     "@type": ["HomeAndConstructionBusiness", "Electrician"],
-    "name": settings?.siteName || t('home.title') || "رواد المستقبل",
-    "description": settings?.siteDescription || t('home.subtitle') || "شركة رواد المستقبل للحلول التقنية المتكاملة في جدة وأبحر الشمالية وأحياء شمال جدة. متخصصون في تأسيس المنازل الذكية، كاميرات المراقبة، الشبكات، والصيانة الكهربائية بأعلى جودة وضمان.",
+    "name": settings?.siteName || t('home.title') || "العزكي تك",
+    "description": settings?.siteDescription || t('home.subtitle') || "شركة العزكي تك المتكاملة في جدة وجميع مناطق المملكة وأحياء شمال جدة. متخصصون في تأسيس المنازل الذكية، كاميرات المراقبة، الشبكات، والصيانة الكهربائية بأعلى جودة وضمان.",
     "url": typeof window !== 'undefined' ? window.location.origin : "https://ruwad-almustaqbal.sa",
     "telephone": settings?.contactPhone || "+966506396004",
     "email": settings?.contactEmail || "abdoalazaki190@gmail.com",
     "priceRange": "$$",
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "طريق الملك سعود، أبحر الشمالية",
+      "streetAddress": "طريق الملك سعود، جميع مناطق المملكة",
       "addressLocality": "جدة",
       "addressRegion": "مكة المكرمة",
       "postalCode": "23815",
@@ -62,11 +63,11 @@ export default function PublicLayout() {
       },
       {
         "@type": "AdministrativeArea",
-        "name": "North Obhur"
+        "name": "All Saudi Arabia Regions"
       },
       {
         "@type": "AdministrativeArea",
-        "name": "South Obhur"
+        "name": "All Saudi Arabia Regions"
       },
       {
         "@type": "AdministrativeArea",
@@ -98,7 +99,8 @@ export default function PublicLayout() {
       }
 
     ],
-    ...(sameAsUrls.length > 0 ? { "sameAs": sameAsUrls } : {})
+    ...(sameAsUrls.length > 0 ? { "sameAs": sameAsUrls } : {}),
+    ...(settings?.logoUrl ? { "logo": settings.logoUrl, "image": settings.logoUrl } : {})
   };
 
   return (
@@ -106,12 +108,16 @@ export default function PublicLayout() {
       <Helmet>
         <meta property="og:title" content={settings?.siteName || t('home.title')} />
         <meta property="og:description" content={settings?.siteDescription || t('home.subtitle')} />
+        {settings?.logoUrl && <meta property="og:image" content={settings.logoUrl} />}
+        {settings?.siteName && <meta property="og:site_name" content={settings.siteName} />}
         <meta property="twitter:title" content={settings?.siteName || t('home.title')} />
         <meta property="twitter:description" content={settings?.siteDescription || t('home.subtitle')} />
+        {settings?.logoUrl && <meta name="twitter:image" content={settings.logoUrl} />}
         <script type="application/ld+json">
           {JSON.stringify(schemaData)}
         </script>
       </Helmet>
+      <TrackingScripts />
       <Header />
       <main className="flex-grow">
         <Outlet />
@@ -122,3 +128,4 @@ export default function PublicLayout() {
     </div>
   );
 }
+

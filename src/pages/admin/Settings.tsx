@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Save, Settings as SettingsIcon, Globe, Phone, Mail, Building2, Link2, LayoutTemplate, MapPin } from 'lucide-react';
+import { Save, Settings as SettingsIcon, Globe, Phone, Mail, Building2, Link2, LayoutTemplate, MapPin, Image as ImageIcon, Upload, X } from 'lucide-react';
 import toast from 'react-hot-toast';
 import { Helmet } from 'react-helmet-async';
 import { useSettings } from '../../contexts/SettingsContext';
@@ -10,6 +10,133 @@ import { Input } from '../../components/ui/Input';
 import { Textarea } from '../../components/ui/Textarea';
 import { Loader } from '../../components/ui/Loader';
 // هنا 👇تم حذف t من const { t, i18n } = useTranslation();
+
+const MediaUploader = ({ label, id, value, onChange }: { label: string, id: string, value: string, onChange: (val: string) => void }) => {
+  const [uploading, setUploading] = useState(false);
+  const [imageError, setImageError] = useState(false);
+
+  useEffect(() => {
+    setImageError(false);
+  }, [value]);
+
+  const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    if (file.size > 5 * 1024 * 1024) {
+      toast.error('يجب أن لا يتجاوز حجم الصورة 5 ميجابايت');
+      return;
+    }
+
+    setUploading(true);
+    try {
+      const formData = new FormData();
+      formData.append('image', file);
+
+      const res = await ApiClient.post<{url: string}>('/settings/upload', formData, {
+        headers: { 'Content-Type': 'multipart/form-data' }
+      });
+
+      onChange(res.data.url);
+      toast.success('تم رفع الصورة بنجاح');
+    } catch (error: any) {
+      console.error(error);
+      toast.error(error.response?.data?.message || 'حدث خطأ أثناء رفع الصورة');
+    } finally {
+      setUploading(false);
+      e.target.value = '';
+    }
+  };
+
+  const handleRemove = () => {
+    if (window.confirm('هل أنت متأكد من إزالة هذه الصورة؟')) {
+      onChange('');
+    }
+  };
+
+  return (
+    <div className="border border-gray-200 dark:border-gray-700 rounded-2xl p-6 bg-gray-50/50 dark:bg-gray-800/20">
+      <label className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-4">{label}</label>
+      
+      <div className="flex flex-col md:flex-row gap-6">
+        {/* Preview Area */}
+        <div className="w-full md:w-1/3 flex flex-col items-center justify-center border-2 border-dashed border-gray-300 dark:border-gray-600 rounded-xl p-4 bg-white dark:bg-gray-900 min-h-[160px] relative overflow-hidden group">
+          {value && !imageError ? (
+            <>
+              <img 
+                src={value} 
+                alt={label} 
+                className="max-h-24 w-auto object-contain drop-shadow-sm" 
+                onError={() => { 
+                  setImageError(true);
+                  toast.error('رابط الصورة غير صالح أو الصورة غير موجودة'); 
+                }} 
+              />
+              <button 
+                type="button" 
+                onClick={handleRemove}
+                className="absolute top-2 right-2 bg-red-500 text-white p-1.5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity hover:bg-red-600 shadow-md"
+                title="إزالة الصورة"
+              >
+                <X className="w-4 h-4" />
+              </button>
+            </>
+          ) : (
+            <div className="text-center text-gray-400">
+              <ImageIcon className="w-8 h-8 mx-auto mb-2 opacity-30" />
+              <span className="text-xs font-medium">لا توجد صورة</span>
+            </div>
+          )}
+        </div>
+
+        {/* Controls Area */}
+        <div className="w-full md:w-2/3 flex flex-col justify-center space-y-4">
+          
+          {/* Upload Button */}
+          <div>
+            <label className={`cursor-pointer inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-xl font-bold transition-all ${uploading ? 'bg-gray-200 text-gray-500 cursor-not-allowed dark:bg-gray-800 dark:text-gray-600' : 'bg-gray-900 hover:bg-black text-white dark:bg-white dark:text-gray-900 dark:hover:bg-gray-200 shadow-md hover:shadow-lg'}`}>
+              {uploading ? (
+                <><Loader className="w-4 h-4 animate-spin" /> جاري الرفع...</>
+              ) : (
+                <><Upload className="w-4 h-4" /> رفع صورة من الجهاز</>
+              )}
+              <input 
+                type="file" 
+                accept="image/png, image/jpeg, image/webp, image/svg+xml" 
+                className="hidden" 
+                onChange={handleFileChange}
+                disabled={uploading}
+              />
+            </label>
+            <p className="text-[11px] text-gray-500 mt-2">الصيغ المدعومة: PNG, JPG, WEBP, SVG. الحد الأقصى: 5MB</p>
+          </div>
+
+          <div className="flex items-center gap-4">
+            <hr className="flex-1 border-gray-200 dark:border-gray-700" />
+            <span className="text-[10px] font-black text-gray-400 uppercase tracking-wider">أو</span>
+            <hr className="flex-1 border-gray-200 dark:border-gray-700" />
+          </div>
+
+          {/* URL Input */}
+          <div>
+            <label htmlFor={id} className="block text-xs font-bold text-gray-600 dark:text-gray-400 mb-2">رابط مباشر للصورة (URL)</label>
+            <Input 
+              id={id}
+              type="url" 
+              dir="ltr"
+              placeholder="https://example.com/image.png"
+              className="text-left bg-white dark:bg-gray-900 text-sm"
+              value={value}
+              onChange={(e) => onChange(e.target.value)}
+            />
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  );
+};
+
 export default function AdminSettings() {
   const {  i18n } = useTranslation();
   const { settings, refreshSettings } = useSettings();
@@ -35,8 +162,16 @@ export default function AdminSettings() {
     googlePlaceId: '',
     googleLatitude: '',
     googleLongitude: '',
+    googleLongitude: '',
     googleEnableReviewButton: '1',
     googleEnableUtmTracking: '1',
+    companyNameAr: '',
+    companyNameEn: '',
+    logoUrl: '',
+    faviconUrl: '',
+    ogImageUrl: '',
+    siteTitle: '',
+    copyrightText: '',
   });
 
   useEffect(() => {
@@ -62,6 +197,13 @@ export default function AdminSettings() {
         googleLongitude: settings.googleLongitude || '',
         googleEnableReviewButton: settings.googleEnableReviewButton || '1',
         googleEnableUtmTracking: settings.googleEnableUtmTracking || '1',
+        companyNameAr: settings.companyNameAr || '',
+        companyNameEn: settings.companyNameEn || '',
+        logoUrl: settings.logoUrl || '',
+        faviconUrl: settings.faviconUrl || '',
+        ogImageUrl: settings.ogImageUrl || '',
+        siteTitle: settings.siteTitle || '',
+        copyrightText: settings.copyrightText || '',
       });
     }
   }, [settings]);
@@ -92,6 +234,7 @@ export default function AdminSettings() {
 
   const tabs = [
     { id: 'general', label: 'إعدادات عامة', icon: Globe },
+    { id: 'brand', label: 'الهوية البصرية', icon: ImageIcon },
     { id: 'contact', label: 'معلومات التواصل', icon: Phone },
     { id: 'social', label: 'التواصل الاجتماعي', icon: Link2 },
     { id: 'google', label: 'ملف نشاطي على جوجل', icon: MapPin },
@@ -181,6 +324,87 @@ export default function AdminSettings() {
                       value={formData.siteDescription}
                       onChange={(e) => setFormData({...formData, siteDescription: e.target.value})}
                     />
+                  </div>
+                </div>
+              </div>
+
+              {/* Brand Identity Tab */}
+              <div 
+                role="tabpanel" 
+                id="panel-brand" 
+                aria-labelledby="tab-brand" 
+                className={`${activeTab === 'brand' ? 'block animate-in fade-in slide-in-from-bottom-4 duration-500' : 'hidden'}`}
+              >
+                <div className="space-y-6">
+                  <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-2">
+                    <ImageIcon className="w-5 h-5 text-amber-500" aria-hidden="true" /> الهوية البصرية للشركة
+                  </h2>
+                  
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                      <label htmlFor="companyNameAr" className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-2">اسم الشركة (عربي)</label>
+                      <Input 
+                        id="companyNameAr"
+                        type="text" 
+                        value={formData.companyNameAr}
+                        onChange={(e) => setFormData({...formData, companyNameAr: e.target.value})}
+                      />
+                    </div>
+                    
+                    <div>
+                      <label htmlFor="companyNameEn" className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-2">اسم الشركة (إنجليزي)</label>
+                      <Input 
+                        id="companyNameEn"
+                        type="text" 
+                        dir="ltr"
+                        className="text-left"
+                        value={formData.companyNameEn}
+                        onChange={(e) => setFormData({...formData, companyNameEn: e.target.value})}
+                      />
+                    </div>
+                    
+                    <div className="md:col-span-2">
+                      <label htmlFor="siteTitle" className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-2">عنوان الموقع (SEO Browser Title)</label>
+                      <Input 
+                        id="siteTitle"
+                        type="text" 
+                        value={formData.siteTitle}
+                        onChange={(e) => setFormData({...formData, siteTitle: e.target.value})}
+                      />
+                    </div>
+
+                    <div className="md:col-span-2 space-y-8 mt-4">
+                      <MediaUploader
+                        id="logoUrl"
+                        label="شعار الشركة (Logo)"
+                        value={formData.logoUrl}
+                        onChange={(val) => setFormData({ ...formData, logoUrl: val })}
+                      />
+
+                      <MediaUploader
+                        id="faviconUrl"
+                        label="أيقونة المتصفح (Favicon)"
+                        value={formData.faviconUrl}
+                        onChange={(val) => setFormData({ ...formData, faviconUrl: val })}
+                      />
+
+                      <MediaUploader
+                        id="ogImageUrl"
+                        label="صورة المشاركة (OpenGraph Image)"
+                        value={formData.ogImageUrl}
+                        onChange={(val) => setFormData({ ...formData, ogImageUrl: val })}
+                      />
+                    </div>
+
+                    <div className="md:col-span-2">
+                      <label htmlFor="copyrightText" className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-2">نص حقوق النشر (Copyright Text)</label>
+                      <Input 
+                        id="copyrightText"
+                        type="text" 
+                        value={formData.copyrightText}
+                        onChange={(e) => setFormData({...formData, copyrightText: e.target.value})}
+                      />
+                    </div>
                   </div>
                 </div>
               </div>
@@ -511,3 +735,4 @@ export default function AdminSettings() {
     </div>
   );
 }
+

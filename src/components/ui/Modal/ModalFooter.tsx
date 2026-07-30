@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 
 export interface ModalFooterProps {
   children: React.ReactNode;
@@ -12,3 +12,4 @@ export const ModalFooter: React.FC<ModalFooterProps> = ({ children, className = 
     </div>
   );
 };
+

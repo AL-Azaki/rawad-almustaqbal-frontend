@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useTranslation } from 'react-i18next';
 import { useFAQs } from '../../data/faqs';
@@ -37,3 +37,4 @@ export const FAQSchema: React.FC = () => {
 };
 
 export default FAQSchema;
+
