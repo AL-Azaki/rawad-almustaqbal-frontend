@@ -1,13 +1,11 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Rocket, Menu, X, ShieldUser, Moon, Sun, Globe } from 'lucide-react';
+import { Menu, X, ShieldUser, Moon, Sun, Globe } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
-import { useSettings } from '../contexts/SettingsContext';
 import BrandIdentity from './common/BrandIdentity';
 
 export default function Header() {
   const { t, i18n } = useTranslation();
-  const { settings } = useSettings();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   
   const toggleLanguage = () => {

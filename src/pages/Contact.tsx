@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Phone, MapPin, Mail, MessageCircle, Send, Ghost, User, Wrench, AlignLeft } from 'lucide-react';
+import { Phone, Send, User, Wrench, AlignLeft } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { Helmet } from 'react-helmet-async';
 import { useSettings } from '../contexts/SettingsContext';
@@ -8,7 +8,7 @@ import { Button } from '../components/ui/Button';
 import { Input } from '../components/ui/Input';
 import { Textarea } from '../components/ui/Textarea';
 import LocationAutocompleteField from '../components/common/LocationAutocompleteField';
-import { trackOrderSubmit, trackWhatsAppClick, trackPhoneCallClick } from '../lib/analytics';
+import { trackOrderSubmit } from '../lib/analytics';
 
 interface ServiceType {
   id: number;

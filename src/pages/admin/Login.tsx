@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Rocket, Lock, Mail } from 'lucide-react';
+import { Lock, Mail } from 'lucide-react';
 import { Helmet } from 'react-helmet-async';
 import { ApiClient } from '../../lib/api';
 import { useSettings, useAuth } from '../../contexts';

@@ -2,7 +2,6 @@ import { Phone, Mail, MapPin, Ghost, Clock } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { useSettings } from '../contexts/SettingsContext';
-import GeoServiceAreas from './common/GeoServiceAreas';
 import BrandIdentity from './common/BrandIdentity';
 import { googleBusinessService } from '../lib/googleBusiness';
 

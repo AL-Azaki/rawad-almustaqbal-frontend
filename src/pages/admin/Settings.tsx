@@ -162,7 +162,6 @@ export default function AdminSettings() {
     googlePlaceId: '',
     googleLatitude: '',
     googleLongitude: '',
-    googleLongitude: '',
     googleEnableReviewButton: '1',
     googleEnableUtmTracking: '1',
     companyNameAr: '',
